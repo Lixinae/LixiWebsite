@@ -1,0 +1,26 @@
+<!-- Permet d'hériter de base.html -->
+{% extends "base.html" %}
+<!-- Defini dans le base html et permet de mettre le code au bon endroit-->
+{# TODO Projects html #}
+{% block content %}
+    <!-- Condition if avec Jinja -->
+    {% if title %}
+        <title>{{ title }} - Microblog</title>
+    {% else %}
+        <title> Welcome to Microblog</title>
+    {% endif %}
+
+    {% if user %}
+        <h1>Hello, {{ user.username }}!</h1>
+    {% else %}
+        <h1>Hello, No name at all!</h1>
+    {% endif %}
+
+    <!-- Boucle avec Jinja -->
+    {% for project in project %}
+        <div>
+            {# Todo -> Voir comment rajouter les projets ici #}
+        </div>
+    {% endfor %}
+
+{% endblock %}
