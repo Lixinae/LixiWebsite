@@ -1,0 +1,18 @@
+<!-- Permet d'hériter de base.html -->
+{% extends "base.html" %}
+<!-- Defini dans le base html et permet de mettre le code au bon endroit-->
+{# TODO centre d'interet html #}
+{% block content %}
+
+    <title> Skills et passion </title>
+
+    {# Todo -> Construire la structure de la page #}
+    <div class="skillPassion-navbar">
+        <ul class="skillPassion-navbar-center">
+            <li><a href="{{ url_for('gn') }}">GN</a></li>
+            <li><a href="{{ url_for('jeuxSurTable') }}">Jeux sur table</a></li>
+            <li><a href="{{ url_for('serveurMultimedia') }}">Serveur Multimedia</a></li>
+        </ul>
+    </div>
+    {% block content-skillsPassion %} {% endblock %}
+{% endblock %}

@@ -3,24 +3,19 @@
 <!-- Defini dans le base html et permet de mettre le code au bon endroit-->
 {# TODO Projects html #}
 {% block content %}
-    <!-- Condition if avec Jinja -->
-    {% if title %}
-        <title>{{ title }} - Microblog</title>
-    {% else %}
-        <title> Welcome to Microblog</title>
-    {% endif %}
 
-    {% if user %}
-        <h1>Hello, {{ user.username }}!</h1>
-    {% else %}
-        <h1>Hello, No name at all!</h1>
-    {% endif %}
-
+    <title> Portfolio </title>
     <!-- Boucle avec Jinja -->
-    {% for project in project %}
-        <div>
+    {% for project in projects %}
+        <div class="project_cls">
             {# Todo -> Voir comment rajouter les projets ici #}
         </div>
     {% endfor %}
+
+    <div class="icone-largeur-4">
+        <a href="https://github.com/Vahen" target="_blank">
+            <i class="icone-github"></i>
+        </a>
+    </div>
 
 {% endblock %}

@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, make_response
 
 from application import app
 
@@ -29,19 +29,65 @@ def index():
     #     }
     # ]
     # return render_template('index.html', title="Home", user=user_m, posts=post_m)
-    return render_template('index.html', title="Home")
+    return make_response(render_template('index.html', title="Home"), 200)
+
+
+@app.route('/portfolio')
+def centre_interet():
+    # Todo -> Faire une mini BDD avec les differents projets et query les éléments ici
+    project_m = [
+        {
+            'titre': "Pacman3D",
+            'langages': "C++11, OpenGL3+",
+            'images': []
+        },
+        {
+            'titre': "Vahen website",
+            'langages': "Python 3",
+            'images': []
+        },
+        {
+            'titre': "",
+        },
+    ]
+    return make_response(render_template('portfolio.html', title="Portfolio", projects=project_m), 200)
+
+
+@app.route('/skillsPassion')
+def skills_passion():
+    return make_response(render_template('skillsPassion.html', title="SkillsPassion"), 200)
+
+
+@app.route('/skillsPassion/GN')
+def skills_passion():
+    return make_response(render_template('./SkillsPassion/gn.html', title="gn"), 200)
+
+
+@app.route('/skillsPassion/jeuxSurTable')
+def skills_passion():
+    return make_response(render_template('./SkillsPassion/jeuxSurTable.html', title="Jeux sur table"), 200)
+
+
+@app.route('/skillsPassion/serveurMultimedia')
+def skills_passion():
+    return make_response(render_template('./SkillsPassion/serveurMultimedia.html', title="Serveur multimedia"), 200)
 
 
 @app.route('/about')
 def about_me():
     # Todo -> Add data if needed
-    return render_template('about.html', title="About_me")
+    return make_response(render_template('about.html', title="About_me"), 200)
 
 
-@app.route('/portfolio')
-def centre_interet():
-    # Todo -> Add data if needed
-    return render_template('portfolio.html', title="Portfolio")
+@app.route('/contact')
+def skills_passion():
+    return make_response(render_template('contact.html', title="Contact"), 200)
+
+
+@app.errorhandler(404)
+def notfound():
+    """Serve 404 template."""
+    return make_response(render_template("404.html"), 404)
 
 # @app.route('/login', methods=["GET", "POST"])
 # def login():
