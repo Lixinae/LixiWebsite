@@ -14,11 +14,13 @@
     <div class="Skills">
         {# Todo -> Faire la liste des skills avec les images et nom nécessaire#}
         <div class="padding_maker">
-            <img class="skill-image rounded float-center" src="/static/img/skills/cpp.png" alt="cppImg">
+            <img class="skill-image rounded float-center" src="{{ url_for('static',filename='img/skills/cpp.png') }}"
+                 alt="cppImg">
             <h4>C++</h4>
         </div>
         <div class="padding_maker">
-            <img class="skill-image rounded float-center" src="/static/img/skills/python.png" alt="pythonImg">
+            <img class="skill-image rounded float-center" src="{{ url_for('static',filename='img/skills/python.png') }}"
+                 alt="pythonImg">
             <h4>Python</h4>
         </div>
     </div>
