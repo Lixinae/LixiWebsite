@@ -1,13 +1,11 @@
-from application import db
+# class Project(db.Model):
+#     pass
+#     name = db.Column(db.String(64), index=True, unique=True)
+#
+#     def __repr__(self):
+#         return '<Nom projet {}\nLangages:>'.format(self.name, self.langages)
 
-
-class Project(db.Model):
-    name = db.Column(db.String(64), index=True, unique=True)
-
-    def __repr__(self):
-        return '<Nom projet {}\nLangages:>'.format(self.name, self.langages)
-
-    # class User(db.Model):
+# class User(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     username = db.Column(db.String(64), index=True, unique=True)
 #     email = db.Column(db.String(120), index=True, unique=True)

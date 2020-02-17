@@ -2,25 +2,23 @@
 {% extends "base.html" %}
 <!-- Defini dans le base html et permet de mettre le code au bon endroit-->
 {% block content %}
-    <title> Contact </title>
+    <title> Présentation </title>
 
     {# Todo -> Construire la structure de la page #}
     <div class="page_title zone">
-        <p>
-            pico.christopher.pro@gmail.com
-        </p>
+
     </div>
     <div class="Presentation">
-
+        Hello world, TODO finir la présentation
     </div>
     <div class="Skills">
         {# Todo -> Faire la liste des skills avec les images et nom nécessaire#}
         <div class="padding_maker">
-            <img class="skill-image rounded float-center" src="{% static 'img/skills/cpp.png' %}">
+            <img class="skill-image rounded float-center" src="/static/img/skills/cpp.png" alt="cppImg">
             <h4>C++</h4>
         </div>
         <div class="padding_maker">
-            <img class="skill-image rounded float-center" src="{% static 'img/skills/python.png' %}">
+            <img class="skill-image rounded float-center" src="/static/img/skills/python.png" alt="pythonImg">
             <h4>Python</h4>
         </div>
     </div>

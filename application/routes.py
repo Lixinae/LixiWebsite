@@ -33,7 +33,7 @@ def index():
 
 
 @app.route('/portfolio')
-def centre_interet():
+def portfolio():
     # Todo -> Faire une mini BDD avec les differents projets et query les éléments ici
     project_m = [
         {
@@ -59,28 +59,28 @@ def skills_passion():
 
 
 @app.route('/skillsPassion/GN')
-def skills_passion():
+def skills_passion_gn():
     return make_response(render_template('./SkillsPassion/gn.html', title="gn"), 200)
 
 
 @app.route('/skillsPassion/jeuxSurTable')
-def skills_passion():
+def skills_passion_jeux_sur_table():
     return make_response(render_template('./SkillsPassion/jeuxSurTable.html', title="Jeux sur table"), 200)
 
 
 @app.route('/skillsPassion/serveurMultimedia')
-def skills_passion():
+def skills_passion_serveur_multimedia():
     return make_response(render_template('./SkillsPassion/serveurMultimedia.html', title="Serveur multimedia"), 200)
 
 
 @app.route('/about')
-def about_me():
+def about():
     # Todo -> Add data if needed
-    return make_response(render_template('about.html', title="About_me"), 200)
+    return make_response(render_template('about.html'), 200)
 
 
 @app.route('/contact')
-def skills_passion():
+def contact():
     return make_response(render_template('contact.html', title="Contact"), 200)
 
 
