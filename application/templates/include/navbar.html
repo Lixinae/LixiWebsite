@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -11,8 +11,8 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li class="dropdown">
+                <li class="menu-element"><a href="{{ url_for('index') }}">Home</a></li>
+                <li class="dropdown menu-element">
                     <a href="{{ url_for('portfolio') }}" class="dropdown-head">Portfolio
                         <span class="caret mobile-hidden"></span>
                     </a>
@@ -25,18 +25,20 @@
                         <a href="{{ url_for('portfolio_plateforme_game') }}">Platform Game</a>
                     </div>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown menu-element">
                     <a href="{{ url_for('skills_passion') }}" class="dropdown-head">Skills/Passions
                         <span class="caret mobile-hidden"></span>
                     </a>
                     <div class="dropdown-content" role="menu">
                         <a href="{{ url_for('skills_passion_gn') }}">GN</a>
-                        <a href="{{ url_for('skills_passion_jeux_sur_table') }}">Jeux sur table</a>
+                        <a href="{{ url_for('skills_passion_travail_du_cuir') }}">Travail du cuir</a>
+                        <a href="{{ url_for('skills_passion_jeux_de_societe') }}">Jeux de société</a>
+                        <a href="{{ url_for('skills_passion_jeux_de_role') }}">Jeux de rôle</a>
                         <a href="{{ url_for('skills_passion_serveur_multimedia') }}">Serveur Multimedia</a>
                     </div>
                 </li>
-                <li><a href="{{ url_for('about') }}">About</a></li>
-                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li class="menu-element"><a href="{{ url_for('about') }}">About</a></li>
+                <li class="menu-element"><a href="{{ url_for('contact') }}">Contact</a></li>
             </ul>
         </div>
     </div>

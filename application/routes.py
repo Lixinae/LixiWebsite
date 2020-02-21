@@ -1,36 +1,11 @@
-from typing import Dict, List
-
 from flask import render_template, make_response
 
-from application import app
-
-
-# from application.forms import LoginForm
+from application import app, data
 
 
 @app.route('/')
 @app.route('/index')
 def index():
-    # user_m = {'username': 'Miguel'}
-    # post_m = [
-    #     {
-    #         'author': {'username': 'John'},
-    #         'body': 'Beautiful day in Portland!'
-    #     },
-    #     {
-    #         'author': {'username': 'Susan'},
-    #         'body': 'The Avengers movie was so cool!'
-    #     },
-    #     {
-    #         'author': {'username': 'Missan'},
-    #         'body': 'Gungan dis gutl!'
-    #     },
-    #     {
-    #         'author': {'username': 'Chris'},
-    #         'body': 'Work is soooo fucking boooooooring'
-    #     }
-    # ]
-    # return render_template('index.html', title="Home", user=user_m, posts=post_m)
     return make_response(render_template('index.html', title="Home"), 200)
 
 
@@ -38,79 +13,45 @@ def index():
 #             Portfolio                    #
 ############################################
 
-# Permet de query la liste de tous les projets
-def projects() -> List[Dict]:
-    # Todo -> Faire un Select * from Project sur la BDD ici
-    projects_m = [
-        {
-            'titre': "Pacman3D",
-            'langages': "C++11, OpenGL3+",
-            'images': []
-        },
-        {
-            'titre': "Vahen website",
-            'langages': "Python 3",
-            'framework': "flask",
-            'images': []
-        },
-        {
-            'titre': "",
-        },
-    ]
-    return projects_m
-
-
-# Permet de query un projet en particulier
-# Si l'on ne passe pas de projet -> Renvoie un dictionnaire vide
-def project_specific(project_name="") -> Dict:
-    if project_name == "":
-        return {}
-    # Todo -> Faire un Select * from Project where title=projectName
-    project = {
-
-    }
-    return project
-
-
 @app.route('/portfolio')
 def portfolio():
-    project_m = projects()
+    project_m = data.projects()
     return make_response(render_template('portfolio.html', title="Portfolio", projects=project_m), 200)
 
 
 @app.route('/portfolio/sitePerso')
 def portfolio_site_perso():
-    project = projects()[1]
+    project = data.projects()[1]
     return make_response(render_template('./portfolio/sitePerso.html', title="sitePerso", project=project), 200)
 
 
 @app.route('/portfolio/pacman3d')
 def portfolio_pacman3d():
-    project = projects()[0]
+    project = data.projects()[0]
     return make_response(render_template('./portfolio/pacman3d.html', title="Pacmand 3D", project=project), 200)
 
 
 @app.route('/portfolio/webcrawler')
 def portfolio_webcrawler():
-    project = project_specific()
+    project = data.project_specific()
     return make_response(render_template('./portfolio/webcrawler.html', title="WebCrawler", project=project), 200)
 
 
 @app.route('/portfolio/raytracer')
 def portfolio_raytracer():
-    project = project_specific()
+    project = data.project_specific()
     return make_response(render_template('./portfolio/raytracer.html', title="Raytracer", project=project), 200)
 
 
 @app.route('/portfolio/plateforme_game')
 def portfolio_plateforme_game():
-    project = project_specific()
+    project = data.project_specific()
     return make_response(render_template('./portfolio/plateforme_game.html', title="Plateforme Game", project=project), 200)
 
 
 @app.route('/portfolio/runner')
 def portfolio_runner():
-    project = project_specific()
+    project = data.project_specific()
     return make_response(render_template('./portfolio/runner.html', title="Runner", project=project), 200)
 
 
@@ -130,9 +71,19 @@ def skills_passion_gn():
     return make_response(render_template('./SkillsPassion/gn.html', title="GN"), 200)
 
 
-@app.route('/skillsPassion/jeuxSurTable')
-def skills_passion_jeux_sur_table():
-    return make_response(render_template('./SkillsPassion/jeuxSurTable.html', title="Jeux sur table"), 200)
+@app.route('/skillsPassion/TravailDuCuir')
+def skills_passion_travail_du_cuir():
+    return make_response(render_template('./SkillsPassion/travailDuCuir.html', title="Travail du cuir"), 200)
+
+
+@app.route('/skillsPassion/JeuxDeSociete')
+def skills_passion_jeux_de_societe():
+    return make_response(render_template('./SkillsPassion/jeuxDeSociete.html', title="Jeux de sociéte"), 200)
+
+
+@app.route('/skillsPassion/JeuxDeRole')
+def skills_passion_jeux_de_role():
+    return make_response(render_template('./SkillsPassion/jeuxDeRole.html', title="Jeux de rôle"), 200)
 
 
 @app.route('/skillsPassion/serveurMultimedia')

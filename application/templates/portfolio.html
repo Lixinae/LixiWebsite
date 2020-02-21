@@ -5,18 +5,30 @@
     <title> Portfolio </title>
     {# TODO Portfolio html #}
     <div class="container">
-        <!-- Boucle avec Jinja -->
-        {% for project in projects %}
-            <div class="project_cls">
-                {# Todo -> Voir comment rajouter les projets ici #}
-                {#  Faire une mini description / présentation des projets ici       #}
-            </div>
-        {% endfor %}
+        <div class="body-wrapper">
+            <div class="cards-wrapper">
+                <!-- Boucle avec Jinja -->
+                {% for project in projects %}
+                    <div class="card-wrapper">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ project.miniature }}" alt="Projet :{{ project.name }} miniature">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ project.name }}</h5>
+                                <p class="card-text">{{ project.quick_description }}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Domaine at eros</li>
+                                <li class="list-group-item">Type : {{ project.type }}</li>
+                                <li class="list-group-item">Outils : {{ project.outils }}</li>
 
-        <div class="icone-largeur-4">
-            <a href="https://github.com/Vahen" target="_blank">
-                <i class="icone-github"></i>
-            </a>
+                            </ul>
+                            <div class="card-body-link">
+                                <a href="{{ project.url }}" class="card-link">Détails</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 

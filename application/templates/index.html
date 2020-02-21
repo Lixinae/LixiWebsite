@@ -4,27 +4,18 @@
 {% block app_content %}
     <title> Présentation </title>
 
-    <div id="headerwrap" class="headwrap">
-        <div class="container">
-            <div class="row">
-                <div class="centered mt mb">
-                    <h1> Todo put a title </h1>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="container ">
-        <div class="centered mt mb">
-            <h1>Presentation</h1>
-            <div>todo</div>
-        </div>
-        <div class="centered mt mb">
-            <h1>Skills</h1>
+        <div class="body-wrapper">
+            <div class="centered mt mb">
+                <h1>Presentation</h1>
+                <div>todo</div>
+            </div>
 
-            <div class="parent">
+            <h2>Skills</h2>
+
+            <div class="skill-parent">
                 <div class="padding_maker">
-                    <div class="children">
+                    <div class="skill-children">
                         <img class="skill-image rounded float-center"
                              src="{{ url_for('static',filename='img/skills/cpp.png') }}" alt="cppImg">
                         <h4>C++</h4>

@@ -24,8 +24,14 @@
 
 {% block content %}
     {{ super() }}
-    {% block app_content %}{% endblock %}
-    {% block footer %}
-        {% include "include/footer.html" %}
-    {% endblock %}
+    <div class="body-content">
+        {% block app_content %}{% endblock %}
+    </div>
+
+    <div class="footer-content">
+        {% block footer %}
+            {% include "include/footer.html" %}
+        {% endblock %}
+    </div>
+
 {% endblock %}

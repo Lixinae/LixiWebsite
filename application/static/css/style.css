@@ -6,6 +6,31 @@
 /************      404         **********/
 /****************************************/
 
+/****************************************/
+/*******           NavBar          ******/
+/****************************************/
+
+.navbar {
+    padding-left: calc(100vw - 100%);
+}
+
+/* Override de la navbar */
+.navbar-default .navbar-nav > li > a {
+    color: #5E5E5E;
+}
+
+/****************************************/
+/*******      Menu element         ******/
+/****************************************/
+
+.menu-element a {
+    color: #5E5E5E;
+}
+
+.menu-element:hover {
+    background-color: #ddd;
+}
+
 
 /****************************************/
 /*******      DropDownMenu         ******/
@@ -37,7 +62,7 @@
 @media screen and (min-width: 900px) {
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {
-        background-color: #ddd;
+        background-color: #b6b6b6;
     }
 
     .dropdown:hover .dropdown-content {
@@ -46,6 +71,103 @@
 
 }
 
+/****************************************/
+/*******           Body           ******/
+/****************************************/
+
+.body-content {
+    background-color: #cbcbcc;
+
+}
+
+.body-wrapper {
+    padding-top: 6%;
+
+}
+
+/****************************************/
+/*******           Index           ******/
+/****************************************/
+.skill-parent {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+/****************************************/
+/*******           Cards           ******/
+/****************************************/
+
+.cards-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+
+.card-wrapper {
+    text-align: center;
+    padding-bottom: 1%;
+}
+
+.card {
+    width: 25rem;
+    background-color: #F8F8F8;
+}
+
+.card-text {
+    text-align: left;
+    padding-left: 10px;
+    height: 50px;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-img-top {
+    text-align: center;
+    max-width: 250px;
+    max-height: 250px;
+    width: auto;
+    height: auto;
+}
+
+.card-body-link a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color: #ddd;
+}
+
+.card-body-link a:hover {
+    background-color: #b6b6b6;
+}
+
+.list-group {
+    list-style-type: none;
+    text-align: left;
+    border-style: none;
+    width: 100%;
+}
+
+.list-group-item {
+    border-bottom: 1px #DDDDDD;
+    border-top: 1px #DDDDDD;
+    border-style: solid;
+    border-radius: 0 !important;
+}
+
+/****************************************/
+/*******          footer           ******/
+/****************************************/
+
+.footer-content {
+    background-color: #F8F8F8;
+    text-align: center;
+}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 /*.dropdown:hover .dropdown-head {background-color: rgba(0,0,0,0.2);}*/
@@ -57,5 +179,9 @@
 @media screen and (max-width: 900px) {
     .mobile-hidden {
         display: none;
+    }
+
+    .card-img-top {
+        max-width: 100px;
     }
 }
