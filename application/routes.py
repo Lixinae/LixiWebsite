@@ -78,6 +78,48 @@ def portfolio():
     return make_response(render_template('portfolio.html', title="Portfolio", projects=project_m), 200)
 
 
+@app.route('/portfolio/sitePerso')
+def portfolio_site_perso():
+    project = projects()[1]
+    return make_response(render_template('./portfolio/sitePerso.html', title="sitePerso", project=project), 200)
+
+
+@app.route('/portfolio/pacman3d')
+def portfolio_pacman3d():
+    project = projects()[0]
+    return make_response(render_template('./portfolio/pacman3d.html', title="Pacmand 3D", project=project), 200)
+
+
+@app.route('/portfolio/webcrawler')
+def portfolio_webcrawler():
+    project = project_specific()
+    return make_response(render_template('./portfolio/webcrawler.html', title="WebCrawler", project=project), 200)
+
+
+@app.route('/portfolio/raytracer')
+def portfolio_raytracer():
+    project = project_specific()
+    return make_response(render_template('./portfolio/raytracer.html', title="Raytracer", project=project), 200)
+
+
+@app.route('/portfolio/plateforme_game')
+def portfolio_plateforme_game():
+    project = project_specific()
+    return make_response(render_template('./portfolio/plateforme_game.html', title="Plateforme Game", project=project), 200)
+
+
+@app.route('/portfolio/runner')
+def portfolio_runner():
+    project = project_specific()
+    return make_response(render_template('./portfolio/runner.html', title="Runner", project=project), 200)
+
+
+# Todo -> Rajouter une route pour chaque projets plus en détail
+
+############################################
+#             Skills Passion               #
+############################################
+
 @app.route('/skillsPassion')
 def skills_passion():
     return make_response(render_template('skillsPassion.html', title="SkillsPassion"), 200)
