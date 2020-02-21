@@ -1,3 +1,7 @@
+/*****************************************************************/
+/*******************     WideScreen PC       ************** ******/
+/*****************************************************************/
+
 /****************************************/
 /************      404         **********/
 /****************************************/
@@ -30,14 +34,28 @@
     display: block;
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #ddd;
+@media screen and (min-width: 900px) {
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 /*.dropdown:hover .dropdown-head {background-color: rgba(0,0,0,0.2);}*/
+
+/*****************************************************************/
+/*******************          Mobile         *********************/
+/*****************************************************************/
+
+@media screen and (max-width: 900px) {
+    .mobile-hidden {
+        display: none;
+    }
+}

@@ -14,7 +14,8 @@
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 <li class="dropdown">
                     <a href="{{ url_for('portfolio') }}" class="dropdown-head">Portfolio
-                        <span class="caret"></span></a>
+                        <span class="caret mobile-hidden"></span>
+                    </a>
                     <div class="dropdown-content" role="menu">
                         <a href="{{ url_for('portfolio_site_perso') }}">Site personnel</a>
                         <a href="{{ url_for('portfolio_runner') }}">Runner</a>
@@ -26,7 +27,8 @@
                 </li>
                 <li class="dropdown">
                     <a href="{{ url_for('skills_passion') }}" class="dropdown-head">Skills/Passions
-                        <span class="caret"></span></a>
+                        <span class="caret mobile-hidden"></span>
+                    </a>
                     <div class="dropdown-content" role="menu">
                         <a href="{{ url_for('skills_passion_gn') }}">GN</a>
                         <a href="{{ url_for('skills_passion_jeux_sur_table') }}">Jeux sur table</a>
