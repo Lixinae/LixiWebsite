@@ -1,23 +1,22 @@
-<!-- Permet d'hériter de base.html -->
 {% extends "base.html" %}
-<!-- Defini dans le base html et permet de mettre le code au bon endroit-->
-{# TODO about_me html #}
-{% block content %}
+
+{% block app_content %}
 
     <title> About me </title>
+    {# TODO about_me html #}
+    <div class="container">
+        <div class="about_me_parcours_universitaire_cls">
+            <p> Todo - Ici le parcours universitaire</p>
+        </div>
 
-    {# Todo -> Construire la structure de la page #}
-    <div class="about_me_parcours_universitaire_cls">
+        <div class="about_me_parcours_pro_cls">
+            <p> Todo -> Ici le parcours pro </p>
+        </div>
 
-    </div>
-
-    <div class="about_me_parcours_pro_cls">
-
-    </div>
-
-    <div class="about_me_contact_email_cls">
-        <p>
-            pico.christopher.pro@gmail.com
-        </p>
+        <div class="about_me_contact_email_cls">
+            <p>
+                pico.christopher.pro@gmail.com
+            </p>
+        </div>
     </div>
 {% endblock %}

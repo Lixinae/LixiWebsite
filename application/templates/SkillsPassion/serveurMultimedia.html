@@ -1,20 +1,19 @@
-<!-- Permet d'hériter de base.html -->
-{% extends "skillsPassion.html" %}
-<!-- Defini dans le base html et permet de mettre le code au bon endroit-->
-{# TODO skillsPassion Serveur multimedia html #}
-{% block content_skillsPassion %}
+{% extends "base.html" %}
+
+{% block app_content %}
 
     <title> Serveur multimedia </title>
 
-    {# Todo -> Construire la structure de la page #}
-    <div class="skillsPassion_serveurMultimedia_cls">
-        {# Todo -> Ajouter une photo du serveurn, finir la description    #}
-        <p>
-            Un serveur multimedia monté à partir d'une ancienne machine
-        </p>
-        <p>
-            Le site que vous visionnez actuellement est hebergé par cette machine via un conteneur docker
-        </p>
+    <div class="container">
+        <div class="skillsPassion_serveurMultimedia_cls">
+            {# Todo -> Ajouter une photo du serveur, finir la description    #}
+            <p>
+                Todo - Un serveur multimedia monté à partir d'une ancienne machine
+            </p>
+            <p>
+                Todo - Le site que vous visionnez actuellement est hebergé par cette machine via un conteneur docker
+            </p>
+        </div>
     </div>
 
 {% endblock %}

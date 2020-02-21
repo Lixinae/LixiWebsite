@@ -1,27 +1,31 @@
-<!DOCTYPE html>
+{% extends 'bootstrap/base.html' %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Vahen</title>
+{% block html_attribs %}
+    lang="en"
+{% endblock %}
+{% block head %}
+    {{ super() }}
 
-</head>
-<body>
+    {% block favicon %}<!-- default favicon could go here -->{% endblock %}
+
+    {% block styles %}
+        {{ super() }}
+        <link rel="stylesheet" href="{{ url_for('.static', filename='css/style.css') }}">
+    {% endblock %}
+{% endblock %}
+
+{% block title %}
+    Vahen
+{% endblock %}
+
+{% block navbar %}
     {% include "include/navbar.html" %}
+{% endblock %}
 
-    <hr>
-    {#    {% with messages = get_flashed_messages() %}#}
-    {#        {% if messages %}#}
-    {#            <ul>#}
-    {#                {% for message in messages %}#}
-    {#                    <li>{{ message }}</li>#}
-    {#                {% endfor %}#}
-    {#            </ul>#}
-    {#        {% endif %}#}
-    {#    {% endwith %}#}
-    {% block content %}{% endblock %}
-
-    {% include "include/footer.html" %}
-
-</body>
-</html>
+{% block content %}
+    {{ super() }}
+    {% block app_content %}{% endblock %}
+    {% block footer %}
+        {% include "include/footer.html" %}
+    {% endblock %}
+{% endblock %}

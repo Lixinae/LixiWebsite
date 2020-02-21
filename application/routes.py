@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from flask import render_template, make_response
 
 from application import app
@@ -32,10 +34,14 @@ def index():
     return make_response(render_template('index.html', title="Home"), 200)
 
 
-@app.route('/portfolio')
-def portfolio():
-    # Todo -> Faire une mini BDD avec les differents projets et query les éléments ici
-    project_m = [
+############################################
+#             Portfolio                    #
+############################################
+
+# Permet de query la liste de tous les projets
+def projects() -> List[Dict]:
+    # Todo -> Faire un Select * from Project sur la BDD ici
+    projects_m = [
         {
             'titre': "Pacman3D",
             'langages': "C++11, OpenGL3+",
@@ -44,12 +50,31 @@ def portfolio():
         {
             'titre': "Vahen website",
             'langages': "Python 3",
+            'framework': "flask",
             'images': []
         },
         {
             'titre': "",
         },
     ]
+    return projects_m
+
+
+# Permet de query un projet en particulier
+# Si l'on ne passe pas de projet -> Renvoie un dictionnaire vide
+def project_specific(project_name="") -> Dict:
+    if project_name == "":
+        return {}
+    # Todo -> Faire un Select * from Project where title=projectName
+    project = {
+
+    }
+    return project
+
+
+@app.route('/portfolio')
+def portfolio():
+    project_m = projects()
     return make_response(render_template('portfolio.html', title="Portfolio", projects=project_m), 200)
 
 
@@ -60,7 +85,7 @@ def skills_passion():
 
 @app.route('/skillsPassion/GN')
 def skills_passion_gn():
-    return make_response(render_template('./SkillsPassion/gn.html', title="gn"), 200)
+    return make_response(render_template('./SkillsPassion/gn.html', title="GN"), 200)
 
 
 @app.route('/skillsPassion/jeuxSurTable')
@@ -73,20 +98,31 @@ def skills_passion_serveur_multimedia():
     return make_response(render_template('./SkillsPassion/serveurMultimedia.html', title="Serveur multimedia"), 200)
 
 
+############################################
+#             About                        #
+############################################
+
 @app.route('/about')
 def about():
     # Todo -> Add data if needed
     return make_response(render_template('about.html'), 200)
 
 
+############################################
+#             Contact                      #
+############################################
+
 @app.route('/contact')
 def contact():
     return make_response(render_template('contact.html', title="Contact"), 200)
 
 
+############################################
+#             Erreur 404                   #
+############################################
+
 @app.errorhandler(404)
 def notfound():
-    """Serve 404 template."""
     return make_response(render_template("404.html"), 404)
 
 # @app.route('/login', methods=["GET", "POST"])

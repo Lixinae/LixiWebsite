@@ -1,27 +1,43 @@
 <!-- Permet d'hériter de base.html -->
 {% extends "base.html" %}
 <!-- Defini dans le base html et permet de mettre le code au bon endroit-->
-{% block content %}
+{% block app_content %}
     <title> Présentation </title>
 
-    {# Todo -> Construire la structure de la page #}
-    <div class="page_title zone">
-
-    </div>
-    <div class="Presentation">
-        Hello world, TODO finir la présentation
-    </div>
-    <div class="Skills">
-        {# Todo -> Faire la liste des skills avec les images et nom nécessaire#}
-        <div class="padding_maker">
-            <img class="skill-image rounded float-center" src="{{ url_for('static',filename='img/skills/cpp.png') }}"
-                 alt="cppImg">
-            <h4>C++</h4>
+    <div id="headerwrap" class="headwrap">
+        <div class="container">
+            <div class="row">
+                <div class="centered mt mb">
+                    <h1> Todo put a title </h1>
+                </div>
+            </div>
         </div>
-        <div class="padding_maker">
-            <img class="skill-image rounded float-center" src="{{ url_for('static',filename='img/skills/python.png') }}"
-                 alt="pythonImg">
-            <h4>Python</h4>
+    </div>
+
+    <div class="container ">
+        <div class="centered mt mb">
+            <h1>Presentation</h1>
+            <div>todo</div>
+        </div>
+        <div class="centered mt mb">
+            <h1>Skills</h1>
+
+            <div class="parent">
+                <div class="padding_maker">
+                    <div class="children">
+                        <img class="skill-image rounded float-center"
+                             src="{{ url_for('static',filename='img/skills/cpp.png') }}" alt="cppImg">
+                        <h4>C++</h4>
+                    </div>
+                </div>
+                <div class="padding_maker">
+                    <div class="children">
+                        <img class="skill-image rounded float-center"
+                             src="{{ url_for('static',filename='img/skills/python.png') }}" alt="pythonImg">
+                        <h4>Python</h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

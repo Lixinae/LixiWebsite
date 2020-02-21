@@ -1,34 +1,33 @@
-<!-- Permet d'hériter de base.html -->
 {% extends "base.html" %}
-<!-- Defini dans le base html et permet de mettre le code au bon endroit-->
-{# TODO contact html #}
-{% block content %}
+
+{% block app_content %}
 
     <title> Contact </title>
+    {# TODO contact html #}
+    <div class="container">
+        <div class="row centered">
+            <div class="icone-largeur-4">
+                <a href="https://www.linkedin.com/in/christopher-p-ba152a11a/" target="_blank">
+                    <img src="{{ url_for('static',filename='img/icones/icone_linkedin.png') }}" class="icone-linkedin"
+                         alt="icone_linkedin"/>
+                </a>
+            </div>
 
-    <div class="row centered">
-        <div class="icone-largeur-4">
-            <a href="https://www.linkedin.com/in/christopher-p-ba152a11a/" target="_blank">
-                <img src="{{ url_for('static',filename='img/icones/icone_linkedin.png') }}" class="icone-linkedin"
-                     alt="icone_linkedin"/>
-            </a>
-        </div>
+            <div class="icone-largeur-4">
 
-        <div class="icone-largeur-4">
+                <a href="mailto:pico.christopher.pro@gmail.com">
+                    <img src="{{ url_for('static',filename='img/icones/icone_enveloppe.png') }}" class="icone-envelope"
+                         alt="icone_enveloppe"/>
+                </a>
+                <p class="text-icone-largeur-4"> pico.christopher.pro@gmail.com </p>
+            </div>
 
-            <a href="mailto:pico.christopher.pro@gmail.com">
-                <img src="{{ url_for('static',filename='img/icones/icone_enveloppe.png') }}" class="icone-envelope"
-                     alt="icone_enveloppe"/>
-            </a>
-            <p class="text-icone-largeur-4"> pico.christopher.pro@gmail.com </p>
-        </div>
+            <div class="icone-largeur-4">
 
-        <div class="icone-largeur-4">
-
-            <img src="{{ url_for('static',filename='img/icones/icone_discord.png') }}" class="icone-discord"
-                 alt="icone_discord"/>
-            <p class="text-icone-largeur-4"> Lixiana#1130 </p>
+                <img src="{{ url_for('static',filename='img/icones/icone_discord.png') }}" class="icone-discord"
+                     alt="icone_discord"/>
+                <p class="text-icone-largeur-4"> Lixiana#1130 </p>
+            </div>
         </div>
     </div>
-
 {% endblock %}

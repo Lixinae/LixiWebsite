@@ -1,21 +1,23 @@
-<!-- Permet d'hériter de base.html -->
 {% extends "base.html" %}
-<!-- Defini dans le base html et permet de mettre le code au bon endroit-->
-{# TODO Projects html #}
-{% block content %}
+
+{% block app_content %}
 
     <title> Portfolio </title>
-    <!-- Boucle avec Jinja -->
-    {% for project in projects %}
-        <div class="project_cls">
-            {# Todo -> Voir comment rajouter les projets ici #}
-        </div>
-    {% endfor %}
+    {# TODO Portfolio html #}
+    <div class="container">
+        <!-- Boucle avec Jinja -->
+        {% for project in projects %}
+            <div class="project_cls">
+                {# Todo -> Voir comment rajouter les projets ici #}
+                {#  Faire une mini description / présentation des projets ici       #}
+            </div>
+        {% endfor %}
 
-    <div class="icone-largeur-4">
-        <a href="https://github.com/Vahen" target="_blank">
-            <i class="icone-github"></i>
-        </a>
+        <div class="icone-largeur-4">
+            <a href="https://github.com/Vahen" target="_blank">
+                <i class="icone-github"></i>
+            </a>
+        </div>
     </div>
 
 {% endblock %}
