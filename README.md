@@ -3,12 +3,14 @@ Site personnel réalisé avec:
 * Back-end
   * Python 3
   * Flask
+  * Docker
 * Front-end
   * HTML5
   * CSS3
-  * Javascript avec ReactJs ou VueJs (non déterminé pour le moment)
+  * Bootstrap
+  * ReactJs ou VueJs (non déterminé pour le moment)
 
-Le tout sera mis dans un conteneur docker et host sur mon serveur personnel.
+Le tout sera mis dans un conteneur docker et host sur mon serveur.
 
 
 Milestones:
