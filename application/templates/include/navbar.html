@@ -13,28 +13,28 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="menu-element"><a href="{{ url_for('index') }}">Home</a></li>
                 <li class="dropdown menu-element">
-                    <a href="{{ url_for('portfolio') }}" class="dropdown-head">Portfolio
+                    <a href="{{ url_for('portfolio_bp.portfolio') }}" class="dropdown-head">Portfolio
                         <span class="caret mobile-hidden"></span>
                     </a>
                     <div class="dropdown-content" role="menu">
-                        <a href="{{ url_for('portfolio_site_perso') }}">Site personnel</a>
-                        <a href="{{ url_for('portfolio_runner') }}">Runner</a>
-                        <a href="{{ url_for('portfolio_webcrawler') }}">WebCrawler</a>
-                        <a href="{{ url_for('portfolio_pacman3d') }}">Pacmand3D</a>
-                        <a href="{{ url_for('portfolio_raytracer') }}">Raytracer</a>
-                        <a href="{{ url_for('portfolio_plateforme_game') }}">Platform Game</a>
+                        <a href="{{ url_for('portfolio_bp.portfolio_site_perso') }}">Site personnel</a>
+                        <a href="{{ url_for('portfolio_bp.portfolio_runner') }}">Runner</a>
+                        <a href="{{ url_for('portfolio_bp.portfolio_webcrawler') }}">WebCrawler</a>
+                        <a href="{{ url_for('portfolio_bp.portfolio_pacman3d') }}">Pacmand3D</a>
+                        <a href="{{ url_for('portfolio_bp.portfolio_raytracer') }}">Raytracer</a>
+                        <a href="{{ url_for('portfolio_bp.portfolio_plateforme_game') }}">Platform Game</a>
                     </div>
                 </li>
                 <li class="dropdown menu-element">
-                    <a href="{{ url_for('skills_passion') }}" class="dropdown-head">Skills/Passions
+                    <a href="{{ url_for('skills_passion_bp.skills_passion') }}" class="dropdown-head">Skills/Passions
                         <span class="caret mobile-hidden"></span>
                     </a>
                     <div class="dropdown-content" role="menu">
-                        <a href="{{ url_for('skills_passion_gn') }}">GN</a>
-                        <a href="{{ url_for('skills_passion_travail_du_cuir') }}">Travail du cuir</a>
-                        <a href="{{ url_for('skills_passion_jeux_de_societe') }}">Jeux de société</a>
-                        <a href="{{ url_for('skills_passion_jeux_de_role') }}">Jeux de rôle</a>
-                        <a href="{{ url_for('skills_passion_serveur_multimedia') }}">Serveur Multimedia</a>
+                        <a href="{{ url_for('skills_passion_bp.skills_passion_gn') }}">GN</a>
+                        <a href="{{ url_for('skills_passion_bp.skills_passion_travail_du_cuir') }}">Travail du cuir</a>
+                        <a href="{{ url_for('skills_passion_bp.skills_passion_jeux_de_societe') }}">Jeux de société</a>
+                        <a href="{{ url_for('skills_passion_bp.skills_passion_jeux_de_role') }}">Jeux de rôle</a>
+                        <a href="{{ url_for('skills_passion_bp.skills_passion_serveur_multimedia') }}">Serveur Multimedia</a>
                     </div>
                 </li>
                 <li class="menu-element"><a href="{{ url_for('about') }}">About</a></li>

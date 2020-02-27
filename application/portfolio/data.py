@@ -12,112 +12,112 @@ def projects() -> List[Dict]:
             'outils': "C++11, OpenGL3+",
             'quick_description': " Un pacman en 3D",
             'miniature': url_for('static', filename='img/miniature/pacman_miniature.png'),
-            'url': url_for('portfolio_pacman3d')
+            'url': url_for('portfolio_bp.portfolio_pacman3d')
         },
         {
             'name': "Vahen website",
             'outils': "Python 3",
             'quick_description': "Mon site personnel fait en Python 3 / Flask",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_site_perso')
+            'url': url_for('portfolio_bp.portfolio_site_perso')
         },
         {
             'name': "Pacman3D",
             'outils': "C++11, OpenGL3+",
             'quick_description': " Un pacman en 3D",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_pacman3d')
+            'url': url_for('portfolio_bp.portfolio_pacman3d')
         },
         {
             'name': "Vahen website",
             'outils': "Python 3",
             'quick_description': "Mon site personnel fait en Python 3 / Flask",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_site_perso')
+            'url': url_for('portfolio_bp.portfolio_site_perso')
         },
         {
             'name': "Pacman3D",
             'outils': "C++11, OpenGL3+",
             'quick_description': " Un pacman en 3D",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_pacman3d')
+            'url': url_for('portfolio_bp.portfolio_pacman3d')
         },
         {
             'name': "Vahen website",
             'outils': "Python 3",
             'quick_description': "Mon site personnel fait en Python 3 / Flask",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_site_perso')
+            'url': url_for('portfolio_bp.portfolio_site_perso')
         },
         {
             'name': "Pacman3D",
             'outils': "C++11, OpenGL3+",
             'quick_description': " Un pacman en 3D",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_pacman3d')
+            'url': url_for('portfolio_bp.portfolio_pacman3d')
         },
         {
             'name': "Vahen website",
             'outils': "Python 3",
             'quick_description': "Mon site personnel fait en Python 3 / Flask",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_site_perso')
+            'url': url_for('portfolio_bp.portfolio_site_perso')
         },
         {
             'name': "Pacman3D",
             'outils': "C++11, OpenGL3+",
             'quick_description': " Un pacman en 3D",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_pacman3d')
+            'url': url_for('portfolio_bp.portfolio_pacman3d')
         },
         {
             'name': "Vahen website",
             'outils': "Python 3",
             'quick_description': "Mon site personnel fait en Python 3 / Flask",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_site_perso')
+            'url': url_for('portfolio_bp.portfolio_site_perso')
         },
         {
             'name': "Pacman3D",
             'outils': "C++11, OpenGL3+",
             'quick_description': " Un pacman en 3D",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_pacman3d')
+            'url': url_for('portfolio_bp.portfolio_pacman3d')
         },
         {
             'name': "Vahen website",
             'outils': "Python 3",
             'quick_description': "Mon site personnel fait en Python 3 / Flask",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_site_perso')
+            'url': url_for('portfolio_bp.portfolio_site_perso')
         },
         {
             'name': "Pacman3D",
             'outils': "C++11, OpenGL3+",
             'quick_description': " Un pacman en 3D",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_pacman3d')
+            'url': url_for('portfolio_bp.portfolio_pacman3d')
         },
         {
             'name': "Vahen website",
             'outils': "Python 3",
             'quick_description': "Mon site personnel fait en Python 3 / Flask",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_site_perso')
+            'url': url_for('portfolio_bp.portfolio_site_perso')
         },
         {
             'name': "Pacman3D",
             'outils': "C++11, OpenGL3+",
             'quick_description': " Un pacman en 3D",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_pacman3d')
+            'url': url_for('portfolio_bp.portfolio_pacman3d')
         },
         {
             'name': "Vahen website",
             'outils': "Python 3",
             'quick_description': "Mon site personnel fait en Python 3 / Flask",
             'miniature': url_for('static', filename='img/skills/cpp.png'),
-            'url': url_for('portfolio_site_perso')
+            'url': url_for('portfolio_bp.portfolio_site_perso')
         },
     ]
     return projects_m

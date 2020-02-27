@@ -1,5 +1,7 @@
 from flask import Blueprint
 
-bp = Blueprint('portfolio', __name__)
+portfolio_bp = Blueprint('portfolio_bp', __name__,
+                         static_folder='static',
+                         template_folder='templates')
 
 from application.portfolio import routes

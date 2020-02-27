@@ -17,19 +17,19 @@ bootstrap = Bootstrap(app)
 
 # Enregistrement des blueprint
 def blueprint_registrations(current_app):
-    from application.about import bp as about_bp
-    from application.contact import bp as contact_bp
-    from application.errors import bp as errors_bp
-    from application.portfolio import bp as portfolio_bp
-    from application.skillsPassion import bp as skills_passion_bp
-    current_app.register_blueprint(about_bp)
-    current_app.register_blueprint(contact_bp)
-    current_app.register_blueprint(errors_bp)
-    current_app.register_blueprint(skills_passion_bp)
+    # from application.about import bp as about_bp
+    # from application.contact import bp as contact_bp
+    # from application.errors import bp as errors_bp
+    from application.portfolio import portfolio_bp
+    from application.skillsPassion import skills_passion_bp
+    # current_app.register_blueprint(about_bp)
+    # current_app.register_blueprint(contact_bp)
+    # current_app.register_blueprint(errors_bp)
     current_app.register_blueprint(portfolio_bp)
+    current_app.register_blueprint(skills_passion_bp)
 
 
-# blueprint_registrations(app)
+blueprint_registrations(app)
 # Creation de l'app
 # def create_app(config_class=Configuration):
 #     app = Flask(__name__,
