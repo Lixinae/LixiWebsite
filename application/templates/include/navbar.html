@@ -7,11 +7,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url_for('index') }}">Vahen</a>
+            <a class="navbar-brand" href="{{ url_for('index_bp.index') }}">Vahen</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="menu-element"><a href="{{ url_for('index') }}">Home</a></li>
+                <li class="menu-element"><a href="{{ url_for('index_bp.index') }}">Home</a></li>
                 <li class="dropdown menu-element">
                     <a href="{{ url_for('portfolio_bp.portfolio') }}" class="dropdown-head">Portfolio
                         <span class="caret mobile-hidden"></span>
@@ -37,8 +37,8 @@
                         <a href="{{ url_for('skills_passion_bp.skills_passion_serveur_multimedia') }}">Serveur Multimedia</a>
                     </div>
                 </li>
-                <li class="menu-element"><a href="{{ url_for('about') }}">About</a></li>
-                <li class="menu-element"><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li class="menu-element"><a href="{{ url_for('about_bp.about') }}">About</a></li>
+                <li class="menu-element"><a href="{{ url_for('contact_bp.contact') }}">Contact</a></li>
             </ul>
         </div>
     </div>
