@@ -6,28 +6,71 @@
 
     <div class="container ">
         <div class="body-wrapper">
-            <div class="centered mt mb">
-                <h1>Presentation</h1>
-                <div>todo</div>
+            <div class="presentation">
+                <h1 class="presentation-title">Presentation</h1>
+                <div class="presentation-txt">todo</div>
             </div>
 
-            <h2>Skills</h2>
+            <h2>Compétences</h2>
 
-            <div class="skill-parent">
+            <div class="skills-parent">
+
                 <div class="padding_maker">
                     <div class="skill-children">
                         <img class="skill-image rounded float-center"
-                             src="{{ url_for('static',filename='img/skills/cpp.png') }}" alt="cppImg">
-                        <h4>C++</h4>
+                             src="{{ url_for('static',filename='img/skills/python.png') }}" alt="Python icone">
+                        <h4 class="skill-image-txt">Python</h4>
                     </div>
                 </div>
+
+
                 <div class="padding_maker">
-                    <div class="children">
+                    <div class="skill-children">
                         <img class="skill-image rounded float-center"
-                             src="{{ url_for('static',filename='img/skills/python.png') }}" alt="pythonImg">
-                        <h4>Python</h4>
+                             src="{{ url_for('static',filename='img/skills/flask.png') }}" alt="Flask icone">
+                        <h4 class="skill-image-txt">Flask</h4>
                     </div>
                 </div>
+
+                <div class="padding_maker">
+                    <div class="skill-children">
+                        <img class="skill-image rounded float-center"
+                             src="{{ url_for('static',filename='img/skills/cpp.png') }}" alt="C++ icone">
+                        <h4 class="skill-image-txt">C++</h4>
+                    </div>
+                </div>
+
+                <div class="padding_maker">
+                    <div class="skill-children">
+                        <img class="skill-image rounded float-center"
+                             src="{{ url_for('static',filename='img/skills/c#.png') }}" alt="C# icone">
+                        <h4 class="skill-image-txt">C#</h4>
+                    </div>
+                </div>
+
+                <div class="padding_maker">
+                    <div class="skill-children">
+                        <img class="skill-image rounded float-center"
+                             src="{{ url_for('static',filename='img/skills/unity_small.png') }}" alt="Unity icone">
+                        <h4 class="skill-image-txt">Unity</h4>
+                    </div>
+                </div>
+
+                <div class="padding_maker">
+                    <div class="skill-children">
+                        <img class="skill-image rounded float-center"
+                             src="{{ url_for('static',filename='img/skills/java_2.png') }}" alt="Java icone">
+                        <h4 class="skill-image-txt">Java</h4>
+                    </div>
+                </div>
+
+                {#                <div class="padding_maker">#}
+                {#                    <div class="skill-children">#}
+                {#                        <img class="skill-image rounded float-center"#}
+                {#                             src="{{ url_for('static',filename='img/skills/mysql.png') }}" alt="MySQL icone">#}
+                {#                        <h4>MySQL</h4>#}
+                {#                    </div>#}
+                {#                </div>#}
             </div>
         </div>
     </div>
