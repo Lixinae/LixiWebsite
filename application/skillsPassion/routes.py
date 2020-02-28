@@ -1,6 +1,6 @@
 from flask import render_template, make_response
 
-from application.skillsPassion import skills_passion_bp
+from application.skillsPassion import skills_passion_bp, data
 
 
 ############################################
@@ -9,7 +9,8 @@ from application.skillsPassion import skills_passion_bp
 
 @skills_passion_bp.route('/skillsPassion')
 def skills_passion():
-    return make_response(render_template('skillsPassion.html', title="skillsPassion"), 200)
+    skills_passion_list = data.skills_passion()
+    return make_response(render_template('skillsPassion.html', title="skillsPassion", skillsPassionList=skills_passion_list), 200)
 
 
 @skills_passion_bp.route('/skillsPassion/GN')

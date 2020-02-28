@@ -7,76 +7,93 @@
         <div class="body-wrapper">
             <div class="cards-wrapper">
 
-                <div class="card-wrapper">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ url_for('static', filename='img/miniature/gn_miniature.png') }}"
-                             alt="Image GN miniature">
-                        <div class="card-body">
-                            <h5 class="card-title">GN</h5>
-                            <p class="card-text"> Gn : Jeux de role grandeur nature </p>
-                        </div>
-                        <div class="card-body-link">
-                            <a href="{{ url_for('skills_passion_bp.skills_passion_gn') }}" class="card-link">Détails</a>
+                {% for sp in skillsPassionList %}
+                    <div class="card-wrapper">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ sp.miniature }}" alt="Projet :{{ sp.name }} miniature">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ sp.name }}</h5>
+                                <p class="card-text">{{ sp.quick_description }}</p>
+                            </div>
+                            <div class="card-body-link">
+                                <a href="{{ sp.url }}" class="card-link">Détails</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
 
-                <div class="card-wrapper">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ url_for('static', filename='img/miniature/tdc_miniature.png') }}"
-                             alt="Image Travail du cuir miniature">
-                        <div class="card-body">
-                            <h5 class="card-title">Travail du cuir</h5>
-                            <p class="card-text"> Mes différentes réalisation en travail du cuir </p>
-                        </div>
-                        <div class="card-body-link">
-                            <a href="{{ url_for('skills_passion_bp.skills_passion_travail_du_cuir') }}" class="card-link">Détails</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="card-wrapper">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ url_for('static', filename='img/miniature/serveur_miniature.png') }}"
-                             alt="Serveur multimedia miniature">
-                        <div class="card-body">
-                            <h5 class="card-title">Serveur multimédia</h5>
-                            <p class="card-text"> Gn : Jeux de role grandeur nature </p>
-                        </div>
-                        <div class="card-body-link">
-                            <a href="{{ url_for('skills_passion_bp.skills_passion_serveur_multimedia') }}" class="card-link">Détails</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="card-wrapper">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ url_for('.static', filename='img/miniature/jdr_miniature.png') }}"
-                             alt="Jdr miniature">
-                        <div class="card-body">
-                            <h5 class="card-title">JDR</h5>
-                            <p class="card-text"> Les différents jeux de rôle auxquels j'ai joué, mes différents personnages dans ces
-                                mondes </p>
-                        </div>
-                        <div class="card-body-link">
-                            <a href="{{ url_for('skills_passion_bp.skills_passion_jeux_de_role') }}" class="card-link">Détails</a>
-                        </div>
-                    </div>
-                </div>
+                {#                <div class="card-wrapper">#}
+                {#                    <div class="card">#}
+                {#                        <img class="card-img-top" src="{{ url_for('static', filename='img/miniature/gn_miniature.png') }}"#}
+                {#                             alt="Image GN miniature">#}
+                {#                        <div class="card-body">#}
+                {#                            <h5 class="card-title">GN</h5>#}
+                {#                            <p class="card-text"> Gn : Jeux de role grandeur nature </p>#}
+                {#                        </div>#}
+                {#                        <div class="card-body-link">#}
+                {#                            <a href="{{ url_for('skills_passion_bp.skills_passion_gn') }}" class="card-link">Détails</a>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
 
-                <div class="card-wrapper">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ url_for('.static', filename='img/miniature/jeux_societe_miniature.png') }}"
-                             alt="Jeux de societe miniature">
-                        <div class="card-body">
-                            <h5 class="card-title">Jeux de societe</h5>
-                            <p class="card-text"> Les differents jeux de société auxquels j'aime jouer </p>
-                        </div>
-                        <div class="card-body-link">
-                            <a href="{{ url_for('skills_passion_bp.skills_passion_jeux_de_societe') }}" class="card-link">Détails</a>
-                        </div>
-                    </div>
-                </div>
+                {#                <div class="card-wrapper">#}
+                {#                    <div class="card">#}
+                {#                        <img class="card-img-top" src="{{ url_for('static', filename='img/miniature/tdc_miniature.png') }}"#}
+                {#                             alt="Image Travail du cuir miniature">#}
+                {#                        <div class="card-body">#}
+                {#                            <h5 class="card-title">Travail du cuir</h5>#}
+                {#                            <p class="card-text"> Mes différentes réalisation en travail du cuir </p>#}
+                {#                        </div>#}
+                {#                        <div class="card-body-link">#}
+                {#                            <a href="{{ url_for('skills_passion_bp.skills_passion_travail_du_cuir') }}" class="card-link">Détails</a>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
+
+                {#                <div class="card-wrapper">#}
+                {#                    <div class="card">#}
+                {#                        <img class="card-img-top" src="{{ url_for('static', filename='img/miniature/serveur_miniature.png') }}"#}
+                {#                             alt="Serveur multimedia miniature">#}
+                {#                        <div class="card-body">#}
+                {#                            <h5 class="card-title">Serveur multimédia</h5>#}
+                {#                            <p class="card-text"> Gn : Jeux de role grandeur nature </p>#}
+                {#                        </div>#}
+                {#                        <div class="card-body-link">#}
+                {#                            <a href="{{ url_for('skills_passion_bp.skills_passion_serveur_multimedia') }}" class="card-link">Détails</a>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
+
+                {#                <div class="card-wrapper">#}
+                {#                    <div class="card">#}
+                {#                        <img class="card-img-top" src="{{ url_for('static', filename='img/miniature/jdr_miniature_80.png') }}"#}
+                {#                             alt="Jdr miniature">#}
+                {#                        <div class="card-body">#}
+                {#                            <h5 class="card-title">Jeux de role</h5>#}
+                {#                            <p class="card-text"> Les différents jeux de rôle auxquels j'ai joué, mes différents personnages dans ces#}
+                {#                                mondes </p>#}
+                {#                        </div>#}
+                {#                        <div class="card-body-link">#}
+                {#                            <a href="{{ url_for('skills_passion_bp.skills_passion_jeux_de_role') }}" class="card-link">Détails</a>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
+
+                {#                <div class="card-wrapper">#}
+                {#                    <div class="card">#}
+                {#                        <img class="card-img-top" src="{{ url_for('static', filename='img/miniature/jeux_societe_miniature.png') }}"#}
+                {#                             alt="Jeux de societe miniature">#}
+                {#                        <div class="card-body">#}
+                {#                            <h5 class="card-title">Jeux de societe</h5>#}
+                {#                            <p class="card-text"> Les differents jeux de société auxquels j'aime jouer </p>#}
+                {#                        </div>#}
+                {#                        <div class="card-body-link">#}
+                {#                            <a href="{{ url_for('skills_passion_bp.skills_passion_jeux_de_societe') }}" class="card-link">Détails</a>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {#                </div>#}
             </div>
         </div>
     </div>
