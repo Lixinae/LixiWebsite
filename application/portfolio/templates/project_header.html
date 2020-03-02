@@ -1,0 +1,11 @@
+<div class="portfolio-project-header">
+    <h1 class="portfolio-project-title center-text"> {{ project_name }} </h1>
+    <p class="portfolio-project-description center-text"> {{ project_description }} </p>
+    <div class="icone-github-wrapper center-text">
+        <a href="{{ project_link }}" target="_blank">
+            <img src="{{ url_for('static',filename='img/icones/icone_github_dark.png') }}" class="icone-github"
+                 alt="icone_github"/>
+        </a>
+        <p class="icone-github-text"> Github </p>
+    </div>
+</div>

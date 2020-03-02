@@ -6,7 +6,26 @@
     <title> Webcrawler </title>
     <div class="container">
         <div class="body-wrapper">
+            {% with project_name="Webcrawler",
+                    project_description="Ce crawler simple permet de scraper des sites web pour récupérer des données",
+                    project_link="https://github.com/Vahen/WebCrawler" %}
+                {% include "project_header.html" %}
+            {% endwith %}
 
+
+            <h3 class="center-text"> Technologies Utilisé </h3>
+            <div class="skills-parent">
+                <div class="skill-children">
+                    <img class="skill-image rounded float-center"
+                         src="{{ url_for('static',filename='img/skills/python.png') }}" alt="Python icone">
+                    <h4 class="skill-image-txt">Python 3</h4>
+                </div>
+                <div class="skill-children">
+                    <img class="skill-image rounded float-center"
+                         src="{{ url_for('static',filename='img/skills/beautifulSoup.png') }}" alt="Beautiful Soup icone">
+                    <h4 class="skill-image-txt">Beautiful Soup</h4>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

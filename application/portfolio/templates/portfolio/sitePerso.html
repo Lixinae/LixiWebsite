@@ -3,10 +3,62 @@
 
 {% block app_content %}
 
-    <title> Pacman 3D </title>
+    <title> Site Personnel </title>
     <div class="container">
         <div class="body-wrapper">
+            {% with project_name="Site Personnel",
+                    project_description="Ce site présente mes différentes passion, mes travaux",
+                    project_link="https://github.com/Vahen/VahenWebsite" %}
+                {% include "project_header.html" %}
+            {% endwith %}
 
+            <h3 class="center-text"> Technologies Back-End </h3>
+            <div class="techno-utilise-backend">
+                <div class="skills-parent">
+                    <div class="skill-children">
+                        <img class="skill-image rounded float-center"
+                             src="{{ url_for('static',filename='img/skills/python.png') }}" alt="Python icone">
+                        <h4 class="skill-image-txt">Python 3</h4>
+                    </div>
+                    <div class="skill-children">
+                        <img class="skill-image rounded float-center"
+                             src="{{ url_for('static',filename='img/skills/flask.png') }}" alt="Flask icone">
+                        <h4 class="skill-image-txt">Flask</h4>
+                    </div>
+                    <div class="skill-children">
+                        <img class="skill-image rounded float-center"
+                             src="{{ url_for('static',filename='img/skills/mysql.png') }}" alt="MySQL icone">
+                        <h4 class="skill-image-txt">MySQL</h4>
+                    </div>
+                    <div class="skill-children">
+                        <img class="skill-image rounded float-center"
+                             src="{{ url_for('static',filename='img/skills/docker.png') }}" alt="Docker icone">
+                        <h4 class="skill-image-txt">Docker</h4>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="center-text"> Technologies Front-End </h3>
+            <div class="techno-utilise-frontend">
+                <div class="skills-parent">
+                    <div class="skill-children">
+                        <img class="skill-image rounded float-center"
+                             src="{{ url_for('static',filename='img/skills/html5.png') }}" alt="Python icone">
+                        <h4 class="skill-image-txt">HTML5</h4>
+                    </div>
+
+                    <div class="skill-children">
+                        <img class="skill-image rounded float-center"
+                             src="{{ url_for('static',filename='img/skills/css3.png') }}" alt="Flask icone">
+                        <h4 class="skill-image-txt">CSS3</h4>
+                    </div>
+                    <div class="skill-children">
+                        <img class="skill-image rounded float-center"
+                             src="{{ url_for('static',filename='img/skills/bootstrap4.png') }}" alt="Docker icone">
+                        <h4 class="skill-image-txt">Bootstrap4</h4>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

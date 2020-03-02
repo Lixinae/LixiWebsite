@@ -6,7 +6,11 @@
     <title> Plateforme Game </title>
     <div class="container">
         <div class="body-wrapper">
-
+            {% with project_name="Plateforme Game",
+                    project_description="Un jeu de plateforme réalisé avec Unity 3D",
+                    project_link="https://github.com/Vahen/PlatformGame" %}
+                {% include "project_header.html" %}
+            {% endwith %}
         </div>
     </div>
 {% endblock %}

@@ -6,7 +6,30 @@
     <title> Raytracer </title>
     <div class="container">
         <div class="body-wrapper">
+            {% with project_name="Raytracer",
+                    project_description="Un raytracer réalisé from scratch en C++11 avec la SDL2 et CMake",
+                    project_link="https://github.com/Vahen/RayTracer" %}
+                {% include "project_header.html" %}
+            {% endwith %}
 
+            <h3 class="center-text"> Technologies Utilisé </h3>
+            <div class="skills-parent">
+                <div class="skill-children">
+                    <img class="skill-image rounded float-center"
+                         src="{{ url_for('static',filename='img/skills/cpp.png') }}" alt="Cpp icone">
+                    <h4 class="skill-image-txt">C++ 11</h4>
+                </div>
+                <div class="skill-children">
+                    <img class="skill-image rounded float-center"
+                         src="{{ url_for('static',filename='img/skills/sdl.png') }}" alt="SDL icone">
+                    <h4 class="skill-image-txt">SDL2</h4>
+                </div>
+                <div class="skill-children">
+                    <img class="skill-image rounded float-center"
+                         src="{{ url_for('static',filename='img/skills/cmake.png') }}" alt="CMake icone">
+                    <h4 class="skill-image-txt">CMake</h4>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
