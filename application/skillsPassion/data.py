@@ -28,7 +28,7 @@ def skills_passion() -> List[Dict]:
         {
             'name': "Jeux de rôle",
             'quick_description': "Les différents jeux de rôle auxquels j'ai joué, mes différents personnages dans ces mondes",
-            'miniature': url_for('static', filename='img/miniature/jdr_miniature_250.png'),
+            'miniature': url_for('static', filename='img/miniature/jdr_miniature_250_250.png'),
             'url': url_for('skills_passion_bp.skills_passion_jeux_de_role')
         },
         {

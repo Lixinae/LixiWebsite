@@ -127,7 +127,7 @@
 .card-img-top {
     text-align: center;
     max-width: 250px;
-    max-height: 250px;
+    max-height: 200px;
     width: auto;
     height: auto;
 }
@@ -157,6 +157,51 @@
     border-style: solid;
     border-radius: 0 !important;
 }
+
+
+/****************************************/
+/*******       Cards gallery       ******/
+/****************************************/
+
+.cards-gallery-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.card-gallery-wrapper {
+    text-align: center;
+    padding-bottom: 1%;
+}
+
+.card-gallery {
+    background-color: #F8F8F8;
+    border-radius: 30px;
+}
+
+.card-gallery-text {
+    text-align: left;
+    padding-left: 10px;
+    height: 50px;
+}
+
+.card-gallery-title {
+    text-align: center;
+}
+
+.card-gallery-img-top {
+    text-align: center;
+    max-width: 300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    border-radius: 30px;
+}
+
+.card-gallery-img-top:hover {
+    background-color: #F8F8F8;
+}
+
 
 /****************************************/
 /*******          footer           ******/
@@ -193,10 +238,6 @@
         display: none;
     }
 
-    .card-img-top {
-        max-width: 250px;
-    }
-
     .body-wrapper {
         padding-top: 13%;
     }
@@ -206,10 +247,6 @@
 /***************        Tablet Portrait           ****************/
 /*****************************************************************/
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-
-    .card-img-top {
-        max-width: 250px;
-    }
 
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {
