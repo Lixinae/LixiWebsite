@@ -1,31 +1,28 @@
-# class Project(db.Model):
-#     pass
-#     name = db.Column(db.String(64), index=True, unique=True)
-#
-#     def __repr__(self):
-#         return '<Nom projet {}\nLangages:>'.format(self.name, self.langages)
+from application import db
 
-# class User(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     username = db.Column(db.String(64), index=True, unique=True)
-#     email = db.Column(db.String(120), index=True, unique=True)
-#     password_hash = db.Column(db.String(128))
-#     posts = db.relationship('Post', backref='author', lazy='dynamic')
-#
-#     # Très utile pour debug : exemple
-#     # >>> from app.models import User
-#     # >>> u = User(username='susan', email='susan@example.com')
-#     # >>> u
-#     # < User susan >
-#     def __repr__(self):
-#         return '<User {}>'.format(self.username)
-#
-#
-# class Post(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     body = db.Column(db.String(140))
-#     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-#
-#     def __repr__(self):
-#         return '<Post {}>'.format(self.body)
+from flask import url_for
+
+
+class Project(db.Model):
+    id = db.Column(db.Integer, primary_key=True, index=True, unique=True)
+    name = db.Column(db.String(64), index=True, unique=True)
+    outils = db.Column(db.String(128))
+    quick_description = db.Column(db.String(128))
+    miniature = db.Column(db.String(128))
+    url = db.Column(db.String(128))
+
+    def __repr__(self):
+        return '<Id:{}\nNom projet: {}\nOutils:{}\nDescription rapide:{}\nMiniature:{}\nUrl:{}>'.format(self.id, self.name, self.outils,
+                                                                                                        self.quick_description,
+                                                                                                        self.miniature,
+                                                                                                        self.url)
+
+    def to_dict(self):
+        data = {
+            'name': self.name,
+            'outils': self.outils,
+            'quick_description': self.quick_description,
+            'miniature': url_for('static', filename=self.miniature),
+            'url': url_for(self.url),
+        }
+        return data
