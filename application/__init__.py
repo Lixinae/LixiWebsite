@@ -1,12 +1,12 @@
 from flask import Flask
-from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
+# from flask_migrate import Migrate
+# from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 
 from application.configuration import Configuration
 
-db = SQLAlchemy()
-migrate = Migrate()
+# db = SQLAlchemy()
+# migrate = Migrate()
 bootstrap = Bootstrap()
 
 
@@ -32,8 +32,8 @@ def create_app(config_class=Configuration):
                 static_folder='static',
                 template_folder='templates')
     app.config.from_object(config_class)
-    db.init_app(app)
-    migrate.init_app(app, db)
+    # db.init_app(app)
+    # migrate.init_app(app, db)
     bootstrap.init_app(app)
     blueprint_registrations(app)
     return app

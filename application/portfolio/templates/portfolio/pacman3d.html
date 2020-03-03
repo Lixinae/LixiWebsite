@@ -6,7 +6,40 @@
     <title> Pacman 3D </title>
     <div class="container">
         <div class="body-wrapper">
-            <p> Page du pacman 3D </p>
+            {% with project_name="Pacman3D",
+                    project_description="Un pacman C++11 avec la SDL1.2 et OpengGL3+ et CMake",
+                    project_link="https://github.com/Vahen/PacMan3D" %}
+                {% include "project_header.html" %}
+            {% endwith %}
+
+            <h3 class="center-text"> Technologies Utilisé </h3>
+            <div class="skills-parent">
+                <div class="skill-children">
+                    <img class="skill-image rounded float-center"
+                         src="{{ url_for('static',filename='img/skills/cpp.png') }}" alt="Cpp icone">
+                    <h4 class="skill-image-txt">C++11</h4>
+                </div>
+                <div class="skill-children">
+                    <img class="skill-image rounded float-center"
+                         src="{{ url_for('static',filename='img/skills/sdl.png') }}" alt="SDL icone">
+                    <h4 class="skill-image-txt">SDL1.2</h4>
+                </div>
+                <div class="skill-children">
+                    <img class="skill-image rounded float-center"
+                         src="{{ url_for('static',filename='img/skills/openGL.png') }}" alt="OpenGL icone">
+                    <h4 class="skill-image-txt">OpenGL3+</h4>
+                </div>
+                <div class="skill-children">
+                    <img class="skill-image rounded float-center"
+                         src="{{ url_for('static',filename='img/skills/cmake.png') }}" alt="CMake icone">
+                    <h4 class="skill-image-txt">CMake</h4>
+                </div>
+                <div class="skill-children">
+                    <img class="skill-image rounded float-center"
+                         src="{{ url_for('static',filename='img/skills/python.png') }}" alt="Python icone">
+                    <h4 class="skill-image-txt">Python</h4>
+                </div>
+            </div>
         </div>
     </div>
 
