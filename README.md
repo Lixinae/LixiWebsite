@@ -7,14 +7,12 @@ Site personnel réalisé avec:
 * Front-end
   * HTML5
   * CSS3
-  * Bootstrap
-  * ReactJs ou VueJs (non déterminé pour le moment)
-
-Le tout sera mis dans un conteneur docker et host sur mon serveur.
-
+  * Bootstrap 4
+  * Jinja 2
+  * ReactJs ou VueJs (non déterminé pour le moment, à voir si c'est utile ou non)
 
 Milestones:
-  * Back-end opérationnel => En cours
-  * Front-end opérationnel (avec CSS / Framework JS)
+  * Back-end opérationnel => Bon
+  * Front-end opérationnel => En cours
   * Projet inclus dans un conteneur docker
-  * Site host via le conteneur docker sur serveur perso
+  * Site host via le conteneur docker sur serveur personnel
