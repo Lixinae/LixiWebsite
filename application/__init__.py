@@ -12,14 +12,14 @@ bootstrap = Bootstrap()
 
 # Enregistrement des blueprint
 def blueprint_registrations(current_app):
-    from application.about import about_bp
+    # from application.cv import cv_bp
     from application.index import index_bp
     from application.contact import contact_bp
     from application.errors import errors_bp
     from application.portfolio import portfolio_bp
     from application.skillsPassion import skills_passion_bp
     current_app.register_blueprint(index_bp)
-    current_app.register_blueprint(about_bp)
+    # current_app.register_blueprint(cv_bp)
     current_app.register_blueprint(contact_bp)
     current_app.register_blueprint(errors_bp)
     current_app.register_blueprint(portfolio_bp)
