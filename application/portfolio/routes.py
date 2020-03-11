@@ -12,7 +12,7 @@ from application.portfolio import data, portfolio_bp
 @portfolio_bp.route('/portfolio')
 def portfolio():
     project_m = data.projects()
-    return make_response(render_template('portfolio.html', title="Portfolio", projects=project_m), 200)
+    return make_response(render_template('portfolio.html', title="Portfolio", projectList=project_m), 200)
 
 
 @portfolio_bp.route('/portfolio/sitePerso')

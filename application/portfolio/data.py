@@ -1,7 +1,7 @@
 from typing import List, Dict
 
 from flask import url_for
-from application import models
+# from application import models
 
 
 # Permet de query la liste de tous les projets
@@ -72,3 +72,30 @@ def project_specific(project_name="") -> Dict:
     # project = models.Project.query.get_or_404(project_name)
     # return project.to_dict()
     return {}
+
+
+def project_short() -> List[Dict]:
+    projects_m = [
+        {
+            'name': "Vahen website",
+            'outils': "Python 3,Flask, Docker, HTML5, CSS3, Bootstrap4, Jinja2",
+            'quick_description': "Mon site personnel fait en Python 3 / Flask",
+            'miniature': url_for('static', filename='img/miniature/sitePerso_miniature.png'),
+            'url': url_for('portfolio_bp.portfolio_site_perso')
+        },
+        {
+            'name': "Webcrawler",
+            'outils': "Python 3, Beautiful Soup 4",
+            'quick_description': "Un webcrawler simple",
+            'miniature': url_for('static', filename='img/miniature/webCrawler_miniature.png'),
+            'url': url_for('portfolio_bp.portfolio_webcrawler')
+        },
+        {
+            'name': "Pacman3D",
+            'outils': "C++11, OpenGL3+",
+            'quick_description': " Un pacman en 3D",
+            'miniature': url_for('static', filename='img/miniature/pacman_miniature.png'),
+            'url': url_for('portfolio_bp.portfolio_pacman3d')
+        },
+    ]
+    return projects_m

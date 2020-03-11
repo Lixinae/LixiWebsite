@@ -1,19 +1,18 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-expand-sm fixed-top ">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+            <!-- Toggler/collapsibe Button -->
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="{{ url_for('index_bp.index') }}">Vahen</a>
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="menu-element"><a href="{{ url_for('index_bp.index') }}">Home</a></li>
-                <li class="dropdown menu-element">
-                    <a href="{{ url_for('portfolio_bp.portfolio') }}" class="dropdown-head">Portfolio
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <a href="{{ url_for('index_bp.index') }}" class="menu-element nav-item nav-link">Home</a>
+
+                <li class="dropdown menu-element nav-item">
+                    <a href="{{ url_for('portfolio_bp.portfolio') }}" class="nav-link">Porfolio
                         <span class="caret mobile-hidden"></span>
                     </a>
                     <div class="dropdown-content">
@@ -25,20 +24,26 @@
                         <a href="{{ url_for('portfolio_bp.portfolio_plateforme_game') }}">Platform Game</a>
                     </div>
                 </li>
-                <li class="dropdown menu-element">
-                    <a href="{{ url_for('skills_passion_bp.skills_passion') }}" class="dropdown-head">Skills/Passions
+                <li class="dropdown menu-element nav-item">
+                    {#                    <a href="{{ url_for('passions_bp.passions') }}" class="nav-link">Passions</a>#}
+                    <a href="{{ url_for('passions_bp.passions') }}" class="nav-link">Passions
                         <span class="caret mobile-hidden"></span>
                     </a>
                     <div class="dropdown-content">
-                        <a href="{{ url_for('skills_passion_bp.skills_passion_gn') }}">GN</a>
-                        <a href="{{ url_for('skills_passion_bp.skills_passion_travail_du_cuir') }}">Travail du cuir</a>
-                        <a href="{{ url_for('skills_passion_bp.skills_passion_jeux_de_societe') }}">Jeux de société</a>
-                        <a href="{{ url_for('skills_passion_bp.skills_passion_jeux_de_role') }}">Jeux de rôle</a>
-                        <a href="{{ url_for('skills_passion_bp.skills_passion_serveur_multimedia') }}">Serveur Multimedia</a>
+                        <a href="{{ url_for('passions_bp.passions_gn') }}">GN</a>
+                        <a href="{{ url_for('passions_bp.passions_travail_du_cuir') }}">Travail du cuir</a>
+                        <a href="{{ url_for('passions_bp.passions_jeux_de_societe') }}">Jeux de société</a>
+                        <a href="{{ url_for('passions_bp.passions_jeux_de_role') }}">Jeux de rôle</a>
+                        <a href="{{ url_for('passions_bp.passions_serveur_multimedia') }}">Serveur Multimedia</a>
                     </div>
                 </li>
-                <li class="menu-element"><a href="{{ url_for('static',filename='pdf/CV_PicoChristopher_lightV4.pdf') }}">CV</a></li>
-                <li class="menu-element"><a href="{{ url_for('contact_bp.contact') }}">Contact</a></li>
+                <li class="nav-item">
+                    <a href="{{ url_for('static',filename='pdf/CV_PicoChristopher_lightV4.pdf') }}"
+                       class="menu-element nav-link">CV</a>
+                </li>
+
+
+                {#                <li class="menu-element"><a href="{{ url_for('contact_bp.contact') }}">Contact</a></li>#}
             </ul>
         </div>
     </div>

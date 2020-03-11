@@ -1,6 +1,7 @@
 from flask import Flask
 # from flask_migrate import Migrate
 # from flask_sqlalchemy import SQLAlchemy
+# from flask_bootstrap import Bootstrap
 from flask_bootstrap import Bootstrap
 
 from application.configuration import Configuration
@@ -14,16 +15,16 @@ bootstrap = Bootstrap()
 def blueprint_registrations(current_app):
     # from application.cv import cv_bp
     from application.index import index_bp
-    from application.contact import contact_bp
+    # from application.contact import contact_bp
     from application.errors import errors_bp
     from application.portfolio import portfolio_bp
-    from application.skillsPassion import skills_passion_bp
+    from application.passions import passions_bp
     current_app.register_blueprint(index_bp)
     # current_app.register_blueprint(cv_bp)
-    current_app.register_blueprint(contact_bp)
+    # current_app.register_blueprint(contact_bp)
     current_app.register_blueprint(errors_bp)
     current_app.register_blueprint(portfolio_bp)
-    current_app.register_blueprint(skills_passion_bp)
+    current_app.register_blueprint(passions_bp)
 
 
 # Creation de l'app
