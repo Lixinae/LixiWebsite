@@ -311,6 +311,8 @@
 
 .skill-image-txt {
     text-align: center;
+    font-size: large;
+    font-weight: bold;
 }
 
 .icone-container {
@@ -335,7 +337,7 @@
     margin: 1em;
     padding: 1em 1em;
     font-size: inherit;
-    font-weight: 700;
+    font-weight: bold;
     position: relative;
     vertical-align: middle;
 }
