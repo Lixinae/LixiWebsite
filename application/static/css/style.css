@@ -48,6 +48,8 @@
 
 .navbar .navbar-brand {
     color: #000000;
+    /*font-size: large;*/
+    font-weight: bold;
 }
 
 .navbar .navbar-brand:hover,
@@ -319,7 +321,7 @@
     width: 100%;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .icone {
@@ -340,6 +342,7 @@
     font-weight: bold;
     position: relative;
     vertical-align: middle;
+    width: 20em;
 }
 
 .icone-child::before, .icone-child::after {
@@ -528,6 +531,10 @@
         display: none;
     }
 
+    .icone-child {
+        width: 17em;
+    }
+
     .body-wrapper {
         padding-top: 15%;
     }
@@ -541,6 +548,10 @@
         display: none;
     }
 
+    .icone-child {
+        width: 17em;
+    }
+
     .body-wrapper {
         padding-top: 13%;
     }
@@ -551,15 +562,6 @@
 /*****************************************************************/
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {
-        background-color: #b6b6b6;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
     .body-wrapper {
         padding-top: 10%;
     }
@@ -569,12 +571,6 @@
 /*********       Tablet LandScape & Desktop         **************/
 /*****************************************************************/
 @media only screen and (min-width: 992px) {
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {
-        background-color: #b6b6b6;
-    }
 
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
+
 }
