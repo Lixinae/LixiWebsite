@@ -4,7 +4,7 @@ from flask import Flask
 # from flask_bootstrap import Bootstrap
 from flask_bootstrap import Bootstrap
 
-from application.configuration import Configuration
+from application.configuration import Configuration, DevelopmentConfig
 
 # db = SQLAlchemy()
 # migrate = Migrate()
@@ -28,7 +28,7 @@ def blueprint_registrations(current_app):
 
 
 # Creation de l'app
-def create_app(config_class=Configuration):
+def create_app(config_class=DevelopmentConfig):
     app = Flask(__name__,
                 static_folder='static',
                 template_folder='templates')
