@@ -19,12 +19,14 @@ def blueprint_registrations(current_app):
     from application.errors import errors_bp
     from application.portfolio import portfolio_bp
     from application.passions import passions_bp
+    from application.webcrawler import webcrawler_bp
     current_app.register_blueprint(index_bp)
     # current_app.register_blueprint(cv_bp)
     # current_app.register_blueprint(contact_bp)
     current_app.register_blueprint(errors_bp)
     current_app.register_blueprint(portfolio_bp)
     current_app.register_blueprint(passions_bp)
+    current_app.register_blueprint(webcrawler_bp)
 
 
 # Creation de l'app

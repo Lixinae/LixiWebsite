@@ -1,0 +1,64 @@
+<!-- Permet d'hériter de base.html -->
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <title> WebCrawler </title>
+
+    <div class="container">
+        <div class="body-wrapper">
+            <div class="webcrawler">
+                <div class="webcrawler-request-form">
+                    <form role="form" method="POST" action="/">
+                        <div class="form-group">
+                            <label for="url-box">Url :</label>
+                            <input type="text"
+                                   name="url"
+                                   class="form-input"
+                                   id="url-box"
+                                   placeholder="Enter URL..." required>
+
+                            <label for="extensions-box">Extensions :</label>
+                            <input type="text"
+                                   name="extensions"
+                                   class="form-input"
+                                   id="extensions-box"
+                                   placeholder="Enter the extensions you want..." required>
+
+                            <label for="depth-box">Depth :</label>
+                            <input type="text"
+                                   name="depth"
+                                   class="form-input"
+                                   id="depth-box"
+                                   placeholder="Enter the depth you want to reach..." required>
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+
+
+                <div class="webcrawler-results">
+                    {% if results %}
+                        <h2>List of files</h2>
+                        <button onclick="displayResult()">Display results</button>
+                        <div class="webcrawler-results-list">
+                            {% for result in results %}
+                                {# Todo -> Changer le <p> par quelque chose de mieux                               #}
+                                <p>{{ result }}</p>
+                            {% endfor %}
+                        </div>
+
+                        <div class="webcrawler-results-form">
+                            <form role="form" method="POST" action="/webcrawlerDownload">
+                                <button type="submit" class="btn btn-default">Download all files as zip</button>
+                            </form>
+
+                        </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
