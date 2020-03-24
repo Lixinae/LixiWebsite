@@ -530,6 +530,31 @@
 
 
 /****************************************/
+/*******         Webcrawler        ******/
+/****************************************/
+.webcrawler-results-list {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    /*flex-flow: column;*/
+    justify-content: space-around;
+    flex: 1;
+}
+
+.webcrawler-result-wrapper {
+    width: 33%;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*overflow: hidden;*/
+    /*transition: flex-grow 1s;*/
+    /*max-height: min-content;*/
+}
+
+.webcrawler-results-form {
+    display: block;
+}
+
+/****************************************/
 /*******          footer           ******/
 /****************************************/
 
@@ -539,6 +564,19 @@
 
 }
 
+/****************************************/
+/*******          Other            ******/
+/****************************************/
+
+.hidden {
+    display: none;
+!important;
+}
+
+/* Todo voir comment faire l'animation du collapsed*/
+/*.isCollapsed {*/
+/*    flex-grow: .001;*/
+/*}*/
 /*****************************************************************/
 /***************        Smartphone Portrait      *****************/
 /*****************************************************************/

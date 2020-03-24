@@ -1,27 +1,30 @@
 import concurrent.futures
-import threading
-import time
 import zipfile
-from io import BytesIO
-from typing import Dict
-
-from flask import render_template, make_response, request, send_file
-
-from application.webcrawler import webcrawler_bp, webcrawlerSource
-
 import requests
-import bs4
+from io import BytesIO
+from flask import render_template, make_response, request, send_file, after_this_request
+from application.webcrawler import webcrawler_bp, webcrawlerSource, webcrawler_toolbox
 
 # Necessaire pour avoir les info au moment du submit
-download_links = {}
+download_links = []
 
+
+# Format du dictionnaire pour 1 lien#
+# {
+#     'link':"liensVersRessource",
+#     'name':"nomDeRessource",
+#     'isVisited':True # Ou false, si le lien a déjà été visité ou non pendant le parcours
+# }
 
 ############################################
 #              WebCrawler                  #
 ############################################
 
-def web_crawler_parse_website(base_url: str, domain: str, depth: int) -> Dict[str, bool]:
-    return webcrawlerSource.construct_tree_link(base_url, depth, download_links, domain)
+# On ne pas écrire "List[Dict[str, str, bool]]" pour le typing -> Erreur au lancement
+# Parse le site web et récupère les liens
+def web_crawler_parse_website(base_url: str, domain: str, depth: int, extensions):  # -> List[Dict[str, str, bool]]:
+    list_dict_links = webcrawlerSource.construct_tree_link(base_url, depth, download_links, domain, extensions)
+    return webcrawler_toolbox.keep_unique_ordered(list(list_dict_links))
 
 
 @webcrawler_bp.route("/webcrawler", methods=['GET', 'POST'])
@@ -51,34 +54,32 @@ def web_crawler():
             depth = int(request.form['depth'])
             # Afin de ne pas paralyser le serveur, on fera la recolte des liens dans un thread à part
             with concurrent.futures.ThreadPoolExecutor() as executor:
-                future = executor.submit(web_crawler_parse_website, base_url, domain, depth)
+                future = executor.submit(web_crawler_parse_website, base_url, domain, depth, extensions)
                 results = future.result()
                 global download_links
                 download_links = results
     return make_response(render_template("webcrawler.html", results=results), 200)
 
 
-def web_crawler_download_annexe():
-    pass
-    # memory_file = BytesIO()
-    # with zipfile.ZipFile(memory_file, 'w') as zf:
-    #     files = result['files']
-    #     for individualFile in files:
-    #         data = zipfile.ZipInfo(individualFile['fileName'])
-    #         data.date_time = time.localtime(time.time())[:6]
-    #         data.compress_type = zipfile.ZIP_DEFLATED
-    #         zf.writestr(data, individualFile['fileData'])
-    # memory_file.seek(0)
-    # return memory_file
+def web_crawler_download_annexe(download_folder: str):
+    webcrawlerSource.download_all(download_links)
+    memory_file = BytesIO()
+    with zipfile.ZipFile(memory_file, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        webcrawler_toolbox.zipdir(download_folder, zipf)
+    memory_file.seek(0)
+    return memory_file
 
 
 @webcrawler_bp.route("/webcrawlerDownload", methods=['POST'])
 def web_crawler_download():
-    pass
-    # Afin de ne pas paralyser le serveur, on fera le téléchargement des liens dans un thread à part
-    # Todo
+    download_folder = "./download"
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        future = executor.submit(web_crawler_download_annexe)
+        future = executor.submit(web_crawler_download_annexe, download_folder)
         memory_file = future.result()
-        print(memory_file)
+
+        @after_this_request
+        def remove_file(response):
+            webcrawler_toolbox.remove_directory_and_all_files_in(download_folder)
+            return response
+
         return send_file(memory_file, attachment_filename='files.zip', as_attachment=True)
