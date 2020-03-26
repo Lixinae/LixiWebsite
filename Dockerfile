@@ -29,7 +29,7 @@ RUN chmod +x boot.sh
 ENV FLASK_APP VahenWebsite.py
 
 RUN chown -R VahenWebsite:VahenWebsite ./
-USER microblog
+USER Vahen
 
 # Ouverture du port 5000
 EXPOSE 5000
