@@ -1,0 +1,2 @@
+- Faire en sorte de pouvoir trier en fonction du type de fichier (avec du JS et CSS)
+- Dans le Html / JS -> Recuperer la liste des fichiers afficher et faire le dl sur uniquement les fichiers affiché

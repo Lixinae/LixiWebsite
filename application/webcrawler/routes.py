@@ -1,7 +1,5 @@
 import concurrent.futures
-import zipfile
 import requests
-from io import BytesIO
 from flask import render_template, make_response, request, send_file, after_this_request
 from application.webcrawler import webcrawler_bp, webcrawlerSource, webcrawler_toolbox
 
@@ -63,11 +61,7 @@ def web_crawler():
 
 def web_crawler_download_annexe(download_folder: str):
     webcrawlerSource.download_all(download_links)
-    memory_file = BytesIO()
-    with zipfile.ZipFile(memory_file, 'w', zipfile.ZIP_DEFLATED) as zipf:
-        webcrawler_toolbox.zipdir(download_folder, zipf)
-    memory_file.seek(0)
-    return memory_file
+    return webcrawler_toolbox.zipdir(download_folder)
 
 
 @webcrawler_bp.route("/webcrawlerDownload", methods=['POST'])

@@ -1,14 +1,20 @@
 import os
+import zipfile
+from io import BytesIO
 from typing import List
 import shutil
 
 
-# Cré un zip ayant pour nom "ziph" à partir du dossier "path"
-def zipdir(path: str, ziph: str):
+# Cré un zip ayant à partir du dossier "path", et du fichier zip "ziph" créer précédemment
+def zipdir(path: str):
+    memory_file = BytesIO()
+    with zipfile.ZipFile(memory_file, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for root, dirs, files in os.walk(path):
+            for file in files:
+                zipf.write(os.path.join(root, file))
+    memory_file.seek(0)
+    return memory_file
     # ziph is zipfile handle
-    for root, dirs, files in os.walk(path):
-        for file in files:
-            ziph.write(os.path.join(root, file))
 
 
 # Renvoie la liste de tous les chemins des fichiers dans le dossier "path"
