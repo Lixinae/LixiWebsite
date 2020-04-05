@@ -30,7 +30,6 @@ def web_crawler():
     errors = []
     results = {}
     if request.method == "POST":
-        # Todo -> Avoir les info sous forme de formulaire
         try:
             base_url = request.form['url']
             if not webcrawlerSource.link_check(base_url):

@@ -4,7 +4,7 @@ from flask import Flask
 # from flask_bootstrap import Bootstrap
 from flask_bootstrap import Bootstrap
 
-from application.configuration import Configuration, DevelopmentConfig
+from configuration import DevelopmentConfig
 
 # db = SQLAlchemy()
 # migrate = Migrate()

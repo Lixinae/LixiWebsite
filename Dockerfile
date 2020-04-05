@@ -20,16 +20,16 @@ COPY application application
 COPY migrations migrations
 
 # Copy des scripts a la racine de l'image
-COPY VahenWebsite.py config.py boot.sh ./
+COPY VahenWeb.py configuration.py boot.sh ./
 
 # Ajout du droit d'execution sur le fichier de boot
 RUN chmod +x boot.sh
 
 # Fixe la variable d'environnement
-ENV FLASK_APP VahenWebsite.py
+ENV FLASK_APP VahenWeb.py
 
 RUN chown -R VahenWebsite:VahenWebsite ./
-USER Vahen
+#USER Vahen
 
 # Ouverture du port 5000
 EXPOSE 5000
