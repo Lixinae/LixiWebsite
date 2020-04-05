@@ -9,7 +9,6 @@ Site personnel réalisé avec:
   * CSS3
   * Bootstrap 4
   * Jinja 2
-  * ReactJs ou VueJs (non déterminé pour le moment, à voir si c'est utile ou non)
 
 Milestones:
   * Back-end opérationnel => Bon
