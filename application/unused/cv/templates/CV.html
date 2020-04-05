@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <title> CV </title>
+    <div class="container">
+        <div class="body-wrapper">
+            <embed src="{{ url_for('static',filename='pdf/CV_PicoChristopher_lightV4.pdf') }}" width="1024" height="768" alt="CV_in_pdf"
+                   pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+        </div>
+    </div>
+{% endblock %}
