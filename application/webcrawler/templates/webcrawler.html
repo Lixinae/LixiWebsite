@@ -55,7 +55,7 @@
                             {% for result in results %}
                                 <div class="webcrawler-result-wrapper">
                                     {# Todo -> Changer le <p> par quelque chose de mieux                               #}
-                                    <a href="{{ result.link }}">{{ result.name }}</a>
+                                    <a href="{{ result.get_url() }}">{{ result.get_name() }}</a>
                                 </div>
                             {% endfor %}
                         </div>

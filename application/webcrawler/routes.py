@@ -1,7 +1,7 @@
 import concurrent.futures
 import requests
 from flask import render_template, make_response, request, send_file, after_this_request
-from application.webcrawler import webcrawler_bp, webcrawlerSource, webcrawler_toolbox
+from application.webcrawler import webcrawler_bp, webcrawler_source, webcrawler_toolbox
 
 # Necessaire pour avoir les info au moment du submit
 download_links = []
@@ -20,9 +20,9 @@ download_links = []
 
 # On ne pas écrire "List[Dict[str, str, bool]]" pour le typing -> Erreur au lancement
 # Parse le site web et récupère les liens
-def web_crawler_parse_website(base_url: str, domain: str, depth: int, extensions):  # -> List[Dict[str, str, bool]]:
-    list_dict_links = webcrawlerSource.construct_tree_link(base_url, depth, download_links, domain, extensions)
-    return webcrawler_toolbox.keep_unique_ordered(list(list_dict_links))
+def web_crawler_parse_website(base_url: str, domain: str, depth: int, extensions):  # -> List[Link]:
+    list_link = webcrawler_source.construct_tree_link(base_url, depth, download_links, domain, extensions)
+    return webcrawler_toolbox.keep_unique_ordered(list_link)
 
 
 @webcrawler_bp.route("/webcrawler", methods=['GET', 'POST'])
@@ -32,7 +32,7 @@ def web_crawler():
     if request.method == "POST":
         try:
             base_url = request.form['url']
-            if not webcrawlerSource.link_check(base_url):
+            if not webcrawler_source.link_check(base_url):
                 errors.append(
                     "Unable to get URL. Please make sure it's valid and try again."
                 )
@@ -46,8 +46,10 @@ def web_crawler():
         if r:
             domain = base_url.split("/")[2]
             extensions_string = request.form['extensions']
-            extensions_string = extensions_string.replace(" ", "")
-            extensions = extensions_string.split(";")
+            extensions = []
+            if extensions_string:
+                extensions_string = extensions_string.replace(" ", "")
+                extensions = extensions_string.split(";")
             depth = int(request.form['depth'])
             # Afin de ne pas paralyser le serveur, on fera la recolte des liens dans un thread à part
             with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -59,7 +61,7 @@ def web_crawler():
 
 
 def web_crawler_download_annexe(download_folder: str):
-    webcrawlerSource.download_all(download_links)
+    webcrawler_source.download_all(download_links)
     return webcrawler_toolbox.zipdir(download_folder)
 
 

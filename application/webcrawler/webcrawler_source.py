@@ -11,6 +11,8 @@ from typing import List, Optional, Match
 import urllib.request as urllib2
 import urllib.parse as urlparse
 
+from application.webcrawler import webcrawler_link
+
 try:
     import bs4
 
@@ -22,13 +24,6 @@ except ImportError:
     sys.exit(1)
 
 
-# Format du dictionnaire pour 1 lien#
-# {
-#     'link':"liensVersRessource",
-#     'name':"nomDeRessource",
-#     'isVisited':True # Ou false, si le lien a déjà été visité ou non pendant le parcours
-# }
-
 # Evite les erreurs de unicode
 # Bug parfois
 # FromRaw = lambda r: r if isinstance(r, unicode) else r.decode('utf-8', 'ignore')
@@ -36,13 +31,13 @@ except ImportError:
 # Security checks for the link provided
 def security_check(link: str,
                    depth: int,
-                   dict_links,  #: List[Dict[str, str, bool]],
+                   list_links,  #: List[Dict[str, str, bool]], # List[Link]
                    domain: str) -> bool:
     # Checks the depth we are at
     if depth <= 0:
         return False
     # Checks if there is to much links in the dictionnary
-    if len(dict_links) > 10000:
+    if len(list_links) > 10000:
         print("Too much links in list -> stoping crawling")
         return False
     # Checks if the provided link is correct
@@ -52,34 +47,32 @@ def security_check(link: str,
     if not has_domain(link, domain):
         return False
     # Checks if the link is already in the dictionnary and if has been visited
-    link_in_dictionnary = next((item for item in dict_links if item["link"] == link), None)
-    print(link_in_dictionnary)
+    link_in_dictionnary = next((item for item in list_links if item.get_url() == link), None)
     if link_in_dictionnary:
-        if link_in_dictionnary["isVisited"]:
+        if link_in_dictionnary.is_visited():
             return False
     return True
 
 
 # Constructs the links dictionnary
 # On ne pas écrire "List[Dict[str, str, bool]]" pour le typing -> Erreur au lancement
-def construct_tree_link(base_link: str,
+def construct_tree_link(base_url: str,
                         depth: int,
-                        dict_links,  #: List[Dict[str, str, bool]],
+                        list_links,  #: List[Dict[str, str, bool]], # List[Link]
                         domain: str,
                         extensions: List[str]):  # -> List[Dict[str, str, bool]]:
-    if not security_check(base_link, depth, dict_links, domain):
+    if not security_check(base_url, depth, list_links, domain):
         return []
     try:
-        page = urllib2.urlopen(base_link)
+        page = urllib2.urlopen(base_url)
     except Exception:
-        print("Could not open link :" + base_link)
+        print("Could not open link :" + base_url)
         return []
     # Tels if we already visited the link
     # Plus logique ici que dans la boucle
-    file_name = base_link.split('/').pop()
-    if any([ext for ext in extensions if base_link.endswith(ext)]):
-        dict_link = {"link": base_link, "name": file_name, "isVisited": False}
-        dict_links.append(dict_link)
+    dict_link = next((item for item in list_links if item.get_url() == base_url), None)
+    if dict_link:
+        dict_link.set_visited()
 
     read = page.read()
     # read = FromRaw(read)
@@ -87,22 +80,23 @@ def construct_tree_link(base_link: str,
     links_a = soup.findAll("a")
     for linkA in links_a:
         clean_string = urlparse.unquote(linkA.get('href', '/'))
-        download_link = urlparse.urljoin(base_link, clean_string)
+        download_url = urlparse.urljoin(base_url, clean_string)
         # Checks if we do not go back in the website
-        if not len(download_link) < len(base_link):
+        if not len(download_url) < len(base_url):
             # Avoid strange links
-            if "?" not in download_link:
-                if download_link not in dict_links:
-                    download_link = re.sub(r"[\t\n]", "", download_link)
-                    # Add the link to the dictionnary, indicating it's not yet visited
-                    file_name = download_link.split('/').pop()
-                    if any([ext for ext in extensions if download_link.endswith(ext)]):
-                        dict_link = {"link": download_link, "name": file_name, "isVisited": False}
-                        dict_links.append(dict_link)
-                construct_tree_link(download_link, depth - 1, dict_links, domain, extensions)
-                # Tels if we already visited the link
-                # dictLinks[downloadLink] = True
-    return dict_links
+            if "?" not in download_url:
+                if download_url not in [x.get_url() for x in list_links]:
+                    download_url = re.sub(r"[\t\n]", "", download_url)
+                    if extensions:
+                        # Add the link to the dictionnary, indicating it's not yet visited
+                        if any([ext for ext in extensions if download_url.endswith(ext)]):
+                            dict_link = webcrawler_link.Link(download_url)
+                            list_links.append(dict_link)
+                    else:
+                        dict_link = webcrawler_link.Link(download_url)
+                        list_links.append(dict_link)
+                construct_tree_link(download_url, depth - 1, list_links, domain, extensions)
+    return list_links
 
 
 # Downloads everything in the links provided
@@ -113,15 +107,15 @@ def download_all(links):
     folder_download = "download"
     create_folder(folder_download)
     for link_dict in links:
-        name = link_dict["name"]
-        link = link_dict["link"]
+        name = link_dict.get_name()
+        url = link_dict.get_url()
         if pattern_filename.search(name):
-            m = re.search("http:\/\/(.*\/)", link)
+            m = re.search("http:\/\/(.*\/)", url)
             if m:
                 folder = m.group(1)
             create_folder(folder_download + "/" + folder)
-            print(link)
-            r = requests.get(link, stream=True)
+            print(url)
+            r = requests.get(url, stream=True)
             with open(folder_download + "/" + folder + "/" + name, "wb") as f:
                 for chunk in r:
                     f.write(chunk)
