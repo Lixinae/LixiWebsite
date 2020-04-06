@@ -3,7 +3,7 @@
 
 import os
 import re
-import sys
+import bs4
 
 import requests
 from typing import List, Optional, Match
@@ -11,17 +11,8 @@ from typing import List, Optional, Match
 import urllib.request as urllib2
 import urllib.parse as urlparse
 
-from application.webcrawler import webcrawler_link, regexp_patterns
-
-try:
-    import bs4
-
-    print("BeautifulSoup4 is there, starting program")
-except ImportError:
-    print("BeautifulSoup4 not installed, please install before using the script")
-    print("Instructions in README file")
-    print("Leaving program")
-    sys.exit(1)
+from application.webcrawler import regexp_patterns
+from application.webcrawler.webcrawler_link import LinkEnum, Link
 
 
 # Evite les erreurs de unicode
@@ -31,7 +22,7 @@ except ImportError:
 # Security checks for the link provided
 def security_check(link: str,
                    depth: int,
-                   list_links,  #: List[Dict[str, str, bool]], # List[Link]
+                   list_links: List[Link],  #: List[Dict[str, str, bool]], # List[Link]
                    domain: str) -> bool:
     # Checks the depth we are at
     if depth <= 0:
@@ -55,7 +46,12 @@ def security_check(link: str,
 
 
 # Parsing des balises "a"
-def parse_all_a(soup, base_url, list_links, extensions, depth, domain):
+def parse_all_a(soup,
+                base_url: str,
+                list_links: List[Link],
+                extensions: List[str],
+                depth: int,
+                domain: str):
     links_a = soup.findAll("a")
     for linkA in links_a:
         clean_string = urlparse.unquote(linkA.get('href', '/'))
@@ -64,29 +60,36 @@ def parse_all_a(soup, base_url, list_links, extensions, depth, domain):
         if not len(download_url) < len(base_url):
             # Avoid strange links
             if "?" not in download_url:
-                add_to_list_link(download_url, extensions, list_links)
+                add_to_list_link(download_url, extensions, list_links, LinkEnum.AHref)
                 construct_tree_link(download_url, depth - 1, list_links, domain, extensions)
 
 
 # Parsing des balises "img"
-def parse_all_img(soup, base_url, list_links, extensions):
+def parse_all_img(soup,
+                  base_url: str,
+                  list_links: List[Link],
+                  extensions: List[str]):
     links_img = soup.find_all("img")
     for linkA in links_img:
-        clean_string = urlparse.unquote(linkA.get('href', '/'))
+        clean_string = urlparse.unquote(linkA.get('src', '/'))
         download_url = urlparse.urljoin(base_url, clean_string)
-        add_to_list_link(download_url, extensions, list_links)
+        add_to_list_link(download_url, extensions, list_links, LinkEnum.Img)
 
 
-def add_to_list_link(download_url, extensions, list_links):
+# Ajout d'un lien a la liste des liens à télécharger
+def add_to_list_link(download_url: str,
+                     extensions: List[str],
+                     list_links: List[Link],
+                     link_enum: LinkEnum):
     if download_url not in [x.get_url() for x in list_links]:
         download_url = re.sub(r"[\t\n]", "", download_url)
         if extensions:
             # Add the link to the dictionnary, indicating it's not yet visited
             if any([ext for ext in extensions if download_url.endswith(ext)]):
-                dict_link = webcrawler_link.Link(download_url)
+                dict_link = Link(download_url, link_enum)
                 list_links.append(dict_link)
         else:
-            dict_link = webcrawler_link.Link(download_url)
+            dict_link = Link(download_url, link_enum)
             name = dict_link.get_name()
             if regexp_patterns.pattern_filename.search(name) and not regexp_patterns.pattern_email.search(name):
                 list_links.append(dict_link)
@@ -96,7 +99,7 @@ def add_to_list_link(download_url, extensions, list_links):
 # On ne pas écrire "List[Dict[str, str, bool]]" pour le typing -> Erreur au lancement
 def construct_tree_link(base_url: str,
                         depth: int,
-                        list_links,  #: List[Dict[str, str, bool]], # List[Link]
+                        list_links: List[Link],  #: List[Dict[str, str, bool]], # List[Link]
                         domain: str,
                         extensions: List[str]):  # -> List[Dict[str, str, bool]]:
     if not security_check(base_url, depth, list_links, domain):
@@ -137,8 +140,8 @@ def download_all(links):
             m = re.search("http:\/\/(.*\/)", url)
             if m:
                 folder = m.group(1)
+                folder = folder.replace(":", "_")
             create_folder(folder_download + "/" + folder)
-            print(url)
             r = requests.get(url, stream=True)
             with open(folder_download + "/" + folder + "/" + name, "wb") as f:
                 for chunk in r:

@@ -35,5 +35,5 @@ def remove_directory_and_all_files_in(dir_path: str):
 
 
 # Keeps the distinct elements in a list, in the same order as the start
-def keep_unique_ordered(my_list):
+def keep_unique_ordered(my_list) -> List:
     return [x for i, x in enumerate(my_list) if x not in my_list[:i]]
