@@ -43,8 +43,8 @@
 
 
                 <div class="webcrawler-results">
+                    <h2>List of files</h2>
                     {% if results %}
-                        <h2>List of files</h2>
                         <button onclick="displayResults()">Display results</button>
                         <div class="webcrawler-results-form hidden">
                             <form role="form" method="POST" action="/webcrawlerDownload">
@@ -59,8 +59,9 @@
                                 </div>
                             {% endfor %}
                         </div>
+                    {% else %}
+                        <p> No file were found on link : {{ url }}</p>
                     {% endif %}
-
                 </div>
 
             </div>

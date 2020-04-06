@@ -29,6 +29,7 @@ def web_crawler_parse_website(base_url: str, domain: str, depth: int, extensions
 def web_crawler():
     errors = []
     results = {}
+    url = ""
     if request.method == "POST":
         try:
             base_url = request.form['url']
@@ -38,6 +39,7 @@ def web_crawler():
                 )
                 return make_response(render_template("webcrawler.html", errors=errors), 200)
             r = requests.get(base_url)
+            url = base_url
         except:
             errors.append(
                 "Unable to get URL. Please make sure it's valid and try again."
@@ -57,7 +59,10 @@ def web_crawler():
                 results = future.result()
                 global download_links
                 download_links = results
-    return make_response(render_template("webcrawler.html", results=results), 200)
+    if results:
+        return make_response(render_template("webcrawler.html", results=results), 200)
+    else:
+        return make_response(render_template("webcrawler.html", url=url), 200)
 
 
 def web_crawler_download_annexe(download_folder: str):

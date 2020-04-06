@@ -11,7 +11,7 @@ from typing import List, Optional, Match
 import urllib.request as urllib2
 import urllib.parse as urlparse
 
-from application.webcrawler import webcrawler_link
+from application.webcrawler import webcrawler_link, regexp_patterns
 
 try:
     import bs4
@@ -54,6 +54,44 @@ def security_check(link: str,
     return True
 
 
+# Parsing des balises "a"
+def parse_all_a(soup, base_url, list_links, extensions, depth, domain):
+    links_a = soup.findAll("a")
+    for linkA in links_a:
+        clean_string = urlparse.unquote(linkA.get('href', '/'))
+        download_url = urlparse.urljoin(base_url, clean_string)
+        # Checks if we do not go back in the website
+        if not len(download_url) < len(base_url):
+            # Avoid strange links
+            if "?" not in download_url:
+                add_to_list_link(download_url, extensions, list_links)
+                construct_tree_link(download_url, depth - 1, list_links, domain, extensions)
+
+
+# Parsing des balises "img"
+def parse_all_img(soup, base_url, list_links, extensions):
+    links_img = soup.find_all("img")
+    for linkA in links_img:
+        clean_string = urlparse.unquote(linkA.get('href', '/'))
+        download_url = urlparse.urljoin(base_url, clean_string)
+        add_to_list_link(download_url, extensions, list_links)
+
+
+def add_to_list_link(download_url, extensions, list_links):
+    if download_url not in [x.get_url() for x in list_links]:
+        download_url = re.sub(r"[\t\n]", "", download_url)
+        if extensions:
+            # Add the link to the dictionnary, indicating it's not yet visited
+            if any([ext for ext in extensions if download_url.endswith(ext)]):
+                dict_link = webcrawler_link.Link(download_url)
+                list_links.append(dict_link)
+        else:
+            dict_link = webcrawler_link.Link(download_url)
+            name = dict_link.get_name()
+            if regexp_patterns.pattern_filename.search(name) and not regexp_patterns.pattern_email.search(name):
+                list_links.append(dict_link)
+
+
 # Constructs the links dictionnary
 # On ne pas écrire "List[Dict[str, str, bool]]" pour le typing -> Erreur au lancement
 def construct_tree_link(base_url: str,
@@ -77,39 +115,25 @@ def construct_tree_link(base_url: str,
     read = page.read()
     # read = FromRaw(read)
     soup = bs4.BeautifulSoup(read, "html.parser")
-    links_a = soup.findAll("a")
-    for linkA in links_a:
-        clean_string = urlparse.unquote(linkA.get('href', '/'))
-        download_url = urlparse.urljoin(base_url, clean_string)
-        # Checks if we do not go back in the website
-        if not len(download_url) < len(base_url):
-            # Avoid strange links
-            if "?" not in download_url:
-                if download_url not in [x.get_url() for x in list_links]:
-                    download_url = re.sub(r"[\t\n]", "", download_url)
-                    if extensions:
-                        # Add the link to the dictionnary, indicating it's not yet visited
-                        if any([ext for ext in extensions if download_url.endswith(ext)]):
-                            dict_link = webcrawler_link.Link(download_url)
-                            list_links.append(dict_link)
-                    else:
-                        dict_link = webcrawler_link.Link(download_url)
-                        list_links.append(dict_link)
-                construct_tree_link(download_url, depth - 1, list_links, domain, extensions)
+
+    # Todo -> Parsing pour les balise "img" -> A faire
+    parse_all_img(soup, base_url, list_links, extensions)
+    # todo -> Parsing des liens "a" -> boucle ce dessous
+    # Parse des liens "a"
+    parse_all_a(soup, base_url, list_links, extensions, depth, domain)
     return list_links
 
 
 # Downloads everything in the links provided
 # On ne pas écrire "List[Dict[str, str, bool]]" pour le typing -> Erreur au lancement
 def download_all(links):
-    pattern_filename = re.compile('(\w+)(\.\w+)+(?!.*(\w+)(\.\w+)+)$')
     folder = "default"
     folder_download = "download"
     create_folder(folder_download)
     for link_dict in links:
         name = link_dict.get_name()
         url = link_dict.get_url()
-        if pattern_filename.search(name):
+        if regexp_patterns.pattern_filename.search(name):
             m = re.search("http:\/\/(.*\/)", url)
             if m:
                 folder = m.group(1)
@@ -137,37 +161,4 @@ def has_domain(url, test_domain) -> bool:
 # Tests if the link provided is a correct url
 # Regexp made by @dperini ported by @adamrofer on github
 def link_check(link: str) -> Optional[Match[str]]:
-    return re.search(re.compile(
-        u"^"
-        # protocol identifier
-        u"(?:(?:https?|ftp)://)"
-        # user:pass authentication
-        u"(?:\S+(?::\S*)?@)?"
-        u"(?:"
-        # IP address exclusion
-        # private & local networks
-        u"(?!(?:10|127)(?:\.\d{1,3}){3})"
-        u"(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})"
-        u"(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})"
-        # IP address dotted notation octets
-        # excludes loopback network 0.0.0.0
-        # excludes reserved space >= 224.0.0.0
-        # excludes network & broadcast addresses
-        # (first & last IP address of each class)
-        u"(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])"
-        u"(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}"
-        u"(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))"
-        u"|"
-        # host name
-        u"(?:(?:[a-z\u00a1-\uffff0-9]-?)*[a-z\u00a1-\uffff0-9]+)"
-        # domain name
-        u"(?:\.(?:[a-z\u00a1-\uffff0-9]-?)*[a-z\u00a1-\uffff0-9]+)*"
-        # TLD identifier
-        u"(?:\.(?:[a-z\u00a1-\uffff]{2,}))"
-        u")"
-        # port number
-        u"(?::\d{2,5})?"
-        # resource path
-        u"(?:/\S*)?"
-        u"$"
-        , re.UNICODE), link)
+    return regexp_patterns.pattern_valid_url.search(link)
