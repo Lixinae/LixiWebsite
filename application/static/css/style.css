@@ -270,6 +270,10 @@
     border-radius: .25rem;
 }
 
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
