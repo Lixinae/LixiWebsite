@@ -25,7 +25,6 @@
                     </div>
                 </li>
                 <li class="dropdown menu-element nav-item">
-                    {#                    <a href="{{ url_for('passions_bp.passions') }}" class="nav-link">Passions</a>#}
                     <a href="{{ url_for('passions_bp.passions') }}" class="nav-link">Passions
                         <span class="caret mobile-hidden"></span>
                     </a>
@@ -35,6 +34,14 @@
                         <a href="{{ url_for('passions_bp.passions_jeux_de_societe') }}">Jeux de société</a>
                         <a href="{{ url_for('passions_bp.passions_jeux_de_role') }}">Jeux de rôle</a>
                         <a href="{{ url_for('passions_bp.passions_serveur_multimedia') }}">Serveur Multimedia</a>
+                    </div>
+                </li>
+                <li class="dropdown menu-element nav-item">
+                    <a href="{{ url_for('apps_bp.apps') }}" class="nav-link">Applications
+                        <span class="caret mobile-hidden"></span>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('webcrawler_bp.web_crawler') }}">Webcrawler</a>
                     </div>
                 </li>
                 <li class="nav-item">

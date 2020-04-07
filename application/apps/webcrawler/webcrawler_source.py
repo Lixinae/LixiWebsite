@@ -6,13 +6,14 @@ import re
 import bs4
 
 import requests
-from typing import List, Optional, Match
+from typing import List
 
 import urllib.request as urllib2
 import urllib.parse as urlparse
 
-from application.webcrawler import regexp_patterns
-from application.webcrawler.webcrawler_link import LinkEnum, Link
+from application.apps.webcrawler import regexp_patterns
+from application.apps.webcrawler.webcrawler_link import LinkEnum, Link
+from application.apps.webcrawler.webcrawler_toolbox import create_folder, link_check
 
 
 # Evite les erreurs de unicode
@@ -119,9 +120,9 @@ def construct_tree_link(base_url: str,
     # read = FromRaw(read)
     soup = bs4.BeautifulSoup(read, "html.parser")
 
-    # Todo -> Parsing pour les balise "img" -> A faire
+    # Parse des balises img
     parse_all_img(soup, base_url, list_links, extensions)
-    # todo -> Parsing des liens "a" -> boucle ce dessous
+
     # Parse des liens "a"
     parse_all_a(soup, base_url, list_links, extensions, depth, domain)
     return list_links
@@ -140,6 +141,7 @@ def download_all(links):
             m = re.search("http:\/\/(.*\/)", url)
             if m:
                 folder = m.group(1)
+                # Les ":" ne sont pas permis dans un nom de dossier
                 folder = folder.replace(":", "_")
             create_folder(folder_download + "/" + folder)
             r = requests.get(url, stream=True)
@@ -149,19 +151,6 @@ def download_all(links):
                     f.flush()
 
 
-# If a folder doesn't exist, it's created
-def create_folder(name):
-    if not os.path.exists(name):
-        print("Creating folder " + name)
-        os.makedirs(name)
-
-
 # Verify if the given url is in the start domain
 def has_domain(url, test_domain) -> bool:
     return urlparse.urlparse(url).hostname in test_domain
-
-
-# Tests if the link provided is a correct url
-# Regexp made by @dperini ported by @adamrofer on github
-def link_check(link: str) -> Optional[Match[str]]:
-    return regexp_patterns.pattern_valid_url.search(link)

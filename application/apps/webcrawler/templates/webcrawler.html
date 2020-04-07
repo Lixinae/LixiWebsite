@@ -9,6 +9,9 @@
         <div class="body-wrapper">
             <div class="webcrawler">
                 <h1 class="center-text"> WebCrawler App </h1>
+                <p class="center-text app-description">
+                    Cette application
+                </p>
                 <div class="webcrawler-request-form">
                     <form role="form" method="POST" action="/webcrawler">
                         <div class="form-group">
@@ -26,7 +29,7 @@
                                    class="form-input"
                                    id="extensions-box"
                                    placeholder="Enter the extensions you want...">
-                            <small id="extensionsHelp" class="form-text text-muted">Separate values with ";" or leave empty to download
+                            <small id="extensionsHelp" class="form-text text-muted">Separate values with ";" or leave empty to scan for
                                 every format</small>
                         </div>
                         <div class="form-group">
@@ -35,7 +38,13 @@
                                    name="depth"
                                    class="form-input"
                                    id="depth-box"
-                                   placeholder="Enter the depth you want to reach..." required>
+                                   placeholder="Enter the depth you want to reach..." required
+                                   pattern="[1-9]+"
+                                   title="A positive number">
+                            <small id="extensionsHelp" class="form-text text-muted">
+                                Depth you wish to attain on the link provided (must be a positive number)
+                                1 will only scan the current page,
+                                2 will visit the current page and every link on it and so on</small>
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>

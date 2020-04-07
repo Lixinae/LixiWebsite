@@ -1,7 +1,7 @@
 import concurrent.futures
 import requests
 from flask import render_template, make_response, request, send_file, after_this_request
-from application.webcrawler import webcrawler_bp, webcrawler_source, webcrawler_toolbox
+from application.apps.webcrawler import webcrawler_bp, webcrawler_source, webcrawler_toolbox
 
 # Necessaire pour avoir les info au moment du submit
 download_links = []
@@ -33,7 +33,7 @@ def web_crawler():
     if request.method == "POST":
         try:
             base_url = request.form['url']
-            if not webcrawler_source.link_check(base_url):
+            if not webcrawler_toolbox.link_check(base_url):
                 errors.append(
                     "Unable to get URL. Please make sure it's valid and try again."
                 )
@@ -41,9 +41,7 @@ def web_crawler():
             r = requests.get(base_url)
             url = base_url
         except:
-            errors.append(
-                "Unable to get URL. Please make sure it's valid and try again."
-            )
+            errors.append("Unable to get URL. Please make sure it's valid and try again.")
             return make_response(render_template("webcrawler.html", errors=errors), 200)
         if r:
             domain = base_url.split("/")[2]
@@ -53,6 +51,10 @@ def web_crawler():
                 extensions_string = extensions_string.replace(" ", "")
                 extensions = extensions_string.split(";")
             depth = int(request.form['depth'])
+            # Ne devrait jamais arriver
+            if depth <= 0:
+                errors.append("Received depth is < or = to 0 -> No crawling")
+                return make_response(render_template("webcrawler.html", errors=errors), 200)
             # Afin de ne pas paralyser le serveur, on fera la recolte des liens dans un thread à part
             with concurrent.futures.ThreadPoolExecutor() as executor:
                 future = executor.submit(web_crawler_parse_website, base_url, domain, depth, extensions)

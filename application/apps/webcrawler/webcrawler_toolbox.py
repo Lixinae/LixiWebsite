@@ -1,8 +1,9 @@
 import os
 import zipfile
-from io import BytesIO
-from typing import List
 import shutil
+from io import BytesIO
+from typing import List, Optional, Match
+from application.apps.webcrawler import regexp_patterns
 
 
 # Cré un zip ayant à partir du dossier "path", et du fichier zip "ziph" créer précédemment
@@ -37,3 +38,16 @@ def remove_directory_and_all_files_in(dir_path: str):
 # Keeps the distinct elements in a list, in the same order as the start
 def keep_unique_ordered(my_list) -> List:
     return [x for i, x in enumerate(my_list) if x not in my_list[:i]]
+
+
+# Tests if the link provided is a correct url
+# Regexp made by @dperini ported by @adamrofer on github
+def link_check(link: str) -> Optional[Match[str]]:
+    return regexp_patterns.pattern_valid_url.search(link)
+
+
+# If a folder doesn't exist, it's created
+def create_folder(name):
+    if not os.path.exists(name):
+        print("Creating folder " + name)
+        os.makedirs(name)
