@@ -8,12 +8,12 @@
     <div class="container">
         <div class="body-wrapper">
             <div class="webcrawler">
-                <h1 class="center-text"> WebCrawler App </h1>
+                <h1 class="center-text"> WebCrawler </h1>
                 <p class="center-text app-description">
                     Cette application
                 </p>
                 <div class="webcrawler-request-form">
-                    <form role="form" method="POST" action="/webcrawler">
+                    <form role="form" method="POST" action="/apps/webcrawler">
                         <div class="form-group">
                             <label for="url-box">Url :</label>
                             <input type="text"
@@ -56,7 +56,7 @@
                     {% if results %}
                         <button onclick="displayResults()">Display results</button>
                         <div class="webcrawler-results-form hidden">
-                            <form role="form" method="POST" action="/webcrawlerDownload">
+                            <form role="form" method="POST" action="/apps/webcrawlerDownload">
                                 <button type="submit" class="btn btn-default submit-button">Download all files as zip</button>
                             </form>
                         </div>

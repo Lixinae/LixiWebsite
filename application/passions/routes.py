@@ -32,7 +32,3 @@ def passions_jeux_de_societe():
 def passions_jeux_de_role():
     return make_response(render_template('./passions/jeuxDeRole.html', title="Jeux de rôle"), 200)
 
-
-@passions_bp.route('/skillsPassion/serveurMultimedia')
-def passions_serveur_multimedia():
-    return make_response(render_template('./passions/serveurMultimedia.html', title="Serveur multimedia"), 200)
