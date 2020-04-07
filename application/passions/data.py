@@ -5,7 +5,6 @@ from flask import url_for
 
 # Permet de query la liste de tous les projets
 def passions() -> List[Dict]:
-    # Todo -> Eventuellement faire une BDD ici pour séparer le code du contenu
     skill_passion_list = [
         {
             'name': "GN",
@@ -42,7 +41,6 @@ def passions() -> List[Dict]:
 
 
 def passions_short() -> List[Dict]:
-    # Todo -> Eventuellement faire une BDD ici pour séparer le code du contenu
     skill_passion_list = [
         {
             'name': "GN",
