@@ -21,6 +21,9 @@ def blueprint_registrations(current_app):
     from application.passions import passions_bp
     from application.apps import apps_bp
     from application.apps.webcrawler import webcrawler_bp
+    from application.apps.acronymos import acronymos_bp
+    from application.apps.stringToLeet import string_to_leet_bp
+
     current_app.register_blueprint(index_bp)
     # current_app.register_blueprint(cv_bp)
     # current_app.register_blueprint(contact_bp)
@@ -29,6 +32,8 @@ def blueprint_registrations(current_app):
     current_app.register_blueprint(passions_bp)
     current_app.register_blueprint(apps_bp)
     current_app.register_blueprint(webcrawler_bp, url_prefix="/apps")
+    current_app.register_blueprint(acronymos_bp, url_prefix="/apps")
+    current_app.register_blueprint(string_to_leet_bp, url_prefix="/apps")
 
 
 # Creation de l'app
