@@ -9,7 +9,7 @@ def app_list() -> List[Dict]:
             'name': "Webcrawler",
             'quick_description': "Un crawler pour parser / scrap du contenu en ligne",
             'miniature': url_for('static', filename='img/miniature/webcrawler.png'),
-            'url': url_for('webcrawler_bp.web_crawler')
+            'url': url_for('webcrawler_bp.webcrawler')
         },
     ]
     return apps_list

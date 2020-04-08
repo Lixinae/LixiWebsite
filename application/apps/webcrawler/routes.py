@@ -20,13 +20,13 @@ download_links = []
 
 # On ne pas écrire "List[Dict[str, str, bool]]" pour le typing -> Erreur au lancement
 # Parse le site web et récupère les liens
-def web_crawler_parse_website(base_url: str, domain: str, depth: int, extensions):  # -> List[Link]:
+def webcrawler_parse_website(base_url: str, domain: str, depth: int, extensions):  # -> List[Link]:
     list_link = webcrawler_source.construct_tree_link(base_url, depth, download_links, domain, extensions)
     return webcrawler_toolbox.keep_unique_ordered(list_link)
 
 
 @webcrawler_bp.route("/webcrawler", methods=['GET', 'POST'])
-def web_crawler():
+def webcrawler():
     errors = []
     results = {}
     url = ""
@@ -57,7 +57,7 @@ def web_crawler():
                 return make_response(render_template("webcrawler.html", errors=errors), 200)
             # Afin de ne pas paralyser le serveur, on fera la recolte des liens dans un thread à part
             with concurrent.futures.ThreadPoolExecutor() as executor:
-                future = executor.submit(web_crawler_parse_website, base_url, domain, depth, extensions)
+                future = executor.submit(webcrawler_parse_website, base_url, domain, depth, extensions)
                 results = future.result()
                 global download_links
                 download_links = results
@@ -67,16 +67,16 @@ def web_crawler():
         return make_response(render_template("webcrawler.html", url=url), 200)
 
 
-def web_crawler_download_annexe(download_folder: str):
+def webcrawler_download_annexe(download_folder: str):
     webcrawler_source.download_all(download_links)
     return webcrawler_toolbox.zipdir(download_folder)
 
 
-@webcrawler_bp.route("/webcrawlerDownload", methods=['POST'])
-def web_crawler_download():
+@webcrawler_bp.route("/api/webcrawlerDownload", methods=['POST'])
+def webcrawler_download():
     download_folder = "./download"
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        future = executor.submit(web_crawler_download_annexe, download_folder)
+        future = executor.submit(webcrawler_download_annexe, download_folder)
         memory_file = future.result()
 
         @after_this_request

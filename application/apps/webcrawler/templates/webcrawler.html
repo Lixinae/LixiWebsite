@@ -13,7 +13,7 @@
                     Cette application
                 </p>
                 <div class="webcrawler-request-form">
-                    <form role="form" method="POST" action="/apps/webcrawler">
+                    <form role="form" method="POST" action="{{ url_for("webcrawler_bp.webcrawler") }}">
                         <div class="form-group">
                             <label for="url-box">Url :</label>
                             <input type="text"
@@ -56,7 +56,7 @@
                     {% if results %}
                         <button onclick="displayResults()">Display results</button>
                         <div class="webcrawler-results-form hidden">
-                            <form role="form" method="POST" action="/apps/webcrawlerDownload">
+                            <form role="form" method="POST" action="{{ url_for("webcrawler_bp.webcrawler_download") }}">
                                 <button type="submit" class="btn btn-default submit-button">Download all files as zip</button>
                             </form>
                         </div>
