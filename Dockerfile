@@ -32,7 +32,7 @@ RUN chown -R VahenWebsite:VahenWebsite ./
 #USER Vahen
 
 # Ouverture du port 5000
-EXPOSE 5000
+EXPOSE 80
 
 # execution du script boot.sh
 ENTRYPOINT ["./boot.sh"]
