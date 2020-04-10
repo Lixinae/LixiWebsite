@@ -1,0 +1,22 @@
+<!-- Permet d'hériter de base.html -->
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <title> Acronymos </title>
+
+    <div class="container">
+        <div class="body-wrapper">
+            <div class="anagramos">
+                <h1 class="center-text"> Anagramos </h1>
+                <p class="center-text app-description">
+                    Todo -> Description de l'application
+                    Todo -> Formulaire de l'application
+                </p>
+            </div>
+        </div>
+    </div>
+    {#  Les scripts sont ici pour être chargé à la fin  #}
+    {#    <script src="{{ url_for('static', filename='scripts/jquery-3.4.1.min.js') }}"></script>#}
+    {#    <script src="{{ url_for('static', filename='scripts/webcrawlerScript.js') }}"></script>#}
+{% endblock %}

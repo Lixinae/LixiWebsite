@@ -152,5 +152,5 @@ def download_all(links):
 
 
 # Verify if the given url is in the start domain
-def has_domain(url, test_domain) -> bool:
-    return urlparse.urlparse(url).hostname in test_domain
+def has_domain(url: str, domain: str) -> bool:
+    return urlparse.urlparse(url).hostname in domain

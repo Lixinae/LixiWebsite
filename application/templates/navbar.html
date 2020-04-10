@@ -16,12 +16,9 @@
                         <span class="caret mobile-hidden"></span>
                     </a>
                     <div class="dropdown-content">
-                        <a href="{{ url_for('portfolio_bp.portfolio_site_perso') }}">Site personnel</a>
-                        <a href="{{ url_for('portfolio_bp.portfolio_runner') }}">Runner</a>
-                        <a href="{{ url_for('portfolio_bp.portfolio_webcrawler') }}">WebCrawler</a>
-                        <a href="{{ url_for('portfolio_bp.portfolio_pacman3d') }}">Pacmand3D</a>
-                        <a href="{{ url_for('portfolio_bp.portfolio_raytracer') }}">Raytracer</a>
-                        <a href="{{ url_for('portfolio_bp.portfolio_plateforme_game') }}">Platform Game</a>
+                        {% for projet in portfolio_list() %}
+                            <a href={{ projet.url }}>{{ projet.name }}</a>
+                        {% endfor %}
                     </div>
                 </li>
                 <li class="dropdown menu-element nav-item">
@@ -29,10 +26,9 @@
                         <span class="caret mobile-hidden"></span>
                     </a>
                     <div class="dropdown-content">
-                        <a href="{{ url_for('passions_bp.passions_gn') }}">GN</a>
-                        <a href="{{ url_for('passions_bp.passions_travail_du_cuir') }}">Travail du cuir</a>
-                        <a href="{{ url_for('passions_bp.passions_jeux_de_societe') }}">Jeux de société</a>
-                        <a href="{{ url_for('passions_bp.passions_jeux_de_role') }}">Jeux de rôle</a>
+                        {% for passions in passions_list() %}
+                            <a href={{ passions.url }}>{{ passions.name }}</a>
+                        {% endfor %}
                     </div>
                 </li>
                 <li class="dropdown menu-element nav-item">
@@ -40,9 +36,9 @@
                         <span class="caret mobile-hidden"></span>
                     </a>
                     <div class="dropdown-content">
-                        <a href="{{ url_for('webcrawler_bp.webcrawler') }}">Webcrawler</a>
-                        <a href="{{ url_for('acronymos_bp.acronymos') }}">Acronymos</a>
-                        <a href="{{ url_for('string_to_leet_bp.string_to_leet') }}">String to 1337</a>
+                        {% for apps in apps_list() %}
+                            <a href={{ apps.url }}>{{ apps.name }}</a>
+                        {% endfor %}
                     </div>
                 </li>
                 <li class="nav-item">

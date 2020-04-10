@@ -7,7 +7,7 @@ from application.apps.webcrawler import regexp_patterns
 
 
 # Cré un zip ayant à partir du dossier "path", et du fichier zip "ziph" créer précédemment
-def zipdir(path: str):
+def zipdir(path: str) -> BytesIO:
     memory_file = BytesIO()
     with zipfile.ZipFile(memory_file, 'w', zipfile.ZIP_DEFLATED) as zipf:
         for root, dirs, files in os.walk(path):
@@ -20,6 +20,11 @@ def zipdir(path: str):
 
 # Renvoie la liste de tous les chemins des fichiers dans le dossier "path"
 def list_files_from_path(path: str) -> List[str]:
+    """
+    Returns the list of the files in the given folder (including subfolders),
+    :param path: Folder where to look
+    :return: The list of the files in the given folder (including subfolders)
+    """
     files_list = []
     for root, directories, files in os.walk(path):
         for file in files:
@@ -36,7 +41,7 @@ def remove_directory_and_all_files_in(dir_path: str):
 
 
 # Keeps the distinct elements in a list, in the same order as the start
-def keep_unique_ordered(my_list) -> List:
+def keep_unique_ordered(my_list: List) -> List:
     return [x for i, x in enumerate(my_list) if x not in my_list[:i]]
 
 
@@ -47,7 +52,11 @@ def link_check(link: str) -> Optional[Match[str]]:
 
 
 # If a folder doesn't exist, it's created
-def create_folder(name):
+def create_folder(name: str):
+    """
+    Créer le dossier "name" s'il n'existe pas
+    :param name: Le dossier a créer
+    """
     if not os.path.exists(name):
         print("Creating folder " + name)
         os.makedirs(name)
