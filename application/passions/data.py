@@ -5,7 +5,7 @@ from flask import url_for
 
 # Permet de query la liste de tous les projets
 def passions() -> List[Dict]:
-    skill_passion_list = [
+    passion_list = [
         {
             'name': "GN",
             'miniature': url_for('static', filename='img/miniature/gn_miniature.png'),
@@ -27,11 +27,11 @@ def passions() -> List[Dict]:
             'url': url_for('passions_bp.passions_jeux_de_societe')
         }
     ]
-    return skill_passion_list
+    return passion_list
 
 
 def passions_short() -> List[Dict]:
-    skill_passion_list = [
+    passion_list = [
         {
             'name': "GN",
             'miniature': url_for('static', filename='img/miniature/gn_miniature.png'),
@@ -44,4 +44,4 @@ def passions_short() -> List[Dict]:
         },
     ]
 
-    return skill_passion_list
+    return passion_list

@@ -9,6 +9,7 @@ COPY requirements.txt requirements.txt
 
 RUN python -m venv venv
 
+RUN venv/bin/pip install --upgrade pip
 # Install les requirements du projet
 RUN venv/bin/pip install -r requirements.txt
 RUN venv/bin/pip install gunicorn
