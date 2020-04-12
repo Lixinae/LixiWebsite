@@ -1,7 +1,12 @@
 import re
 
+# Pattern to check if it's a file
 pattern_filename = re.compile('(\w+)(\.\w+)+(?!.*(\w+)(\.\w+)+)$')
+
+# Pattern to check if it's an email
 pattern_email = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
+
+# Regexp made by @dperini ported by @adamrofer on github
 pattern_valid_url = re.compile(
     u"^"
     # protocol identifier

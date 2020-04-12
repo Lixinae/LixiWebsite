@@ -100,9 +100,18 @@ def add_to_list_link(download_url: str,
 # On ne pas écrire "List[Dict[str, str, bool]]" pour le typing -> Erreur au lancement
 def construct_tree_link(base_url: str,
                         depth: int,
-                        list_links: List[Link],  #: List[Dict[str, str, bool]], # List[Link]
+                        list_links: List[Link],
                         domain: str,
-                        extensions: List[str]):  # -> List[Dict[str, str, bool]]:
+                        extensions: List[str]):
+    """
+    Todo doc construct_tree_link
+    :param base_url:
+    :param depth:
+    :param list_links:
+    :param domain:
+    :param extensions: Extensions you want download
+    :return: The updated list of links
+    """
     if not security_check(base_url, depth, list_links, domain):
         return []
     try:
@@ -128,9 +137,13 @@ def construct_tree_link(base_url: str,
     return list_links
 
 
-# Downloads everything in the links provided
-# On ne pas écrire "List[Dict[str, str, bool]]" pour le typing -> Erreur au lancement
-def download_all(links):
+def download_all(links: List[Link]):
+    """
+    Reads the list and downloads from every link on it
+    It's keep the structure of the website
+    So if on the website it's in static/img/myFolder, you will have the same architecture on the downloaded version
+    :param links: List of Links
+    """
     folder = "default"
     folder_download = "download"
     create_folder(folder_download)
