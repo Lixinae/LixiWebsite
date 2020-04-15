@@ -3,75 +3,49 @@
 
 {% block app_content %}
 
-    <title> Site Personnel </title>
+
+    <title> {{ title }} </title>
     <div class="container">
         <div class="body-wrapper">
             {% with project_name="Site Personnel",
-                    project_description="Ce site présente mes différentes passion, mes travaux",
                     project_link="https://github.com/Vahen/VahenWebsite" %}
                 {% include "project_header.html" %}
             {% endwith %}
 
-            <h3 class="center-text"> Back-End </h3>
-            <div class="techno-utilise-backend">
-                <div class="skills-parent">
-                    {# Todo -> Rajouter une boucle avec les skills backend, avec info obtenu via liste en python #}
-                    <div class="skill-children">
-                        <img class="skill-image rounded float-center"
-                             src="{{ url_for('static',filename='img/skills/python.png') }}" alt="Python icone">
-                        <h4 class="skill-image-txt">Python 3</h4>
-                    </div>
+            <h3 class="center-text"> Description </h3>
+            <p class="portfolio-project-description center-text"></p>
 
-                    <div class="skill-children">
-                        <img class="skill-image rounded float-center"
-                             src="{{ url_for('static',filename='img/skills/flask.png') }}" alt="Flask icone">
-                        <h4 class="skill-image-txt">Flask</h4>
-                    </div>
-
-                    {#                    <div class="skill-children">#}
-                    {#                        <img class="skill-image rounded float-center"#}
-                    {#                             src="{{ url_for('static',filename='img/skills/Sqlite.png') }}" alt="SqlLite icone">#}
-                    {#                        <h4 class="skill-image-txt">SqlLite</h4>#}
-                    {#                    </div>#}
-
-                    <div class="skill-children">
-                        <img class="skill-image rounded float-center"
-                             src="{{ url_for('static',filename='img/skills/docker.png') }}" alt="Docker icone">
-                        <h4 class="skill-image-txt">Docker</h4>
+            {% if skills_back %}
+                <h3 class="center-text"> Back-End </h3>
+                <div class="techno-utilise-backend">
+                    <div class="skills-parent">
+                        {% for skill in skills_back %}
+                            <div class="skill-children">
+                                <div class="skill-image-container">
+                                    <img class="skill-image" src="{{ skill.img_url }}" alt="{{ skill.img_alt }}">
+                                </div>
+                                <h4 class="skill-image-txt">{{ skill.name }}</h4>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
-            </div>
+            {% endif %}
 
-            <h3 class="center-text"> Front-End </h3>
-            <div class="techno-utilise-frontend">
-                <div class="skills-parent">
-                    {# Todo -> Rajouter une boucle avec les skills front-end, avec info obtenu via liste en python #}
-
-                    <div class="skill-children">
-                        <img class="skill-image rounded float-center"
-                             src="{{ url_for('static',filename='img/skills/html5.png') }}" alt="Python icone">
-                        <h4 class="skill-image-txt">HTML5</h4>
-                    </div>
-
-                    <div class="skill-children">
-                        <img class="skill-image rounded float-center"
-                             src="{{ url_for('static',filename='img/skills/css3.png') }}" alt="Flask icone">
-                        <h4 class="skill-image-txt">CSS3</h4>
-                    </div>
-
-                    <div class="skill-children">
-                        <img class="skill-image rounded float-center"
-                             src="{{ url_for('static',filename='img/skills/bootstrap4.png') }}" alt="Docker icone">
-                        <h4 class="skill-image-txt">Bootstrap</h4>
-                    </div>
-
-                    <div class="skill-children">
-                        <img class="skill-image rounded float-center"
-                             src="{{ url_for('static',filename='img/skills/jinja2.png') }}" alt="Docker icone">
-                        <h4 class="skill-image-txt">Jinja2</h4>
+            {% if skills_front %}
+                <h3 class="center-text"> Front-End </h3>
+                <div class="techno-utilise-frontend">
+                    <div class="skills-parent">
+                        {% for skill in skills_front %}
+                            <div class="skill-children">
+                                <div class="skill-image-container">
+                                    <img class="skill-image" src="{{ skill.img_url }}" alt="{{ skill.img_alt }}">
+                                </div>
+                                <h4 class="skill-image-txt">{{ skill.name }}</h4>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -7,10 +7,44 @@
     <div class="container">
         <div class="body-wrapper">
             {% with project_name="Plateforme Game",
-                    project_description="Un jeu de plateforme réalisé avec Unity 3D",
                     project_link="https://github.com/Vahen/PlatformGame" %}
                 {% include "project_header.html" %}
             {% endwith %}
+
+            <h3 class="center-text"> Description </h3>
+            <p class="portfolio-project-description center-text"></p>
+
+            {% if skills_back %}
+                <h3 class="center-text"> Back-End </h3>
+                <div class="techno-utilise-backend">
+                    <div class="skills-parent">
+                        {% for skill in skills_back %}
+                            <div class="skill-children">
+                                <div class="skill-image-container">
+                                    <img class="skill-image" src="{{ skill.img_url }}" alt="{{ skill.img_alt }}">
+                                </div>
+                                <h4 class="skill-image-txt">{{ skill.name }}</h4>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if skills_front %}
+                <h3 class="center-text"> Front-End </h3>
+                <div class="techno-utilise-frontend">
+                    <div class="skills-parent">
+                        {% for skill in skills_front %}
+                            <div class="skill-children">
+                                <div class="skill-image-container">
+                                    <img class="skill-image" src="{{ skill.img_url }}" alt="{{ skill.img_alt }}">
+                                </div>
+                                <h4 class="skill-image-txt">{{ skill.name }}</h4>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

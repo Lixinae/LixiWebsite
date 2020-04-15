@@ -6,12 +6,11 @@ from flask import url_for
 
 # Permet de query la liste de tous les projets
 def projects() -> List[Dict]:
-    # Todo -> Faire un Select * from Project sur la BDD ici
     projects_m = [
         {
             'name': "Vahen website",
             'outils': "Python 3,Flask, Docker, HTML5, CSS3, Bootstrap4, Jinja2",
-            'quick_description': "Mon site personnel fait en Python 3 / Flask",
+            'quick_description': "Site personnel fait en Python 3 / Flask",
             'miniature': url_for('static', filename='img/miniature/sitePerso_miniature.png'),
             'url': url_for('portfolio_bp.portfolio_site_perso')
         },
@@ -25,7 +24,7 @@ def projects() -> List[Dict]:
         {
             'name': "Pacman3D",
             'outils': "C++11, OpenGL3+",
-            'quick_description': " Un pacman en 3D",
+            'quick_description': "Un pacman en 3D",
             'miniature': url_for('static', filename='img/miniature/pacman_miniature.png'),
             'url': url_for('portfolio_bp.portfolio_pacman3d')
         },
@@ -51,13 +50,6 @@ def projects() -> List[Dict]:
             'url': url_for('portfolio_bp.portfolio_raytracer')
         },
     ]
-
-    # projects_query = models.Project.query.all()
-    # output_list_project = []
-    # for project in projects_query:
-    #     project_dict = project.to_dict()
-    #     output_list_project.append(project_dict)
-    # return output_list_project
     return projects_m
 
 

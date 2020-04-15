@@ -315,6 +315,14 @@
     justify-content: space-evenly;
 }
 
+.skill-image-container {
+    text-align: center;
+}
+
+.skill-children {
+    width: 20%;
+}
+
 .skill-image {
     width: 80px;
     height: 80px;
