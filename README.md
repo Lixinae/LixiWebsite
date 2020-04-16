@@ -10,8 +10,3 @@ Site personnel réalisé avec:
   * Bootstrap 4
   * Jinja 2
 
-Milestones:
-  * Back-end opérationnel => Bon
-  * Front-end opérationnel => En cours
-  * Projet inclus dans un conteneur docker
-  * Site host via le conteneur docker sur serveur personnel
