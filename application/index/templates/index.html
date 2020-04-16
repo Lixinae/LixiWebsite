@@ -53,37 +53,14 @@
                     <h2>Compétences</h2>
                 </div>
                 <div class="skills-parent">
-
-                    <div class="skill-children">
-                        <img class="skill-image" src="{{ url_for('static',filename='img/skills/python.png') }}" alt="Python icone">
-                        <h4 class="skill-image-txt">Python</h4>
-                    </div>
-
-
-                    <div class="skill-children">
-                        <img class="skill-image" src="{{ url_for('static',filename='img/skills/flask.png') }}" alt="Flask icone">
-                        <h4 class="skill-image-txt">Flask</h4>
-                    </div>
-
-                    <div class="skill-children">
-                        <img class="skill-image" src="{{ url_for('static',filename='img/skills/cpp.png') }}" alt="C++ icone">
-                        <h4 class="skill-image-txt">C++</h4>
-                    </div>
-
-                    <div class="skill-children">
-                        <img class="skill-image" src="{{ url_for('static',filename='img/skills/c#.png') }}" alt="C# icone">
-                        <h4 class="skill-image-txt">C#</h4>
-                    </div>
-
-                    <div class="skill-children">
-                        <img class="skill-image" src="{{ url_for('static',filename='img/skills/unity_small.png') }}" alt="Unity icone">
-                        <h4 class="skill-image-txt">Unity</h4>
-                    </div>
-
-                    <div class="skill-children">
-                        <img class="skill-image" src="{{ url_for('static',filename='img/skills/java_2.png') }}" alt="Java icone">
-                        <h4 class="skill-image-txt">Java</h4>
-                    </div>
+                    {% for skill in skills %}
+                        <div class="skill-children">
+                            <div class="skill-image-container">
+                                <img class="skill-image" src="{{ skill.img_url }}" alt="{{ skill.img_alt }}">
+                            </div>
+                            <h4 class="skill-image-txt">{{ skill.name }}</h4>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
 
