@@ -1,6 +1,8 @@
 from typing import List, Dict
 
 from flask import url_for
+
+
 # from application import models
 
 
@@ -9,7 +11,7 @@ def projects() -> List[Dict]:
     projects_m = [
         {
             'name': "Vahen website",
-            'outils': "Python 3,Flask, Docker, HTML5, CSS3, Bootstrap4, Jinja2",
+            'outils': "Python 3,Flask, Docker, HTML5, CSS3, JQuery, Bootstrap4, Jinja2",
             'quick_description': "Site personnel fait en Python 3 / Flask",
             'miniature': url_for('static', filename='img/miniature/sitePerso_miniature.png'),
             'url': url_for('portfolio_bp.portfolio_site_perso')
@@ -48,6 +50,27 @@ def projects() -> List[Dict]:
             'quick_description': "Un raytracer réalisé from scratch",
             'miniature': url_for('static', filename='img/miniature/raytracer_miniature.png'),
             'url': url_for('portfolio_bp.portfolio_raytracer')
+        },
+        {
+            'name': "Acronymos",
+            'outils': "Python 3, HTML5, CSS3, JQuery",
+            'quick_description': "Un générateur de texte à partir d'un acronyme",
+            'miniature': url_for('static', filename='img/miniature/acronymos.png'),
+            'url': url_for('portfolio_bp.portfolio_acronymos')
+        },
+        {
+            'name': "Anagramos",
+            'outils': "Python 3, HTML5, CSS3, JQuery",
+            'quick_description': "Permet de trouver tous les anagrames d'un mot dans la langue donné",
+            'miniature': url_for('static', filename='img/miniature/anagramos.png'),
+            'url': url_for('portfolio_bp.portfolio_anagramos')
+        },
+        {
+            'name': "String to leet",
+            'outils': "Python 3, HTML5, CSS3, JQuery",
+            'quick_description': "Permet de traduire une chaine de caractère en langage leet",
+            'miniature': url_for('static', filename='img/miniature/stringToLeet.png'),
+            'url': url_for('portfolio_bp.portfolio_string_to_leet')
         },
     ]
     return projects_m

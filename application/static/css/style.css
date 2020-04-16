@@ -9,12 +9,17 @@
     text-align: center;
 }
 
-.icone-github-text {
+.icone-project-header-text {
     font-size: medium;
 }
 
-.icone-github:hover {
+.icone-project-header:hover {
     filter: contrast(0%);
+}
+
+.icone-project-header {
+    width: 80px;
+    height: 80px;
 }
 
 .icone img {

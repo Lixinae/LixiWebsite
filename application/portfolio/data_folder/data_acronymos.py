@@ -24,17 +24,6 @@ def skills_front() -> List[Dict]:
             'img_url': url_for('static', filename='img/skills/jquery.png'),
             'img_alt': "JQuery icon",
         },
-        {
-            'name': "Bootstrap 4",
-            'img_url': url_for('static', filename='img/skills/bootstrap4.png'),
-            'img_alt': "Bootstrap icon",
-        },
-        {
-            'name': "Jinja 2",
-            'img_url': url_for('static', filename='img/skills/jinja2.png'),
-            'img_alt': "Jinja 2 icon",
-        },
-
     ]
     return skills
 
@@ -46,16 +35,5 @@ def skills_back() -> List[Dict]:
             'img_url': url_for('static', filename='img/skills/python.png'),
             'img_alt': "Python 3 icon",
         },
-        {
-            'name': "Flask",
-            'img_url': url_for('static', filename='img/skills/flask.png'),
-            'img_alt': "Python 3 icon",
-        },
-        {
-            'name': "Docker",
-            'img_url': url_for('static', filename='img/skills/docker.png'),
-            'img_alt': "Docker icon",
-        },
-
     ]
     return skills

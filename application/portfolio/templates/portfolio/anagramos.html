@@ -3,16 +3,21 @@
 
 {% block app_content %}
 
-    <title> Runner </title>
-
+    {% if title %}
+        <title> {{ title }} </title>
+    {% endif %}
     <div class="container">
         <div class="body-wrapper">
+            {% with project_name="Anagramos",
+                    app_page=url_for('anagramos_bp.anagramos') %}
+                {% include "project_header.html" %}
+            {% endwith %}
 
             <h3 class="center-text"> Description </h3>
             <div class="portfolio-project-description">
-                <p class="center-text"> Ce crawler simple permet de scraper des sites web pour récupérer des
-                    données </p>
+                <p class="center-text"> Permet de trouver tous les anagrames d'un mot dans une langue donné </p>
             </div>
+
 
             {% if skills_back %}
                 <h3 class="center-text"> Back-End </h3>
@@ -43,5 +48,4 @@
             {% endif %}
         </div>
     </div>
-
 {% endblock %}

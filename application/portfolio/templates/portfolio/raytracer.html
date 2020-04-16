@@ -11,38 +11,34 @@
                 {% include "project_header.html" %}
             {% endwith %}
             <h3 class="center-text"> Description </h3>
-            <p class="portfolio-project-description center-text"> Un raytracer réalisé from scratch en C++11 avec la SDL2 ainsi que
-                CMake </p>
-
+            <div class="portfolio-project-description">
+                <p class="center-text"> Un raytracer réalisé from scratch en C++11 avec la SDL2 ainsi que CMake </p>
+            </div>
             {% if skills_back %}
                 <h3 class="center-text"> Back-End </h3>
-                <div class="techno-utilise-backend">
-                    <div class="skills-parent">
-                        {% for skill in skills_back %}
-                            <div class="skill-children">
-                                <div class="skill-image-container">
-                                    <img class="skill-image" src="{{ skill.img_url }}" alt="{{ skill.img_alt }}">
-                                </div>
-                                <h4 class="skill-image-txt">{{ skill.name }}</h4>
+                <div class="skills-parent">
+                    {% for skill in skills_back %}
+                        <div class="skill-children">
+                            <div class="skill-image-container">
+                                <img class="skill-image" src="{{ skill.img_url }}" alt="{{ skill.img_alt }}">
                             </div>
-                        {% endfor %}
-                    </div>
+                            <h4 class="skill-image-txt">{{ skill.name }}</h4>
+                        </div>
+                    {% endfor %}
                 </div>
             {% endif %}
 
             {% if skills_front %}
                 <h3 class="center-text"> Front-End </h3>
-                <div class="techno-utilise-frontend">
-                    <div class="skills-parent">
-                        {% for skill in skills_front %}
-                            <div class="skill-children">
-                                <div class="skill-image-container">
-                                    <img class="skill-image" src="{{ skill.img_url }}" alt="{{ skill.img_alt }}">
-                                </div>
-                                <h4 class="skill-image-txt">{{ skill.name }}</h4>
+                <div class="skills-parent">
+                    {% for skill in skills_front %}
+                        <div class="skill-children">
+                            <div class="skill-image-container">
+                                <img class="skill-image" src="{{ skill.img_url }}" alt="{{ skill.img_alt }}">
                             </div>
-                        {% endfor %}
-                    </div>
+                            <h4 class="skill-image-txt">{{ skill.name }}</h4>
+                        </div>
+                    {% endfor %}
                 </div>
             {% endif %}
         </div>
