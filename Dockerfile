@@ -18,7 +18,7 @@ RUN venv/bin/pip install gunicorn
 COPY application application
 
 # Copy des scripts de migration de DB
-COPY migrations migrations
+# COPY migrations migrations
 
 # Copy des scripts a la racine de l'image
 COPY VahenWeb.py configuration.py boot.sh ./

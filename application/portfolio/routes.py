@@ -2,7 +2,7 @@ from flask import render_template, make_response
 
 from application.portfolio import data, portfolio_bp
 from application.portfolio.data_folder import data_site_perso, data_pacman3d, data_webcrawler, data_plateforme_game, data_runner, \
-    data_acronymos, data_anagramos, data_string_to_leet
+    data_acronymos, data_anagramos, data_string_to_leet, data_raytracer
 
 
 ############################################
@@ -52,8 +52,8 @@ def portfolio_webcrawler():
 
 @portfolio_bp.route('/raytracer')
 def portfolio_raytracer():
-    skills_back = data_webcrawler.skills_back()
-    skills_front = data_webcrawler.skills_front()
+    skills_back = data_raytracer.skills_back()
+    skills_front = data_raytracer.skills_front()
     return make_response(render_template(
         template_name_or_list='./portfolio/raytracer.html',
         title="Raytracer",
