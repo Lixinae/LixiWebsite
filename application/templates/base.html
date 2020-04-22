@@ -4,20 +4,19 @@
     lang="en"
 {% endblock %}
 {% block head %}
-    {{ super() }}
+    {% block favicon %}
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+    {% endblock %}
 
-    {#    {% block favicon %}<!-- default favicon could go here -->{% endblock %}#}
     {% block scripts %}
-        {{ super() }}
-        {#        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>#}
-        {#        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>#}
-        {#        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>#}
+        <script src="{{ url_for('static', filename='scripts/libs/jquery-3.4.1.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='scripts/libs/popper_min_js_1_14_0.js') }}"></script>
+        <script src="{{ url_for('static', filename='scripts/libs/bootstrap_4_1_0.js') }}"></script>
     {% endblock %}
     {% block styles %}
-        {{ super() }}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/libs/bootstrap_4.0.0_min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     {% endblock %}
-
 
 {% endblock %}
 
