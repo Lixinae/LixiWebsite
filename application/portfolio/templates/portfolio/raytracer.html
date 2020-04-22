@@ -12,7 +12,8 @@
             {% endwith %}
             <h3 class="center-text"> Description </h3>
             <div class="portfolio-project-description">
-                <p class="center-text"> Un raytracer réalisé from scratch en C++11 avec la SDL2 ainsi que CMake </p>
+                <p> Un raytracer réalisé from scratch en C++11 avec la SDL2 ainsi que CMake </p>
+                <p> Projet réalisé à 3 personnes </p>
             </div>
             {% if skills_back %}
                 <h3 class="center-text"> Back-End </h3>
@@ -37,6 +38,20 @@
                                 <img class="skill-image" src="{{ skill.img_url }}" alt="{{ skill.img_alt }}">
                             </div>
                             <h4 class="skill-image-txt">{{ skill.name }}</h4>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if screenshots_gallery %}
+                <h3 class="center-text"> Screenshots </h3>
+                <div class="screenshots-parent">
+                    {% for screenshot in screenshots_gallery %}
+                        <div class="screenshot-children">
+                            <div class="screenshot-image-container">
+                                <img class="screenshot-image" src="{{ screenshot.img_url }}" alt="{{ screenshot.img_alt }}">
+                            </div>
+                            <h4 class="screenshot-image-txt">{{ screenshot.name }}</h4>
                         </div>
                     {% endfor %}
                 </div>
