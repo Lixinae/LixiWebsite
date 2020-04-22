@@ -24,9 +24,8 @@
                         <li>JSON for C++ : Pour gérer le format json facilement</li>
                     </ul>
                 </div>
-
                 <p> Le projet utilise également python pour la génération du niveau au format json. </p>
-                <p> Equipe de 3 développeurs </p>
+                <p> Projet réalisé en équipe de 3 développeurs </p>
                 <p> Un executable est disponible sur le lien suivant :
                     <a href="https://github.com/Vahen/PacMan3D/blob/master/Pacman3DLivrableWindows.zip"> Pacman3D Windows </a>.
                 </p>
@@ -46,15 +45,15 @@
                 </div>
             {% endif %}
 
-            {% if skills_front %}
-                <h3 class="center-text"> Front-End </h3>
-                <div class="skills-parent">
-                    {% for skill in skills_front %}
-                        <div class="skill-children">
-                            <div class="skill-image-container">
-                                <img class="skill-image" src="{{ skill.img_url }}" alt="{{ skill.img_alt }}">
+            {% if screenshots_gallery %}
+                <h3 class="center-text"> Screenshots </h3>
+                <div class="screenshots-parent">
+                    {% for screenshot in screenshots_gallery %}
+                        <div class="screenshot-children">
+                            <div class="screenshot-image-container">
+                                <img class="screenshot-image" src="{{ screenshot.img_url }}" alt="{{ screenshot.img_alt }}">
                             </div>
-                            <h4 class="skill-image-txt">{{ skill.name }}</h4>
+                            <h4 class="screenshot-image-txt">{{ screenshot.name }}</h4>
                         </div>
                     {% endfor %}
                 </div>
