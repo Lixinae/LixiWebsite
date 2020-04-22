@@ -14,7 +14,7 @@ def skills_front() -> List[Dict]:
 def skills_back() -> List[Dict]:
     skills = [
         {
-            'name': "C++ 14",
+            'name': "C++ 11",
             'img_url': url_for('static', filename='img/skills/cpp.png'),
             'img_alt': "C++ icon",
         },

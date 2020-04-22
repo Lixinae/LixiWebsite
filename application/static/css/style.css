@@ -545,6 +545,15 @@
 /*******          portfolio        ******/
 /****************************************/
 
+.portfolio-project-description {
+    margin: auto;
+    padding-left: 15%;
+}
+
+.biblio-list-wrapper {
+    margin: auto;
+    width: 90%;
+}
 
 /****************************************/
 /*******         Webcrawler        ******/

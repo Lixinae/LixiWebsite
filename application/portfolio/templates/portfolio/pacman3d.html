@@ -7,17 +7,29 @@
     <div class="container">
         <div class="body-wrapper">
             {% with project_name="Pacman3D",
-                    project_description="Un pacman C++11 avec la SDL1.2 et OpengGL3+ et CMake",
+                    project_description="Un pacman C++11 avec la SDL1.2, OpengGL3+ et CMake",
                     project_link="https://github.com/Vahen/PacMan3D" %}
                 {% include "project_header.html" %}
             {% endwith %}
 
             <h3 class="center-text"> Description </h3>
             <div class="portfolio-project-description">
-                <p class="center-text"> Le but de ce projet était de developper un pacman en 3D à l'aide d'openGL 3 </p>
-                <p class="center-text"> Equipe de 3 développeur </p>
-                <p class="center-text"> Un executable est disponible sur le lien suivant : <a
-                        href="https://github.com/Vahen/PacMan3D/blob/master/Pacman3DLivrableWindows.zip"> Pacman3D Windows </a></p>
+                <p> Le but de ce projet était de developper un pacman en 3D
+                    à l'aide d'openGL 3 et de la SDL 1.2, en C++ 11. </p>
+                <p> Il utilise les bibliothèques suivantes en plus d'openGL et la SDL: </p>
+                <div class="biblio-list-wrapper">
+                    <ul>
+                        <li>Assimp : Pour l'import des modèles 3D</li>
+                        <li>Freetype : Pour le texte affiché en jeu</li>
+                        <li>JSON for C++ : Pour gérer le format json facilement</li>
+                    </ul>
+                </div>
+
+                <p> Le projet utilise également python pour la génération du niveau au format json. </p>
+                <p> Equipe de 3 développeurs </p>
+                <p> Un executable est disponible sur le lien suivant :
+                    <a href="https://github.com/Vahen/PacMan3D/blob/master/Pacman3DLivrableWindows.zip"> Pacman3D Windows </a>.
+                </p>
             </div>
 
             {% if skills_back %}
