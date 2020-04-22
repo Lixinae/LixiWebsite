@@ -1,0 +1,53 @@
+<!-- Permet d'hériter de base.html -->
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    {% if title %}
+        <title> {{ title }} </title>
+    {% endif %}
+    <div class="container">
+        <div class="body-wrapper">
+            {% with project_name=title %}
+                {% include "project_header.html" %}
+            {% endwith %}
+
+            <h3 class="center-text"> Description </h3>
+            <div class="portfolio-project-description">
+                <p> Le but de ce projet était de developper un 2048 en Java 8 à l'aide la bibliothèque Swing </p>
+                <p> Un executable est disponible à cette adresse : <a href="https://www.dropbox.com/s/rr4vy85bdd3qv1j/2048.jar?dl=0">
+                    2048 </a></p>
+                <p> Projet solo </p>
+            </div>
+
+
+            {% if skills_back %}
+                <h3 class="center-text"> Back-End </h3>
+                <div class="skills-parent">
+                    {% for skill in skills_back %}
+                        <div class="skill-children">
+                            <div class="skill-image-container">
+                                <img class="skill-image" src="{{ skill.img_url }}" alt="{{ skill.img_alt }}">
+                            </div>
+                            <h4 class="skill-image-txt">{{ skill.name }}</h4>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if screenshots_gallery %}
+                <h3 class="center-text"> Screenshots </h3>
+                <div class="screenshots-parent">
+                    {% for screenshot in screenshots_gallery %}
+                        <div class="screenshot-children">
+                            <div class="screenshot-image-container">
+                                <img class="screenshot-image non-etirable" src="{{ screenshot.img_url }}" alt="{{ screenshot.img_alt }}">
+                            </div>
+                            <h4 class="screenshot-image-txt">{{ screenshot.name }}</h4>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

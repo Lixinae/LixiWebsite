@@ -2,7 +2,7 @@ from flask import render_template, make_response
 
 from application.portfolio import data, portfolio_bp
 from application.portfolio.data_folder import data_site_perso, data_pacman3d, data_webcrawler, data_plateforme_game, data_runner, \
-    data_acronymos, data_anagramos, data_string_to_leet, data_raytracer
+    data_acronymos, data_anagramos, data_string_to_leet, data_raytracer, data_2048
 
 
 ############################################
@@ -31,12 +31,13 @@ def portfolio_site_perso():
 @portfolio_bp.route('/pacman3d')
 def portfolio_pacman3d():
     skills_back = data_pacman3d.skills_back()
-    skills_front = data_pacman3d.skills_front()
+    screenshots_gallery = data_pacman3d.screenshots()
     return make_response(render_template(
         template_name_or_list='./portfolio/pacman3d.html',
         title="Pacmand 3D",
         skills_back=skills_back,
-        skills_front=skills_front), 200)
+        screenshots_gallery=screenshots_gallery
+    ), 200)
 
 
 @portfolio_bp.route('/webcrawler')
@@ -53,12 +54,12 @@ def portfolio_webcrawler():
 @portfolio_bp.route('/raytracer')
 def portfolio_raytracer():
     skills_back = data_raytracer.skills_back()
-    skills_front = data_raytracer.skills_front()
+    screenshots_gallery = data_raytracer.screenshots()
     return make_response(render_template(
         template_name_or_list='./portfolio/raytracer.html',
         title="Raytracer",
         skills_back=skills_back,
-        skills_front=skills_front), 200)
+        screenshots_gallery=screenshots_gallery), 200)
 
 
 @portfolio_bp.route('/plateforme_game')
@@ -114,3 +115,14 @@ def portfolio_string_to_leet():
         title="String to leet",
         skills_back=skills_back,
         skills_front=skills_front), 200)
+
+
+@portfolio_bp.route('/2048')
+def portfolio_2048():
+    skills_back = data_2048.skills_back()
+    screenshots_gallery = data_2048.screenshots()
+    return make_response(render_template(
+        template_name_or_list='./portfolio/2048.html',
+        title="2048",
+        skills_back=skills_back,
+        screenshots_gallery=screenshots_gallery), 200)

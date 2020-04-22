@@ -540,6 +540,40 @@
     background-color: #F8F8F8;
 }
 
+/****************************************/
+/*******    Screenshots gallery    ******/
+/****************************************/
+
+.screenshots-parent {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.screenshot-image-container {
+    text-align: center;
+}
+
+.screenshot-children {
+    width: 50%;
+}
+
+.screenshot-image {
+    width: 550px;
+    height: 440px;
+}
+
+.non-etirable {
+    width: auto;
+    height: auto;
+}
+
+.screenshot-image-txt {
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
 
 /****************************************/
 /*******          portfolio        ******/

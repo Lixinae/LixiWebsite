@@ -72,6 +72,13 @@ def projects() -> List[Dict]:
             'miniature': url_for('static', filename='img/miniature/stringToLeet.png'),
             'url': url_for('portfolio_bp.portfolio_string_to_leet')
         },
+        {
+            'name': "2048",
+            'outils': "Java 8, Swing",
+            'quick_description': "Un 2048 réalisé en Java 8 avec spring",
+            'miniature': url_for('static', filename='img/miniature/2048.png'),
+            'url': url_for('portfolio_bp.portfolio_2048')
+        },
     ]
     return projects_m
 
