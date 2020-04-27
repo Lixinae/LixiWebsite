@@ -3,16 +3,54 @@
 
 {% block app_content %}
 
-    <title> Acronymos </title>
+    <title> Anagramos </title>
 
     <div class="container">
         <div class="body-wrapper">
             <div class="anagramos">
                 <h1 class="center-text"> Anagramos </h1>
-                <p class="center-text app-description">
-                    Todo -> Description de l'application
-                    Todo -> Formulaire de l'application
-                </p>
+                <div class="center-text app-description">
+                    <p> Permet de trouver tous les anagrames d'un mot dans une langue donné. </p>
+                    <p> Il ne prend pas compte la casse.</p>
+                </div>
+                <div class="anagramos-request-form">
+                    <form method="POST" action="{{ url_for("anagramos_bp.anagramos") }}">
+                        <div class="form-group">
+                            <label for="word-box">Word</label>
+                            <input type="text"
+                                   name="word"
+                                   class="form-radio"
+                                   id="word-box"
+                                   pattern="(?i)^(?:(?![×Þß÷þø])[-'0-9a-zÀ-ÿ])+$"
+                                   placeholder="Enter word..." required>
+                        </div>
+                        <div class="form-group">
+
+                            <label for="language-select">Select language
+                                <select name="language-select">
+                                    <option value="French">French</option>
+                                    <option value="English">English</option>
+                                </select>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-default submit-button">Submit</button>
+                    </form>
+                </div>
+
+                <div class="anagramos-results">
+                    {% if results %}
+                        <h2>Anagrames de {{ word }}</h2>
+                        <div class="results-list">
+                            {% for result in results %}
+                                <div class="result-wrapper">
+                                    <p>{{ result }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p> No anagrames found for word : {{ word }}</p>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
