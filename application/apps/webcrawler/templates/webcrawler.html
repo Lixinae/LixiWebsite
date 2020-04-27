@@ -10,7 +10,8 @@
             <div class="webcrawler">
                 <h1 class="center-text"> WebCrawler </h1>
                 <p class="center-text app-description">
-                    Cette application
+                    Cette application permet de crawler un site donné et d'y extraire des données, tel que des pdf, images etc...
+                    Elle permet également de télécharger ces éléments une fois qu'on a les liens.
                 </p>
                 <div class="webcrawler-request-form">
                     <form method="POST" action="{{ url_for("webcrawler_bp.webcrawler") }}">
@@ -52,8 +53,8 @@
 
 
                 <div class="webcrawler-results">
-                    <h2>List of files</h2>
                     {% if results %}
+                        <h2>List of files</h2>
                         <button onclick="displayResults()">Display results</button>
                         <div class="webcrawler-results-form hidden">
                             <form role="form" method="POST" action="{{ url_for("webcrawler_bp.webcrawler_download") }}">
@@ -68,7 +69,9 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        <p> No file were found on link : {{ url }}</p>
+                        {% if url %}
+                            <p> No file were found on link : {{ url }}</p>
+                        {% endif %}
                     {% endif %}
                 </div>
 
