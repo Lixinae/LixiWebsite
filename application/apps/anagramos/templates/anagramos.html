@@ -48,7 +48,9 @@
                             {% endfor %}
                         </div>
                     {% else %}
-                        <p> No anagrames found for word : {{ word }}</p>
+                        {% if word %}
+                            <p> No anagrames found for word : {{ word }}</p>
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>
