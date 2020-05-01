@@ -11,6 +11,7 @@ a {
 }
 
 a:hover {
+    color: #0eafd2;
     text-decoration: none;
 }
 
@@ -24,16 +25,17 @@ a:hover {
 
 .icone-project-header:hover {
     filter: contrast(0%);
+    transition: 0.25s;
 }
 
 .icone-project-header {
-    width: 80px;
-    height: 80px;
+    width: auto;
+    max-height: 80px;
 }
 
 .icone img {
-    width: 80px;
-    height: 80px;
+    width: auto;
+    max-height: 80px;
 }
 
 /****************************************/
@@ -49,6 +51,7 @@ a:hover {
     padding-left: calc(100vw - 100%);
     font-family: Calibri, serif;
     font-size: large;
+    border-bottom: solid #0eafd2 2px;
 }
 
 /*Override de la navbar*/
@@ -57,7 +60,7 @@ a:hover {
 }
 
 .navbar {
-    background-color: #878985;
+    background-color: #b6b6b6;
 }
 
 .navbar .navbar-brand {
@@ -69,6 +72,7 @@ a:hover {
 .navbar .navbar-brand:hover,
 .navbar .navbar-brand:focus {
     color: #0eafd2;
+    transition: 0.25s;
 }
 
 .navbar .navbar-text {
@@ -92,8 +96,8 @@ a:hover {
 
 
 .navbar .navbar-nav .dropdown-menu {
-    background-color: #146eaa;
-    border-color: #146eaa;
+    background-color: #0eafd2;
+    border-color: #0eafd2;
 }
 
 .navbar .navbar-nav .dropdown-menu .dropdown-item {
@@ -104,11 +108,11 @@ a:hover {
 .navbar .navbar-nav .dropdown-menu .dropdown-item:focus,
 .navbar .navbar-nav .dropdown-menu .dropdown-item.active {
     color: #333333;
-    background-color: #146eaa;
+    background-color: #0eafd2;
 }
 
 .navbar .navbar-nav .dropdown-menu .dropdown-divider {
-    border-top-color: #146eaa;
+    border-top-color: #0eafd2;
 }
 
 .navbar .navbar-nav .nav-item.active .nav-link,
@@ -118,16 +122,16 @@ a:hover {
 .navbar .navbar-nav .nav-item.show .nav-link:hover,
 .navbar .navbar-nav .nav-item.show .nav-link:focus {
     color: #333333;
-    background-color: #146eaa;
+    background-color: #0eafd2;
 }
 
 .navbar .navbar-toggle {
-    border-color: #146eaa;
+    border-color: #0eafd2;
 }
 
 .navbar .navbar-toggle:hover,
 .navbar .navbar-toggle:focus {
-    background-color: #146eaa;
+    background-color: #0eafd2;
 }
 
 .navbar .navbar-toggle .navbar-toggler-icon {
@@ -159,7 +163,7 @@ a:hover {
 
     .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item.active {
         color: #333333;
-        background-color: #146eaa;
+        background-color: #0eafd2;
     }
 }
 
@@ -175,7 +179,7 @@ a:hover {
 
     .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item.active {
         color: #333333;
-        background-color: #146eaa;
+        background-color: #0eafd2;
     }
 }
 
@@ -191,7 +195,7 @@ a:hover {
 
     .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item.active {
         color: #333333;
-        background-color: #146eaa;
+        background-color: #0eafd2;
     }
 }
 
@@ -207,7 +211,7 @@ a:hover {
 
     .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item.active {
         color: #333333;
-        background-color: #146eaa;
+        background-color: #0eafd2;
     }
 }
 
@@ -222,7 +226,7 @@ a:hover {
 
 .navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item.active {
     color: #333333;
-    background-color: #146eaa;
+    background-color: #0eafd2;
 }
 
 /* Ajout de l'icone pour le toggle sur petit écran */
@@ -257,7 +261,7 @@ a:hover {
 }
 
 /*.menu-element:active {*/
-/*    background-color: #146eaa;*/
+/*    background-color: #0eafd2;*/
 /*}*/
 /****************************************/
 /*******      DropDownMenu         ******/
@@ -277,7 +281,7 @@ a:hover {
     position: absolute;
     background-color: #CBCBCC;
     min-width: 160px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    /*box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);*/
     z-index: 1;
     border-radius: .25rem;
 }
@@ -312,12 +316,17 @@ a:hover {
 }
 
 .body-wrapper {
-    padding-top: 7.5%;
+    padding-top: 8.5%;
 }
 
 /****************************************/
 /*******           Index           ******/
 /****************************************/
+
+.presentation h1:first-child {
+    font-weight: bold;
+    color: #0eafd2;
+}
 
 /**************************/
 /*******   Skills    ******/
@@ -461,7 +470,7 @@ h2 {
 .card {
     width: 20rem;
     background-color: #F8F8F8;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid #b6b6b6;
 }
 
 .card-text {
@@ -475,12 +484,10 @@ h2 {
 }
 
 .card-img-top {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 250px;
-    max-height: 250px;
-    width: auto;
     height: auto;
+    width: 100%;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 }
 
 .card-body-link a {
@@ -489,6 +496,8 @@ h2 {
     text-decoration: none;
     display: block;
     background-color: #ddd;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 .card-body-link a:hover {
@@ -633,7 +642,7 @@ h2 {
 /****************************************/
 
 .footer-content {
-    background-color: #878985;
+    background-color: #b6b6b6;
     text-align: center;
 
 }
@@ -650,6 +659,9 @@ h2 {
 /*.isCollapsed {*/
 /*    flex-grow: .001;*/
 /*}*/
+
+/* Todo cacher le hover du menu sur mobile */
+
 /*****************************************************************/
 /***************        Smartphone Portrait      *****************/
 /*****************************************************************/
