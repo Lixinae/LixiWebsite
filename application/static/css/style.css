@@ -68,7 +68,7 @@ a:hover {
 
 .navbar .navbar-brand:hover,
 .navbar .navbar-brand:focus {
-    color: #146eaa;
+    color: #0eafd2;
 }
 
 .navbar .navbar-text {
@@ -253,6 +253,7 @@ a:hover {
 
 .menu-element:hover {
     background-color: #0eafd2;
+    transition-duration: 0.25s;
 }
 
 /*.menu-element:active {*/
@@ -271,7 +272,8 @@ a:hover {
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
     position: absolute;
     background-color: #CBCBCC;
     min-width: 160px;
@@ -281,7 +283,9 @@ a:hover {
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+    opacity: 1;
+    transition-duration: 0.2s;
+    visibility: visible;
 }
 
 .dropdown-content a {
@@ -295,6 +299,7 @@ a:hover {
 /*Override de la navbar*/
 .navbar .navbar-nav > .menu-element > .dropdown-content > a:hover {
     background-color: #0eafd2;
+    transition-duration: 0.25s;
 }
 
 /****************************************/
@@ -334,8 +339,8 @@ a:hover {
 }
 
 .skill-image {
-    width: 80px;
-    height: 80px;
+    width: auto;
+    max-height: 80px;
 }
 
 .skill-image-txt {
@@ -429,6 +434,13 @@ a:hover {
 /*******   Titres    ******/
 /**************************/
 
+.portfolio-index, .passions-index {
+    margin-top: 50px;
+}
+
+h2 {
+    margin-bottom: 25px;
+}
 
 /****************************************/
 /*******           Cards           ******/
