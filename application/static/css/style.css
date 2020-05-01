@@ -5,6 +5,15 @@
 /****************************************/
 /**********      Generic         ********/
 /****************************************/
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 .center-text {
     text-align: center;
 }
@@ -81,10 +90,6 @@
     margin: 0 0.25em;
 }
 
-.navbar .navbar-nav .nav-link:not(.disabled):hover,
-.navbar .navbar-nav .nav-link:not(.disabled):focus {
-    color: #333333;
-}
 
 .navbar .navbar-nav .dropdown-menu {
     background-color: #146eaa;
@@ -247,7 +252,7 @@
 }
 
 .menu-element:hover {
-    background-color: #146eaa;
+    background-color: #0eafd2;
 }
 
 /*.menu-element:active {*/
@@ -289,7 +294,7 @@
 
 /*Override de la navbar*/
 .navbar .navbar-nav > .menu-element > .dropdown-content > a:hover {
-    background-color: #146eaa;
+    background-color: #0eafd2;
 }
 
 /****************************************/
@@ -302,7 +307,7 @@
 }
 
 .body-wrapper {
-    padding-top: 5.5%;
+    padding-top: 7.5%;
 }
 
 /****************************************/
@@ -400,7 +405,7 @@
 }
 
 .icone-child:hover {
-    color: #0eb7da;
+    color: #0eafd2;
 }
 
 .icone-child:hover::before, .icone-child:hover::after {
@@ -409,14 +414,14 @@
 }
 
 .icone-child:hover::before {
-    border-top-color: #0eb7da;
-    border-right-color: #0eb7da;
+    border-top-color: #0eafd2;
+    border-right-color: #0eafd2;
     transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
 }
 
 .icone-child:hover::after {
-    border-bottom-color: #0eb7da;
-    border-left-color: #0eb7da;
+    border-bottom-color: #0eafd2;
+    border-left-color: #0eafd2;
     transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
 }
 
@@ -626,8 +631,7 @@
 /****************************************/
 
 .hidden {
-    display: none;
-!important;
+    display: none !important;
 }
 
 /* Todo voir comment faire l'animation du collapsed*/
