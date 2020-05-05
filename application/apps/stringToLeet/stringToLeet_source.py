@@ -1,4 +1,5 @@
 import random
+import unicodedata
 from typing import Dict
 
 
@@ -61,7 +62,30 @@ def string_to_leet(input_str: str) -> str:
     Sets up the dictionary and then returns the translated input string
     """
     dic = setup_leet_dictionary()
-    return process_input(input_str, dic)
+    # Todo -> Nettoyer la string d'input des accent
+    # https://stackoverflow.com/questions/517923/what-is-the-best-way-to-remove-accents-in-a-python-unicode-string
+    input_str = strip_accents(input_str)
+    return process_input(input_str.lower(), dic)
+
+
+def strip_accents(text):
+    """
+    Strip accents from input String.
+
+    :param text: The input string.
+    :type text: String.
+
+    :returns: The processed String.
+    :rtype: String.
+    """
+    # try:
+    #     text = unicode(text, 'utf-8')
+    # except (TypeError, NameError):  # unicode is a default on python 3
+    #     pass
+    text = unicodedata.normalize('NFD', text)
+    text = text.encode('ascii', 'ignore')
+    text = text.decode("utf-8")
+    return str(text)
 
 # if __name__ == '__main__':
 #     allPhrasesSaid = []
