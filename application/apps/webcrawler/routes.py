@@ -21,6 +21,8 @@ download_links = []
 # On ne pas écrire "List[Dict[str, str, bool]]" pour le typing -> Erreur au lancement
 # Parse le site web et récupère les liens
 def webcrawler_parse_website(base_url: str, domain: str, depth: int, extensions):  # -> List[Link]:
+    global download_links
+    download_links = []
     list_link = webcrawler_source.construct_tree_link(base_url, depth, download_links, domain, extensions)
     return webcrawler_toolbox.keep_unique_ordered(list_link)
 
@@ -31,6 +33,7 @@ def webcrawler():
     results = {}
     url = ""
     if request.method == "POST":
+        results = {}
         try:
             base_url = request.form['url']
             if not webcrawler_toolbox.link_check(base_url):

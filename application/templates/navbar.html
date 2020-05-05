@@ -22,16 +22,6 @@
                     </div>
                 </li>
                 <li class="dropdown menu-element nav-item">
-                    <a href="{{ url_for('passions_bp.passions') }}" class="nav-link">Passions
-                        <span class="caret mobile-hidden"></span>
-                    </a>
-                    <div class="dropdown-content">
-                        {% for passions in passions_list() %}
-                            <a href={{ passions.url }}>{{ passions.name }}</a>
-                        {% endfor %}
-                    </div>
-                </li>
-                <li class="dropdown menu-element nav-item">
                     <a href="{{ url_for('apps_bp.apps') }}" class="nav-link">Applications
                         <span class="caret mobile-hidden"></span>
                     </a>
@@ -41,11 +31,21 @@
                         {% endfor %}
                     </div>
                 </li>
+
+                <li class="dropdown menu-element nav-item">
+                    <a href="{{ url_for('passions_bp.passions') }}" class="nav-link">Passions
+                        <span class="caret mobile-hidden"></span>
+                    </a>
+                    <div class="dropdown-content">
+                        {% for passions in passions_list() %}
+                            <a href={{ passions.url }}>{{ passions.name }}</a>
+                        {% endfor %}
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a href="{{ url_for('static',filename='pdf/CV_PicoChristopher_light.pdf') }}"
                        class="menu-element nav-link">CV</a>
                 </li>
-
 
                 {#                <li class="menu-element"><a href="{{ url_for('contact_bp.contact') }}">Contact</a></li>#}
             </ul>

@@ -33,14 +33,14 @@ def projects() -> List[Dict]:
             'url': url_for('portfolio_bp.portfolio_pacman3d'),
             'type': "Universitaire"
         },
-        {
-            'name': "Runner",
-            'outils': "Unity 3D, C#, Python 3",
-            'quick_description': "",
-            'miniature': url_for('static', filename='img/miniature/runner_miniature.png'),
-            'url': url_for('portfolio_bp.portfolio_runner'),
-            'type': "Entreprise - Mission Freelance"
-        },
+        # {
+        #     'name': "Runner",
+        #     'outils': "Unity 3D, C#, Python 3",
+        #     'quick_description': "",
+        #     'miniature': url_for('static', filename='img/miniature/runner_miniature.png'),
+        #     'url': url_for('portfolio_bp.portfolio_runner'),
+        #     'type': "Entreprise - Mission Freelance"
+        # },
         {
             'name': "Plateforme Game",
             'outils': "Unity 3D, C#",
