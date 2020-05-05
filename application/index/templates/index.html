@@ -14,14 +14,6 @@
             <div class="center-text">
                 <div class="icone-container">
                     <div class="icone-child-wrapper">
-                        {#                        <div class="icone-child">#}
-                        {#                            <a href="https://www.linkedin.com/in/christopher-pico-vahen/" target="_blank">#}
-                        {#                                <img src="{{ url_for('static',filename='img/icones/icone_linkedin_80.png') }}" class="icone"#}
-                        {#                                     alt="icone_linkedin"/>#}
-                        {#                            </a>#}
-                        {#                            <p class="icone-text">christopher-pico-vahen</p>#}
-                        {#                        </div>#}
-                        {#                        <button onclick="location.href='https://www.linkedin.com/in/christopher-pico-vahen/'" class="icone-child">#}
                         <a href="https://www.linkedin.com/in/christopher-pico-vahen/">
                             <div class="icone-child">
                                 <img src="{{ url_for('static',filename='img/icones/icone_linkedin_80.png') }}" class="icone"
@@ -74,7 +66,6 @@
                     <h2>Projets principaux</h2>
                 </div>
                 <div class="cards-wrapper">
-                    <!-- Boucle avec Jinja -->
                     {% for project in projectList %}
                         <div class="card-wrapper">
                             <div class="card">
