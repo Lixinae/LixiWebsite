@@ -1,4 +1,4 @@
-from flask import render_template, make_response, request
+from flask import render_template, make_response, request, jsonify
 
 from application.apps.anagramos import anagramos_bp, anagramos_source
 from application.apps.common_data import apps_toolbox
@@ -10,7 +10,7 @@ import concurrent.futures
 #                Anagramos                 #
 ############################################
 
-@anagramos_bp.route('/anagramos', methods=['GET', 'POST'])
+@anagramos_bp.route('/', methods=['GET', 'POST'])
 def anagramos():
     if request.method == "POST":
         word = request.form['word']
@@ -27,6 +27,7 @@ def anagramos():
         with concurrent.futures.ThreadPoolExecutor() as executor:
             future = executor.submit(anagramos_source.find_anagrammes, word, words)
             output_word_list = future.result()
-            return make_response(render_template('anagramos.html', title="Anagramos", results=output_word_list, word=word), 200)
+        if output_word_list:
+            return jsonify({"results": output_word_list})
     else:
         return make_response(render_template('anagramos.html', title="Anagramos"), 200)

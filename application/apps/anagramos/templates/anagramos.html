@@ -14,7 +14,7 @@
                     <p> Il ne prend pas compte la casse.</p>
                 </div>
                 <div class="anagramos-request-form">
-                    <form method="POST" action="{{ url_for("anagramos_bp.anagramos") }}">
+                    <form method="POST" action="{{ url_for("anagramos_bp.anagramos") }}" id="anagramos_post_form">
                         <div class="form-group">
                             <label for="word-box">Word</label>
                             <input type="text"
@@ -36,27 +36,14 @@
                         <button type="submit" class="btn btn-default submit-button">Submit</button>
                     </form>
                 </div>
-
-                <div class="anagramos-results">
-                    {% if results %}
-                        <h2>Anagrames de {{ word }}</h2>
-                        <div class="results-list">
-                            {% for result in results %}
-                                <div class="result-wrapper">
-                                    <p>{{ result }}</p>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {% if word %}
-                            <p> No anagrames found for word : {{ word }}</p>
-                        {% endif %}
-                    {% endif %}
+                <div class="anagramos-results hidden">
+                    <div class="anagramos-results-list">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    {#  Les scripts sont ici pour être chargé à la fin  #}
-    {#    <script src="{{ url_for('static', filename='scripts/jquery-3.4.1.min.js') }}"></script>#}
-    {#    <script src="{{ url_for('static', filename='scripts/webcrawlerScript.js') }}"></script>#}
+    {% assets "anagramos_js" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
 {% endblock %}
