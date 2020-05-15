@@ -42,7 +42,7 @@ class Link:
         return self._url
 
     def as_json(self):
-        return {'url': self._url, 'name': self._name, 'isVisited': self._isVisited}
+        return {'url': self._url, 'name': self._name}
 
     def is_img(self) -> bool:
         return self.type_link == LinkEnum.Img

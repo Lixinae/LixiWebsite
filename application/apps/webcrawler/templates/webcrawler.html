@@ -14,7 +14,7 @@
                     Elle permet également de télécharger ces éléments une fois qu'on a les liens.
                 </p>
                 <div class="webcrawler-request-form">
-                    <form method="POST" action="{{ url_for("webcrawler_bp.webcrawler") }}">
+                    <form method="POST" action="{{ url_for("webcrawler_bp.webcrawler") }}" id="webcrawler_post_form">
                         <div class="form-group">
                             <label for="url-box">Url :</label>
                             <input type="text"
@@ -51,34 +51,12 @@
                     </form>
                 </div>
 
-
-                <div class="webcrawler-results">
-                    {% if results %}
-                        <h2>List of files</h2>
-                        <button onclick="displayResults()">Display results</button>
-                        <div class="webcrawler-results-form hidden">
-                            <form role="form" method="POST" action="{{ url_for("webcrawler_bp.webcrawler_download") }}">
-                                <button type="submit" class="btn btn-default submit-button">Download all files as zip</button>
-                            </form>
-                        </div>
-                        <div class="webcrawler-results-list hidden">
-                            {% for result in results %}
-                                <div class="webcrawler-result-wrapper">
-                                    <a href="{{ result.get_url() }}">{{ result.get_name() }}</a>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {% if url %}
-                            <p> No file were found on link : {{ url }}</p>
-                        {% endif %}
-                    {% endif %}
-                </div>
+                {% include "webcrawler_response.html" %}
 
             </div>
         </div>
     </div>
-    {#  Les scripts sont ici pour être chargé à la fin  #}
-    <script src="{{ url_for('static', filename='scripts/jquery-3.4.1.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='scripts/webcrawlerScript.js') }}"></script>
+    {% assets "webcrawler_js" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
 {% endblock %}
