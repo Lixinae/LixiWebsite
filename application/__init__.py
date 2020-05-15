@@ -1,10 +1,10 @@
 from flask import Flask
 # from flask_migrate import Migrate
 # from flask_sqlalchemy import SQLAlchemy
-# from flask_bootstrap import Bootstrap
 from flask_bootstrap import Bootstrap
-
+from flask_assets import Environment
 from configuration import DevelopmentConfig
+from application.assets import create_static_bundles_assets
 
 # db = SQLAlchemy()
 # migrate = Migrate()
@@ -81,6 +81,8 @@ def create_app(config_class=DevelopmentConfig):
     bootstrap.init_app(app)
     blueprint_registrations(app)
     add_functions_to_jinja2(app)
+    assets_from_env = Environment(app)
+    create_static_bundles_assets(assets_from_env)
     return app
 
 # Ce from est ici pour éviter les inclusion circulaire

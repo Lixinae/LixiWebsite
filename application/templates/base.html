@@ -9,13 +9,14 @@
     {% endblock %}
 
     {% block scripts %}
-        <script src="{{ url_for('static', filename='scripts/libs/jquery-3.4.1.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='scripts/libs/popper_min_js_1_14_0.js') }}"></script>
-        <script src="{{ url_for('static', filename='scripts/libs/bootstrap_4_1_0.js') }}"></script>
+        {% assets "libs_js" %}
+            <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
     {% endblock %}
     {% block styles %}
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/libs/bootstrap_4.0.0_min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        {% assets "home_css" %}
+            <link rel="stylesheet" href="{{ ASSET_URL }}"/>
+        {% endassets %}
     {% endblock %}
 
 {% endblock %}
