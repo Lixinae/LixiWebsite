@@ -12,6 +12,8 @@ $("#webcrawler_post_form").submit(function (event) {
                 // Todo -> eventuellement rendre lien cliquable -> Rajouter un a href ne marche pas direct pour whatever reason
                 webcrawler_results.html("<p> No file were found on link : " + url + "</p>");
             } else {
+                // Reset de la liste
+                $(".webcrawler-results-list").html("");
                 $.each(response.results, function (i, result) {
                     let results_html = '<div class="webcrawler-result-wrapper">' +
                         '<a href=' + result.url + '>' + result.name + '</a>' +
@@ -22,7 +24,7 @@ $("#webcrawler_post_form").submit(function (event) {
         })
         .fail(function () {
             webcrawler_results.toggleClass("hidden");
-            webcrawler_results.text("{{ _('Error: Could not contact server.') }}");
+            webcrawler_results.text("Error: Could not contact server");
         });
 });
 

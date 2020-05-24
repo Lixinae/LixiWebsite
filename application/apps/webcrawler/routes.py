@@ -1,7 +1,10 @@
 import concurrent.futures
 import requests
 from flask import render_template, make_response, request, send_file, after_this_request, jsonify
+
+from application import app
 from application.apps.webcrawler import webcrawler_bp, webcrawler_source, webcrawler_toolbox
+import json
 
 # Necessaire pour avoir les info au moment du submit
 download_links = []
@@ -23,26 +26,32 @@ download_links = []
 def webcrawler_parse_website(base_url: str, domain: str, depth: int, extensions):  # -> List[Link]:
     global download_links
     download_links = []
+    app.logger.debug("Starting crawling")
     list_link = webcrawler_source.construct_tree_link(base_url, depth, download_links, domain, extensions)
-    return webcrawler_toolbox.keep_unique_ordered(list_link)
+    unique_ordered_links = webcrawler_toolbox.keep_unique_ordered(list_link)
+    app.logger.debug("End of crawling : list of links : %s", unique_ordered_links)
+    return unique_ordered_links
 
 
 @webcrawler_bp.route("/", methods=['GET', 'POST'])
 def webcrawler():
     errors = []
+    webcrawler_html = "webcrawler.html"
     if request.method == "POST":
         results = {}
+        unable_to_get_url = "Unable to get URL. Please make sure it's valid and try again."
         try:
             base_url = request.form['url']
             if not webcrawler_toolbox.link_check(base_url):
                 errors.append(
-                    "Unable to get URL. Please make sure it's valid and try again."
+                    unable_to_get_url
                 )
-                return make_response(render_template("webcrawler.html", errors=errors), 200)
+                return make_response(render_template(webcrawler_html, errors=errors), 200)
             r = requests.get(base_url)
         except:
-            errors.append("Unable to get URL. Please make sure it's valid and try again.")
-            return make_response(render_template("webcrawler.html", errors=errors), 200)
+            errors.append(unable_to_get_url)
+            app.logger.error(unable_to_get_url)
+            return make_response(render_template(webcrawler_html, errors=errors), 200)
         if r:
             domain = base_url.split("/")[2]
             extensions_string = request.form['extensions']
@@ -54,7 +63,7 @@ def webcrawler():
             # Ne devrait jamais arriver
             if depth <= 0:
                 errors.append("Received depth is < or = to 0 -> No crawling")
-                return make_response(render_template("webcrawler.html", errors=errors), 200)
+                return make_response(render_template(webcrawler_html, errors=errors), 200)
             # Afin de ne pas paralyser le serveur, on fera la recolte des liens dans un thread à part
             with concurrent.futures.ThreadPoolExecutor() as executor:
                 future = executor.submit(webcrawler_parse_website, base_url, domain, depth, extensions)
@@ -62,8 +71,10 @@ def webcrawler():
                 global download_links
                 download_links = results
         if results:
-            return jsonify({"results": [r.as_json() for r in results]})
-    return make_response(render_template("webcrawler.html"), 200)
+            result_as_list_json = [r.as_json() for r in results]
+            app.logger.debug("Return results : %s", "".join([json.dumps(res) for res in result_as_list_json]))
+            return jsonify({"results": result_as_list_json})
+    return make_response(render_template(webcrawler_html), 200)
 
 
 def webcrawler_download_annexe(download_folder: str):
@@ -80,7 +91,9 @@ def webcrawler_download():
 
         @after_this_request
         def remove_file(response):
+            app.logger.debug("Removing temporary folder : %s", download_folder)
             webcrawler_toolbox.remove_directory_and_all_files_in(download_folder)
             return response
 
+        app.logger.debug("Send zip file folder : %s", "files.zip")
         return send_file(memory_file, attachment_filename='files.zip', as_attachment=True)
