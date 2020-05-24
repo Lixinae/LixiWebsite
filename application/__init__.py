@@ -8,6 +8,8 @@ from application.assets import create_static_bundles_assets
 
 # db = SQLAlchemy()
 # migrate = Migrate()
+from application.logger import setup_logging
+
 bootstrap = Bootstrap()
 
 
@@ -65,6 +67,12 @@ def add_functions_to_jinja2(current_app):
     current_app.jinja_env.globals.update(apps_list=data_apps.app_list)
 
 
+# Doit être global pour permettre d'avoir accès au logger dans l'application
+app = Flask(__name__,
+            static_folder='static',
+            template_folder='templates')
+
+
 # Creation de l'app
 def create_app(config_class=DevelopmentConfig):
     """
@@ -72,9 +80,6 @@ def create_app(config_class=DevelopmentConfig):
     :param config_class: Classe de configuration -> Default is DevelopmentConfig
     :return: The created app with all the information
     """
-    app = Flask(__name__,
-                static_folder='static',
-                template_folder='templates')
     app.config.from_object(config_class)
     # db.init_app(app)
     # migrate.init_app(app, db)
@@ -83,6 +88,8 @@ def create_app(config_class=DevelopmentConfig):
     add_functions_to_jinja2(app)
     assets_from_env = Environment(app)
     create_static_bundles_assets(assets_from_env)
+    setup_logging()
+    app.logger.debug("Init of app finished")
     return app
 
 # Ce from est ici pour éviter les inclusion circulaire
