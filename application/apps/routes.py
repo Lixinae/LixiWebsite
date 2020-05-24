@@ -9,6 +9,6 @@ from application.apps.data import app_list
 #                Apps                      #
 ############################################
 
-@apps_bp.route('/apps')
+@apps_bp.route('/')
 def apps():
     return make_response(render_template('apps.html', title="Apps", app_list=app_list()), 200)
