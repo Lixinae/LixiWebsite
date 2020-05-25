@@ -2,8 +2,7 @@ import concurrent.futures
 import requests
 from flask import render_template, make_response, request, send_file, after_this_request, jsonify
 
-from application import app
-from application.apps.webcrawler import webcrawler_bp, webcrawler_source, webcrawler_toolbox
+from application.apps.webcrawler import webcrawler_bp, webcrawler_source, webcrawler_toolbox, logger
 import json
 
 # Necessaire pour avoir les info au moment du submit
@@ -26,10 +25,10 @@ download_links = []
 def webcrawler_parse_website(base_url: str, domain: str, depth: int, extensions):  # -> List[Link]:
     global download_links
     download_links = []
-    app.logger.debug("Starting crawling")
+    logger.debug("Starting crawling")
     list_link = webcrawler_source.construct_tree_link(base_url, depth, download_links, domain, extensions)
     unique_ordered_links = webcrawler_toolbox.keep_unique_ordered(list_link)
-    app.logger.debug("End of crawling : list of links : %s", unique_ordered_links)
+    logger.debug("End of crawling : list of links : %s", unique_ordered_links)
     return unique_ordered_links
 
 
@@ -50,7 +49,7 @@ def webcrawler():
             r = requests.get(base_url)
         except:
             errors.append(unable_to_get_url)
-            app.logger.error(unable_to_get_url)
+            logger.error(unable_to_get_url)
             return make_response(render_template(webcrawler_html, errors=errors), 200)
         if r:
             domain = base_url.split("/")[2]
@@ -72,7 +71,7 @@ def webcrawler():
                 download_links = results
         if results:
             result_as_list_json = [r.as_json() for r in results]
-            app.logger.debug("Return results : %s", "".join([json.dumps(res) for res in result_as_list_json]))
+            logger.debug("Return results : %s", "".join([json.dumps(res) for res in result_as_list_json]))
             return jsonify({"results": result_as_list_json})
     return make_response(render_template(webcrawler_html), 200)
 
@@ -91,9 +90,9 @@ def webcrawler_download():
 
         @after_this_request
         def remove_file(response):
-            app.logger.debug("Removing temporary folder : %s", download_folder)
+            logger.debug("Removing temporary folder : %s", download_folder)
             webcrawler_toolbox.remove_directory_and_all_files_in(download_folder)
             return response
 
-        app.logger.debug("Send zip file folder : %s", "files.zip")
+        logger.debug("Send zip file folder : %s", "files.zip")
         return send_file(memory_file, attachment_filename='files.zip', as_attachment=True)

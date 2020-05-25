@@ -1,4 +1,7 @@
 from flask import Blueprint
+import logging
+
+logger = logging.getLogger('VahenWebsite.apps.webcrawler')
 
 webcrawler_bp = Blueprint('webcrawler_bp', __name__,
                           static_folder='static',

@@ -64,15 +64,55 @@ handlers:
 root:
   level: NOTSET
   handlers: [console]
-  propogate: yes
+  propagate: yes
 
 loggers:
-  <module>:
-    level: INFO
-    handlers: [console, info_file_handler, error_file_handler, critical_file_handler, debug_file_handler, warn_file_handler]
-    propogate: no
-
-  <module.x>:
+  # Logger principal
+  VahenWebsite:
     level: DEBUG
     handlers: [info_file_handler, error_file_handler, critical_file_handler, debug_file_handler, warn_file_handler]
-    propogate: yes
+    propagate: yes
+
+  ####### Loggers du module "Apps" #######
+
+  # Logger du module "apps"
+  VahenWebsite.apps:
+    level: INFO
+    handlers: [console, info_file_handler, error_file_handler, critical_file_handler, debug_file_handler, warn_file_handler]
+    propagate: no
+
+  # Logger du module webcrawler dans le module apps
+  VahenWebsite.apps.webcrawler:
+    level: DEBUG
+    handlers: [console, info_file_handler, error_file_handler, critical_file_handler, debug_file_handler, warn_file_handler]
+    propagate: yes
+
+  # Logger du module string to leet dans le module apps
+  VahenWebsite.apps.stringToLeet:
+    level: DEBUG
+    handlers: [console, info_file_handler, error_file_handler, critical_file_handler, debug_file_handler, warn_file_handler]
+    propagate: yes
+
+  # Logger du module webcrawler dans le module apps
+  VahenWebsite.apps.anagramos:
+    level: DEBUG
+    handlers: [console, info_file_handler, error_file_handler, critical_file_handler, debug_file_handler, warn_file_handler]
+    propagate: yes
+
+  ####### Loggers du module "Errors" #######
+  # Todo
+
+  ####### Loggers du module "Games" #######
+  # Todo
+
+  ####### Loggers du module "Index" #######
+  # Todo
+
+  ####### Loggers du module "Passions" #######
+  # Todo
+
+  ####### Loggers du module "Portfolio" #######
+  # Todo
+
+
+

@@ -1,5 +1,5 @@
 from application import create_app
-from configuration import DevelopmentConfig
+from application.configuration import DevelopmentConfig
 
 
 def create_server():

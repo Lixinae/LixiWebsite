@@ -3,7 +3,7 @@ from flask import Flask
 # from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from flask_assets import Environment
-from configuration import DevelopmentConfig
+from application.configuration import DevelopmentConfig
 from application.assets import create_static_bundles_assets
 
 # db = SQLAlchemy()
@@ -67,12 +67,6 @@ def add_functions_to_jinja2(current_app):
     current_app.jinja_env.globals.update(apps_list=data_apps.app_list)
 
 
-# Doit être global pour permettre d'avoir accès au logger dans l'application
-app = Flask(__name__,
-            static_folder='static',
-            template_folder='templates')
-
-
 # Creation de l'app
 def create_app(config_class=DevelopmentConfig):
     """
@@ -80,6 +74,10 @@ def create_app(config_class=DevelopmentConfig):
     :param config_class: Classe de configuration -> Default is DevelopmentConfig
     :return: The created app with all the information
     """
+    # Doit être global pour permettre d'avoir accès au logger dans l'application
+    app = Flask("VahenWebsite",
+                static_folder='static',
+                template_folder='templates')
     app.config.from_object(config_class)
     # db.init_app(app)
     # migrate.init_app(app, db)

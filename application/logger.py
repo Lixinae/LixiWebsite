@@ -14,9 +14,9 @@ def setup_logging():
     try:
         os.mkdir(os.path.join(dir_parent_path, "logs"))
     except OSError:
-        print("Creation of the directory %s failed" % path)
+        print("Creation of the directory %s failed" % dir_parent_path)
     else:
-        print("Successfully created the directory %s " % path)
+        print("Successfully created the directory %s " % dir_parent_path)
     with open(path, 'rt') as file:
         config = yaml.safe_load(file.read())
         logging.config.dictConfig(config)
