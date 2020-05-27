@@ -85,19 +85,19 @@ loggers:
   VahenWebsite.apps.webcrawler:
     level: DEBUG
     handlers: [console, info_file_handler, error_file_handler, critical_file_handler, debug_file_handler, warn_file_handler]
-    propagate: yes
+    propagate: no
 
   # Logger du module string to leet dans le module apps
   VahenWebsite.apps.stringToLeet:
     level: DEBUG
     handlers: [console, info_file_handler, error_file_handler, critical_file_handler, debug_file_handler, warn_file_handler]
-    propagate: yes
+    propagate: no
 
   # Logger du module webcrawler dans le module apps
   VahenWebsite.apps.anagramos:
     level: DEBUG
     handlers: [console, info_file_handler, error_file_handler, critical_file_handler, debug_file_handler, warn_file_handler]
-    propagate: yes
+    propagate: no
 
   ####### Loggers du module "Errors" #######
   # Todo

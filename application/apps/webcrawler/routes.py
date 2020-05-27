@@ -45,6 +45,7 @@ def webcrawler():
                 errors.append(
                     unable_to_get_url
                 )
+                logger.error("Url : " + base_url + " is invalid")
                 return make_response(render_template(webcrawler_html, errors=errors), 200)
             r = requests.get(base_url)
         except:

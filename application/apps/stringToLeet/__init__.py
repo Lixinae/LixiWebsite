@@ -1,4 +1,8 @@
+import logging
+
 from flask import Blueprint
+
+logger = logging.getLogger("VahenWebsite.apps.stringToLeet")
 
 string_to_leet_bp = Blueprint('string_to_leet_bp', __name__,
                               static_folder='static',

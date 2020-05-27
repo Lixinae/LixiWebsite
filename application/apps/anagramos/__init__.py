@@ -1,4 +1,8 @@
+import logging
+
 from flask import Blueprint
+
+logger = logging.getLogger("VahenWebsite.apps.anagramos")
 
 anagramos_bp = Blueprint('anagramos_bp', __name__,
                          static_folder='static',

@@ -1,9 +1,11 @@
+import logging
+
 from flask import Flask
 # from flask_migrate import Migrate
 # from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from flask_assets import Environment
-from application.configuration import DevelopmentConfig
+from application.configuration import DevelopmentConfig, ProductionConfig
 from application.assets import create_static_bundles_assets
 
 # db = SQLAlchemy()
@@ -67,6 +69,21 @@ def add_functions_to_jinja2(current_app):
     current_app.jinja_env.globals.update(apps_list=data_apps.app_list)
 
 
+def set_all_logger_to_level(logging_level):
+    """
+    Set tous les logger au niveau donné
+    Note : Utiliser cette fonction essentiellement pour le mode debug, afin d'éviter de modifier le fichier YAML
+    :param logging_level: Le niveau de logs souhaité
+    """
+    # Todo -> Ajouter les nouveaux loggers ici pour le mode debug
+    from application.apps.webcrawler import logger as logger_webcrawler
+    from application.apps.stringToLeet import logger as logger_string_to_leet
+    from application.apps.anagramos import logger as logger_anagramos
+    logger_webcrawler.setLevel(logging_level)
+    logger_string_to_leet.setLevel(logging_level)
+    logger_anagramos.setLevel(logging_level)
+
+
 # Creation de l'app
 def create_app(config_class=DevelopmentConfig):
     """
@@ -75,7 +92,7 @@ def create_app(config_class=DevelopmentConfig):
     :return: The created app with all the information
     """
     # Doit être global pour permettre d'avoir accès au logger dans l'application
-    app = Flask("VahenWebsite",
+    app = Flask(__name__,
                 static_folder='static',
                 template_folder='templates')
     app.config.from_object(config_class)
@@ -88,6 +105,8 @@ def create_app(config_class=DevelopmentConfig):
     create_static_bundles_assets(assets_from_env)
     setup_logging()
     app.logger.debug("Init of app finished")
+    if config_class == DevelopmentConfig:
+        set_all_logger_to_level(logging.DEBUG)
     return app
 
 # Ce from est ici pour éviter les inclusion circulaire
