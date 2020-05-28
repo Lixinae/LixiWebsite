@@ -17,12 +17,11 @@ RUN venv/bin/pip install gunicorn
 # Copy des dossiers de l'applications
 COPY application application
 
-COPY loggingConfig.yaml loggingConfig.yaml
 # Copy des scripts de migration de DB
 # COPY migrations migrations
 
 # Copy des scripts a la racine de l'image
-COPY VahenWeb.py configuration.py boot.sh ./
+COPY VahenWeb.py boot.sh loggingConfig.yaml ./
 
 # Ajout du droit d'execution sur le fichier de boot
 RUN chmod +x boot.sh
