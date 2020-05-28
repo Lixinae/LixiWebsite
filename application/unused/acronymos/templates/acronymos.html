@@ -1,0 +1,72 @@
+<!-- Permet d'hériter de base.html -->
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <title> Acronymos </title>
+
+    <div class="container">
+        <div class="body-wrapper">
+            <div class="acronymos">
+                <h1 class="center-text"> Acronymos </h1>
+                <p class="app-description">
+                    Todo -> Description de l'application
+                    Todo -> Formulaire de l'application
+                </p>
+
+                <div class="acronymos-request-form">
+                    <form method="POST" action="{{ url_for("acronymos_bp.acronymos") }}">
+                        <div class="form-group">
+                            <label for="url-box">Word</label>
+                            <input type="text"
+                                   name="url"
+                                   class="form-input"
+                                   id="url-box"
+                                   placeholder="Enter word..." required>
+                            <small id="extensionsHelp" class="form-text text-muted">Separate values with ";" or leave empty to scan for
+                                every format</small>
+                        </div>
+                        <div class="form-group">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="language-box-fr">French </label>
+                            <input type="radio"
+                                   name="language"
+                                   class="form-input"
+                                   id="language-box-fr"
+                                   value="French">
+                            <label for="language-box-en">English </label>
+                            <input type="radio"
+                                   name="language"
+                                   class="form-input"
+                                   id="language-box-en"
+                                   value="English">
+                        </div>
+                        <button type="submit" class="btn btn-default submit-button">Submit</button>
+                    </form>
+                </div>
+
+
+                <div class="acronymos-results">
+                    {% if results %}
+                        <h2></h2>
+                        <div class="results-list">
+                            {% for result in results %}
+                                <div class="result-wrapper">
+                                    <p>{{ result }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p> No anagrames found for word : {{ word }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {#  Les scripts sont ici pour être chargé à la fin  #}
+    {#    <script src="{{ url_for('static', filename='scripts/jquery-3.4.1.min.js') }}"></script>#}
+    {#    <script src="{{ url_for('static', filename='scripts/webcrawlerScript.js') }}"></script>#}
+{% endblock %}
