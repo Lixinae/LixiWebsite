@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <title> Apps </title>
+    <div class="container">
+        <div class="body-wrapper">
+            <h1 class="center-text"> Laboratoire d'applications </h1>
+            <p class="center-text"> Cette page dédié aux test d'application / de module sur le site, que ça soit des stats d'utilisation, du
+                code en css etc.... </p>
+            <div class="cards-wrapper">
+                {% for app in laboratoire_list %}
+                    <div class="card-wrapper">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ app.miniature }}" alt="Application :{{ app.name }} miniature">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ app.name }}</h5>
+                                <p class="card-text">{{ app.quick_description }}</p>
+                            </div>
+                            <div class="card-body-link">
+                                <a href="{{ app.url }}" class="card-link">Détails</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

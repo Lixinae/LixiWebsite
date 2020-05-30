@@ -49,6 +49,12 @@ def blueprint_registrations(current_app):
     current_app.register_blueprint(anagramos_bp)
     current_app.register_blueprint(string_to_leet_bp)
 
+    # Laboratoire
+    from application.laboratoire import laboratoire_bp
+    from application.laboratoire.website_stats import website_stats_bp
+    current_app.register_blueprint(laboratoire_bp)
+    current_app.register_blueprint(website_stats_bp)
+
 
 def add_functions_to_jinja2(current_app):
     """
