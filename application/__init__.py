@@ -21,37 +21,31 @@ def blueprint_registrations(current_app):
     Register the blueprints for the app
     :param current_app: The app we are using
     """
-    # from application.cv import cv_bp
-    from application.index import index_bp
-    # from application.contact import contact_bp
-    from application.errors import errors_bp
-    from application.portfolio import portfolio_bp
-    from application.passions import passions_bp
-    from application.apps import apps_bp
-    from application.apps.webcrawler import webcrawler_bp
-    # from application.apps.acronymos import acronymos_bp
-    from application.apps.anagramos import anagramos_bp
-    from application.apps.stringToLeet import string_to_leet_bp
-
-    # current_app.register_blueprint(cv_bp)
-    # current_app.register_blueprint(contact_bp)
 
     # Index
+    from application.index import index_bp
     current_app.register_blueprint(index_bp)
 
     # Errors
+    from application.errors import errors_bp
     current_app.register_blueprint(errors_bp)
 
     # Portfolio
+    from application.portfolio import portfolio_bp
     current_app.register_blueprint(portfolio_bp)
 
     # Passions
+    from application.passions import passions_bp
     current_app.register_blueprint(passions_bp)
 
     # Apps
+    from application.apps import apps_bp
+    from application.apps.webcrawler import webcrawler_bp
+    from application.apps.anagramos import anagramos_bp
+    from application.apps.stringToLeet import string_to_leet_bp
+    from application.apps.stringToLeet import string_to_leet_bp
     current_app.register_blueprint(apps_bp)
     current_app.register_blueprint(webcrawler_bp)
-    # current_app.register_blueprint(acronymos_bp)
     current_app.register_blueprint(anagramos_bp)
     current_app.register_blueprint(string_to_leet_bp)
 
