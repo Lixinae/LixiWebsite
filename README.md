@@ -9,6 +9,7 @@ Site personnel réalisé avec:
   * CSS3
   * Bootstrap 4
   * Jinja 2
+  * Jquery
 
 ## Installation
 * Cloner le projet
