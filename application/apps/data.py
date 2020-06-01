@@ -20,13 +20,13 @@ def app_list() -> List[Dict]:
         {
             'name': "Anagramos",
             'quick_description': "Permet de trouver tous les anagrames d'un mot dans la langue donné",
-            'miniature': url_for('static', filename='img/miniature/anagramos_miniature.PNG'),
+            'miniature': url_for('static', filename='img/miniature/anagramos_miniature.png'),
             'url': url_for('anagramos_bp.anagramos')
         },
         {
             'name': "String to leet",
             'quick_description': "Permet de traduire une chaine de caractère en langage leet",
-            'miniature': url_for('static', filename='img/miniature/string_to_leet_miniature.PNG '),
+            'miniature': url_for('static', filename='img/miniature/string_to_leet_miniature.png '),
             'url': url_for('string_to_leet_bp.string_to_leet')
         },
     ]
