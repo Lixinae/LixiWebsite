@@ -11,4 +11,4 @@ from application.laboratoire.data import laboratoire_list
 
 @website_stats_bp.route('/')
 def apps():
-    return make_response(render_template('website_stats.html', title="Website_stats", laboratoire_list=laboratoire_list()), 200)
+    return make_response(render_template('website_stats.html', title="Website_stats"), 200)
