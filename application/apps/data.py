@@ -21,7 +21,7 @@ def app_list() -> List[Dict]:
             'name': "Anagramos",
             'quick_description': "Permet de trouver tous les anagrames d'un mot dans la langue donné",
             'miniature': url_for('static', filename='img/miniature/anagramos_miniature.png'),
-            'url': url_for('anagramos_bp.anagramos')
+            'url': url_for('anagramos_bp.anagramos_page')
         },
         {
             'name': "String to leet",

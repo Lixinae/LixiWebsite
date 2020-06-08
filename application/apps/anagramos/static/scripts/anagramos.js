@@ -7,7 +7,9 @@ $("#anagramos_post_form").submit(function (event) {
         .done(function (response) {
             anagramos_results.toggleClass("hidden");
             let word = $("#word-box").val();
-            $(".anagramos-results-list").prepend("<h2>Anagrames de : " + word + "</h2>");
+            let anagramos_result_list = $(".anagramos-results-list");
+            anagramos_result_list.html("");
+            anagramos_result_list.prepend("<h2>Anagrames de : " + word + "</h2>");
             if (Object.keys(response.results).length === 0) {
                 anagramos_results.html("<p> No anagrammes for word : " + word + "</p>");
             } else {
@@ -22,6 +24,6 @@ $("#anagramos_post_form").submit(function (event) {
         })
         .fail(function () {
             anagramos_results.toggleClass("hidden");
-            anagramos_results.text("{{ _('Error: Could not contact server.') }}");
+            anagramos_results.text("Error: Could not contact server");
         });
 });
