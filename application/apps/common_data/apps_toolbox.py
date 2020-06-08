@@ -31,26 +31,26 @@ def get_words_from_file(fname: str, charset="utf-8") -> Set[str]:
     return words
 
 
-# Folder where the list of words are stored
-folder = "static/words_lists"
-
-
 def get_english_words() -> Set[str]:
+    # Folder where the list of words are stored
+    folder = "static/words_lists"
     fname = os.path.join(folder, "english_words.txt")
     """
-    Returns the
-    :param fname: File name
-    :return: 
+    Renvoie la liste des mots anglais
+    :param fname: Le fichier contenant les mots anglais
+    :return: La liste des mots anglais
     """
     return get_words_from_file(fname)
 
 
 def get_french_words() -> Set[str]:
+    # Folder where the list of words are stored
+    folder = "static/words_lists"
     # fname = os.path.join(APP_STATIC, folder, "french_words.txt")
     fname = os.path.join(folder, "french_words.txt")
     """
-    
-    :param fname: 
-    :return: 
+    Renvoie la liste des mots français
+    :param fname: Le fichier contenant les mots français
+    :return: La liste des mots anglais
     """
     return get_words_from_file(fname, charset="iso-8859-1")
