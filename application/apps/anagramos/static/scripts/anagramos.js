@@ -3,13 +3,19 @@ $("#anagramos_post_form").submit(function (event) {
     let post_url = $(this).attr("action"); //get form action url
     let form_data = $(this).serialize(); //Encode form elements for submission
     let anagramos_results = $(".anagramos-results");
+    let anagramos_results_wrapper = $(".anagramos-results-wrapper");
     $.post(post_url, form_data)
         .done(function (response) {
-            anagramos_results.toggleClass("hidden");
+            if (anagramos_results_wrapper.hasClass("hidden")) {
+                anagramos_results_wrapper.toggleClass("hidden");
+            }
             let word = $("#word-box").val();
-            $(".anagramos-results-list").prepend("<h2>Anagrames de : " + word + "</h2>");
-            if (Object.keys(response.results).length === 0) {
-                anagramos_results.html("<p> No anagrammes for word : " + word + "</p>");
+            let anagramos_result_list = $(".anagramos-results-list");
+            anagramos_result_list.html("");
+            anagramos_result_list.prepend("<h3>Anagrames de : " + word + "</h3>");
+
+            if (response.results.length === 0) {
+                anagramos_results.html("<h3> No anagrammes for word : " + word + "</h3>");
             } else {
                 $.each(response.results, function (i, result) {//iterate over json data
                     let results_html = '<div class="anagramos-result-wrapper">' +
@@ -21,7 +27,13 @@ $("#anagramos_post_form").submit(function (event) {
 
         })
         .fail(function () {
-            anagramos_results.toggleClass("hidden");
-            anagramos_results.text("{{ _('Error: Could not contact server.') }}");
+            if (anagramos_results_wrapper.hasClass("hidden")) {
+                anagramos_results_wrapper.toggleClass("hidden");
+            }
+            anagramos_results.text("Error: Could not contact server");
         });
 });
+
+function displayResults() {
+    $(".anagramos-results-wrapper").toggleClass("hidden");
+}

@@ -8,7 +8,7 @@ $("#webcrawler_post_form").submit(function (event) {
             webcrawler_results.toggleClass("hidden");
             // Si l'on a pas de resultats -> rien n'a été trouvé, on affiche donc un message d'erreir
             let url = $("#url-box").val();
-            if (Object.keys(response.results).length === 0) {
+            if (response.results.length === 0) {
                 // Todo -> eventuellement rendre lien cliquable -> Rajouter un a href ne marche pas direct pour whatever reason
                 webcrawler_results.html("<p> No file were found on link : " + url + "</p>");
             } else {

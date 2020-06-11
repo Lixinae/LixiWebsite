@@ -14,7 +14,7 @@
                     <p> Il ne prend pas compte la casse.</p>
                 </div>
                 <div class="anagramos-request-form">
-                    <form method="POST" action="{{ url_for("anagramos_bp.anagramos") }}" id="anagramos_post_form">
+                    <form method="POST" action="{{ url_for("anagramos_bp.anagramos_page") }}" id="anagramos_post_form">
                         <div class="form-group">
                             <label for="word-box">Word</label>
                             <input type="text"
@@ -36,8 +36,11 @@
                         <button type="submit" class="btn btn-default submit-button">Submit</button>
                     </form>
                 </div>
-                <div class="anagramos-results hidden">
-                    <div class="anagramos-results-list">
+                <button onclick="displayResults()" class="display-results-button">Display results</button>
+                <div class="anagramos-results-wrapper hidden">
+                    <div class="anagramos-results">
+                        <div class="anagramos-results-list">
+                        </div>
                     </div>
                 </div>
             </div>

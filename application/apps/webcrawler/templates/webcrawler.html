@@ -53,12 +53,13 @@
 
                 <div class="webcrawler-results hidden">
                     <h2>List of files</h2>
-                    <button onclick="displayResults()">Display results</button>
+                    <button onclick="displayResults()" class="display-results-button">Display results</button>
                     <div class="webcrawler-results-form">
                         <form role="form" method="POST" action="{{ url_for("webcrawler_bp.webcrawler_download") }}">
                             <button type="submit" class="btn btn-default submit-button">Download all files as zip</button>
                         </form>
                     </div>
+                    {# Todo -> Ajouter animation de chargement pour eviter que le user ne soit perdu#}
                     <div class="webcrawler-results-list">
 
                     </div>

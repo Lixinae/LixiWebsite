@@ -4,31 +4,18 @@ from typing import Set
 from flask import current_app
 
 
-def compare_letter_count_one_liner(word_1: str, word_2: str) -> bool:
+def compare_letter_count(origin: str, compared_to: str) -> bool:
     """
     Compares word_1 and word_2, returns True if they are anagrames
-    :param word_1: First word
-    :param word_2: Second word
-    :return: True if word_1 and word_2 have the same length and the same amount of each letters
+    :param origin: First word
+    :param compared_to: Second word
+    :return: True if origin and compared_to have the same length and the same amount of each letters
     """
-    if len(word_1) != len(word_2):
+    origin = origin.lower().replace(" ", "")
+    compared_to = compared_to.lower().replace(" ", "")
+    if len(origin) != len(compared_to):
         return False
-    return all([word_1.count(letter) == word_2.count(letter) for letter in word_1])
-
-
-def compare_letter_count(word_1: str, word_2: str) -> bool:
-    """
-    Compares word_1 and word_2, returns True if they are anagrames
-    :param word_1: First word
-    :param word_2: Second word
-    :return: True if word_1 and word_2 have the same length and the same amount of each letters
-    """
-    output = []
-    if len(word_1) != len(word_2):
-        return False
-    for letter in word_1:
-        output.append(word_1.count(letter) == word_2.count(letter))
-    return all(output)
+    return all([origin.count(letter) == compared_to.count(letter) for letter in origin])
 
 
 def get_words_from_file(fname: str, charset="utf-8") -> Set[str]:
@@ -44,26 +31,26 @@ def get_words_from_file(fname: str, charset="utf-8") -> Set[str]:
     return words
 
 
-# Folder where the list of words are stored
-folder = "static/words_lists"
-
-
 def get_english_words() -> Set[str]:
+    # Folder where the list of words are stored
+    folder = "static/words_lists"
     fname = os.path.join(folder, "english_words.txt")
     """
-    Returns the
-    :param fname: File name
-    :return: 
+    Renvoie la liste des mots anglais
+    :param fname: Le fichier contenant les mots anglais
+    :return: La liste des mots anglais
     """
     return get_words_from_file(fname)
 
 
 def get_french_words() -> Set[str]:
+    # Folder where the list of words are stored
+    folder = "static/words_lists"
     # fname = os.path.join(APP_STATIC, folder, "french_words.txt")
     fname = os.path.join(folder, "french_words.txt")
     """
-    
-    :param fname: 
-    :return: 
+    Renvoie la liste des mots français
+    :param fname: Le fichier contenant les mots français
+    :return: La liste des mots anglais
     """
     return get_words_from_file(fname, charset="iso-8859-1")
