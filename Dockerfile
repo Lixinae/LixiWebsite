@@ -15,7 +15,8 @@ RUN venv/bin/pip install -r requirements.txt
 RUN venv/bin/pip install gunicorn
 
 # Copy des dossiers de l'applications
-COPY application application
+COPY backend backend
+COPY frontend frontend
 
 # Copy des scripts de migration de DB
 # COPY migrations migrations
