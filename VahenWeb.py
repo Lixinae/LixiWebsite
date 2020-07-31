@@ -1,5 +1,5 @@
-from backend import create_app
-from backend.configuration import DevelopmentConfig
+from application import create_app
+from application.configuration import DevelopmentConfig
 
 
 def create_server():
