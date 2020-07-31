@@ -10,6 +10,7 @@ Site personnel réalisé avec:
   * Bootstrap 4
   * Jinja 2
   * Jquery
+  * Vue.js (En cours d'implementation)
 
 ## Installation
 * Cloner le projet
