@@ -35,9 +35,9 @@ def create_static_css_bundles(assets):
     bundles = {
         'home_css': Bundle(
             'css/libs/bootstrap_4.0.0_min.css',
-            'css/style.css',
+            'css/style.scss',
             output='generated/home.css',
-            filters='cssmin'),
+            filters='pyscss'),
     }
     assets.register(bundles)
 
