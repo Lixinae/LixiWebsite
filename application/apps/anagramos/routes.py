@@ -18,10 +18,11 @@ class AnagramosPage(Resource):
     def post(self):
         """
         Dans la requete "POST" on récupère les champs du formulaire
-        Champs : 'word', 'language-select'
+        Champs : 'word', 'language_select'
         """
-        word = request.form['word']
-        lang = request.form['language-select']
+        post_data = request.get_json()
+        word = post_data["word"]
+        lang = post_data["language_select"]
         words = []
         if lang == "French":
             words = apps_toolbox.get_french_words()
