@@ -1,0 +1,759 @@
+/** Precessor variables **/
+$light_blue: #0eafd2;
+$navbar_gray: #b6b6b6;
+$card_body_gray: #ddd;
+$d6_gray: #d6d6d6;
+$body_gray: #e6e6e6;
+$card_gray: #F8F8F8;
+$dark_gray: #333;
+$black: #000;
+
+/*****************************************************************/
+/*******************     WideScreen PC       ************** ******/
+/*****************************************************************/
+
+/****************************************/
+/**********      Generic         ********/
+/****************************************/
+a {
+    color: $black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $light_blue;
+    text-decoration: none;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.icone-project-header-text {
+    font-size: medium;
+}
+
+.icone-project-header {
+    width: auto;
+    max-height: 80px;
+    transition: 0.25s;
+}
+
+.icone-project-header:hover {
+    filter: contrast(0%);
+    transition: 0.25s;
+}
+
+.icone img {
+    width: auto;
+    max-height: 80px;
+}
+
+/****************************************/
+/************      404         **********/
+/****************************************/
+
+/****************************************/
+/*******           NavBar          ******/
+/****************************************/
+
+/*Permet d'éviter le décallage de la navbar à cause de la scrollbar*/
+.navbar {
+    padding-left: calc(100vw - 100%);
+    font-family: Calibri, serif;
+    font-size: large;
+    border-bottom: solid $light_blue 2px;
+    background-color: $navbar_gray;
+}
+
+.navbar .navbar-brand {
+    color: $black;
+    /*font-size: large;*/
+    font-weight: bold;
+    transition: 0.25s;
+}
+
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+    color: $light_blue;
+    transition: 0.25s;
+}
+
+.navbar .navbar-text {
+    color: $black;
+}
+
+.navbar .navbar-text a {
+    color: $dark_gray;
+}
+
+.navbar .navbar-text a:hover,
+.navbar .navbar-text a:focus {
+    color: $dark_gray;
+}
+
+/*Override de la navbar*/
+.navbar-default .navbar-nav > li > a {
+    color: #202020;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: $black;
+    border-radius: 0.25rem;
+    margin: 0 0.25em;
+}
+
+.navbar .navbar-nav .dropdown-menu {
+    background-color: $light_blue;
+    border-color: $light_blue;
+}
+
+.navbar .navbar-nav .dropdown-menu .dropdown-item {
+    color: $black;
+}
+
+.navbar .navbar-nav .dropdown-menu .dropdown-item:hover,
+.navbar .navbar-nav .dropdown-menu .dropdown-item:focus,
+.navbar .navbar-nav .dropdown-menu .dropdown-item.active {
+    color: $dark_gray;
+    background-color: $light_blue;
+}
+
+.navbar .navbar-nav .dropdown-menu .dropdown-divider {
+    border-top-color: $light_blue;
+}
+
+.navbar .navbar-nav .nav-item.active .nav-link,
+.navbar .navbar-nav .nav-item.active .nav-link:hover,
+.navbar .navbar-nav .nav-item.active .nav-link:focus,
+.navbar .navbar-nav .nav-item.show .nav-link,
+.navbar .navbar-nav .nav-item.show .nav-link:hover,
+.navbar .navbar-nav .nav-item.show .nav-link:focus {
+    color: $dark_gray;
+    background-color: $light_blue;
+}
+
+.navbar .navbar-toggle {
+    border-color: $light_blue;
+}
+
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+    background-color: $light_blue;
+}
+
+.navbar .navbar-toggle .navbar-toggler-icon {
+    color: $black;
+}
+
+.navbar .navbar-collapse,
+.navbar .navbar-form {
+    border-color: $black;
+}
+
+.navbar .navbar-link {
+    color: $black;
+}
+
+.navbar .navbar-link:hover {
+    color: $dark_gray;
+}
+
+@media (max-width: 575px) {
+    .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item {
+        color: $black;
+    }
+
+    .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+    .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+        color: $dark_gray;
+    }
+
+    .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item.active {
+        color: $dark_gray;
+        background-color: $light_blue;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item {
+        color: $black;
+    }
+
+    .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+    .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+        color: $dark_gray;
+    }
+
+    .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item.active {
+        color: $dark_gray;
+        background-color: $light_blue;
+    }
+}
+
+@media (max-width: 991px) {
+    .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item {
+        color: $black;
+    }
+
+    .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+    .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+        color: $dark_gray;
+    }
+
+    .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item.active {
+        color: $dark_gray;
+        background-color: $light_blue;
+    }
+}
+
+@media (max-width: 1199px) {
+    .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item {
+        color: $black;
+    }
+
+    .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+    .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+        color: $dark_gray;
+    }
+
+    .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item.active {
+        color: $dark_gray;
+        background-color: $light_blue;
+    }
+}
+
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item {
+    color: $black;
+}
+
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:hover,
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:focus {
+    color: $dark_gray;
+}
+
+.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item.active {
+    color: $dark_gray;
+    background-color: $light_blue;
+}
+
+/* Ajout de l'icone pour le toggle sur petit écran */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/* Remplace le caret perdu de bootstrap 3 */
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid \9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+/****************************************/
+/*******      Menu element         ******/
+/****************************************/
+
+.menu-element a {
+    color: #5E5E5E;
+    transition: 0.25s;
+}
+
+.menu-element:hover {
+    background-color: $light_blue;
+    transition-duration: 0.25s;
+}
+
+/*.menu-element:active {*/
+/*    background-color: $lightBlue;*/
+/*}*/
+/****************************************/
+/*******      DropDownMenu         ******/
+/****************************************/
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    border-radius: 0.25rem;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    background-color: #CBCBCC;
+    min-width: 160px;
+    z-index: 1;
+    border-radius: 0.25rem;
+}
+
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    transition-duration: 0.2s;
+    visibility: visible;
+}
+
+.dropdown-content a {
+    color: $black;
+    padding: 12px 14px;
+    text-decoration: none;
+    display: block;
+    border-radius: 0.25rem;
+}
+
+/*Override de la navbar*/
+.navbar .navbar-nav > .menu-element > .dropdown-content > a:hover {
+    background-color: $light_blue;
+    transition-duration: 0.25s;
+}
+
+/****************************************/
+/*******           Body           ******/
+/****************************************/
+
+.body-content {
+    background-color: $body_gray;
+    min-height: calc(100vh - 25px);
+    padding-left: calc(100vw - 100%);
+    padding-bottom: 50px;
+}
+
+.body-wrapper {
+    padding-top: 8.5%;
+}
+
+/****************************************/
+/*******           Index           ******/
+/****************************************/
+
+.presentation h1:first-child {
+    font-weight: bold;
+    color: $light_blue;
+}
+
+/**************************/
+/*******   Skills    ******/
+/**************************/
+
+.skills-parent {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.skill-image-container {
+    text-align: center;
+}
+
+.skill-children {
+    width: 20%;
+}
+
+.skill-image {
+    width: auto;
+    max-height: 80px;
+}
+
+.skill-image-txt {
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+
+/**************************/
+/*****      Icone     *****/
+/**************************/
+
+.icone-container {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.icone {
+    max-height: 40px;
+    max-width: 40px;
+}
+
+/**
+    Animation
+ */
+
+.icone-child {
+    background: none;
+    border: 0;
+    margin: 1em;
+    padding: 1em 1em;
+    font-size: inherit;
+    font-weight: bold;
+    position: relative;
+    vertical-align: middle;
+    width: 20em;
+}
+
+.icone-child::before, .icone-child::after {
+    box-sizing: inherit;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.icone-child {
+    transition: color 0.25s;
+}
+
+.icone-child::before, .icone-child::after {
+    border: 2px solid transparent;
+    width: 0;
+    height: 0;
+}
+
+.icone-child::before {
+    top: 0;
+    left: 0;
+}
+
+.icone-child::after {
+    bottom: 0;
+    right: 0;
+}
+
+.icone-child:hover {
+    color: $light_blue;
+}
+
+.icone-child:hover::before, .icone-child:hover::after {
+    width: 100%;
+    height: 100%;
+}
+
+.icone-child:hover::before {
+    border-top-color: $light_blue;
+    border-right-color: $light_blue;
+    transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
+}
+
+.icone-child:hover::after {
+    border-bottom-color: $light_blue;
+    border-left-color: $light_blue;
+    transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
+}
+
+/**************************/
+/*******   Titres    ******/
+/**************************/
+
+.portfolio-index, .passions-index {
+    margin-top: 50px;
+}
+
+h1.portfolio-project-title {
+    margin-bottom: 25px;
+}
+
+h2 {
+    margin-bottom: 25px;
+}
+
+h3 {
+    margin-top: 25px;
+}
+
+/****************************************/
+/*******           Cards           ******/
+/****************************************/
+
+.cards-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+
+.card-wrapper {
+    text-align: center;
+    padding-bottom: 1%;
+}
+
+.card {
+    width: 20rem;
+    background-color: $card_gray;
+    border: 1px solid $navbar_gray;
+}
+
+.card-text {
+    text-align: left;
+    padding-left: 10px;
+    min-height: 50px;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-img-top {
+    height: auto;
+    width: 100%;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    max-height: 250px;
+    object-fit: contain;
+    background-color: $body_gray;
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.card-body-link a {
+    color: $black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color: $card_body_gray;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    transition-duration: 0.25s;
+}
+
+.card-body-link a:hover {
+    background-color: $navbar_gray;
+}
+
+.list-group {
+    list-style-type: none;
+    text-align: left;
+    border-style: none;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.list-group-item {
+    border-bottom: 1px $card_body_gray;
+    border-top: 1px $card_body_gray;
+    border-style: solid;
+    border-radius: 0 !important;
+}
+
+
+/****************************************/
+/*******       Cards gallery       ******/
+/****************************************/
+
+.cards-gallery-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-gallery-wrapper {
+    text-align: center;
+    padding-bottom: 1%;
+}
+
+.card-gallery {
+    background-color: $card_gray;
+}
+
+.card-gallery-text {
+    text-align: left;
+    padding-left: 10px;
+    height: 50px;
+}
+
+.card-gallery-title {
+    text-align: center;
+}
+
+.card-gallery-img-top {
+    text-align: center;
+    max-width: 300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    border-radius: 3px;
+    border: 1px solid $navbar_gray;
+}
+
+.card-gallery-img-top:hover {
+    background-color: $card_gray;
+}
+
+/****************************************/
+/*******    Screenshots gallery    ******/
+/****************************************/
+
+.screenshots-parent {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.screenshot-image-container {
+    text-align: center;
+}
+
+.screenshot-children {
+    width: 50%;
+}
+
+.screenshot-image {
+    width: 550px;
+    height: 440px;
+}
+
+.non-etirable {
+    width: auto;
+    height: auto;
+}
+
+.screenshot-image-txt {
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+
+/****************************************/
+/*******          portfolio        ******/
+/****************************************/
+
+.portfolio-project-description {
+    margin: auto;
+    width: 700px;
+}
+
+.biblio-list-wrapper {
+    margin: auto;
+    width: 90%;
+}
+
+/****************************************/
+/*******      String to leet       ******/
+/****************************************/
+// Todo -> Changer le display, on veut un tableau à terme
+.stringToLeet_history {
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    flex: 1;
+}
+
+.stringToLeet_history_data_wrapper {
+    width: 90%;
+}
+
+/****************************************/
+/*******         Webcrawler        ******/
+/****************************************/
+.webcrawler-results-list {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    flex: 1;
+}
+
+.webcrawler-result-wrapper {
+    width: 33%;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*overflow: hidden;*/
+    /*transition: flex-grow 1s;*/
+    /*max-height: min-content;*/
+}
+
+.webcrawler-results-form {
+    display: block;
+}
+
+/****************************************/
+/*******          footer           ******/
+/****************************************/
+
+.footer-content {
+    background-color: $navbar_gray;
+    text-align: center;
+    height: 25px;
+}
+
+.footer-content p {
+    margin-bottom: 0;
+}
+
+/****************************************/
+/*******          Other            ******/
+/****************************************/
+
+.hidden {
+    display: none !important;
+}
+
+/* Todo voir comment faire l'animation du collapsed*/
+/*.isCollapsed {*/
+/*    flex-grow: .001;*/
+/*}*/
+
+/* Todo cacher le hover du menu sur mobile */
+
+/*****************************************************************/
+/***************        Smartphone Portrait      *****************/
+/*****************************************************************/
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+    .mobile-hidden {
+        display: none;
+    }
+
+    .icone-child {
+        width: 17em;
+    }
+
+    .body-wrapper {
+        padding-top: 15%;
+    }
+}
+
+/*****************************************************************/
+/***************        Smartphone Landscape      ****************/
+/*****************************************************************/
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .mobile-hidden {
+        display: none;
+    }
+
+    .icone-child {
+        width: 17em;
+    }
+
+    .body-wrapper {
+        padding-top: 13%;
+    }
+}
+
+/*****************************************************************/
+/***************        Tablet Portrait           ****************/
+/*****************************************************************/
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .body-wrapper {
+        padding-top: 10%;
+    }
+}
+
+/*****************************************************************/
+/*********       Tablet LandScape & Desktop         **************/
+/*****************************************************************/
+@media only screen and (min-width: 992px) {
+
+
+}

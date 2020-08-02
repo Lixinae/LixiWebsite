@@ -4,6 +4,10 @@ RUN adduser -D VahenWebsite
 
 WORKDIR /home/VahenWebsite
 
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 # Copy le fichier dans le file system de l'image
 COPY requirements.txt requirements.txt
 
@@ -15,8 +19,7 @@ RUN venv/bin/pip install -r requirements.txt
 RUN venv/bin/pip install gunicorn
 
 # Copy des dossiers de l'applications
-COPY backend backend
-COPY frontend frontend
+COPY application application
 
 # Copy des scripts de migration de DB
 # COPY migrations migrations
