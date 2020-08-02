@@ -636,13 +636,28 @@ h3 {
 }
 
 /****************************************/
+/*******      String to leet       ******/
+/****************************************/
+// Todo -> Changer le display, on veut un tableau à terme
+.stringToLeet_history {
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    flex: 1;
+}
+
+.stringToLeet_history_data_wrapper {
+    width: 90%;
+}
+
+/****************************************/
 /*******         Webcrawler        ******/
 /****************************************/
 .webcrawler-results-list {
     width: 100%;
     display: flex;
     flex-flow: row wrap;
-    /*flex-flow: column;*/
     justify-content: space-around;
     flex: 1;
 }
