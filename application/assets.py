@@ -5,24 +5,22 @@ def create_static_js_bundles(assets):
     libs_js_folder = "scripts/libs/"
     bundles = {
         'webcrawler_js': Bundle(
-            libs_js_folder + 'jquery-3.4.1.min.js',
             'webcrawler_bp/scripts/webcrawler.js',
             output='generated/webcrawler.js',
             filters='jsmin'),
 
         'anagramos_js': Bundle(
-            libs_js_folder + 'jquery-3.4.1.min.js',
             'anagramos_bp/scripts/anagramos.js',
             output='generated/anagramos.js',
             filters='jsmin'),
 
         'string_to_leet_js': Bundle(
-            libs_js_folder + 'jquery-3.4.1.min.js',
             'string_to_leet_bp/scripts/string_to_leet.js',
             output='generated/string_to_leet.js',
             filters='jsmin'),
 
         'libs_js': Bundle(
+            libs_js_folder + 'jquery-3.4.1.min.js',
             libs_js_folder + 'bootstrap_4_1_0.js',
             libs_js_folder + 'popper_min_js_1_14_0.js',
             output='generated/libs.js',

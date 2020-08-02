@@ -11,10 +11,13 @@ from application.assets import create_static_bundles_assets
 # db = SQLAlchemy()
 # migrate = Migrate()
 from application.logger import setup_logging
+# Ajout du mimetype pour corriger erreur windows
+import mimetypes
 
+mimetypes.add_type('text/javascript', '.js')
 bootstrap = Bootstrap()
-
 frontend_folder = "frontend"
+
 
 # Enregistrement des blueprint
 def blueprint_registrations(current_app):
