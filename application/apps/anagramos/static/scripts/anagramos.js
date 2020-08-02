@@ -17,8 +17,8 @@ const vueAnagramos = new Vue({
                 .then(function (response) {
                     // Attention au this ici -> Le this ici est celui de Axios et pas de l'objet Vue
                     self.response_data = response.data.results;
-                    self.request_done = true;
                     self.show_results = true;
+                    self.request_done = true;
                 })
                 .catch(error => {
                     console.log(error)
