@@ -23,12 +23,12 @@ const vueStringToLeet = new Vue({
                         original: self.phrase,
                         translation: response.data.results
                     });
-                    console.log(self.data_history);
+                    //console.log(self.data_history);
                 })
                 .catch(error => {
                     console.log(error)
                 });
-            console.log(this.data_history)
+            //console.log(this.data_history)
         }
     },
     delimiters: ["<%", "%>"],
@@ -39,7 +39,6 @@ const vueStringToLeet = new Vue({
         if (localStorage.data_history) {
             console.log("Mounted");
             console.log(localStorage.data_history);
-            //localStorage.data_history = []
             localStorage.clear();
             this.data_history = Object.keys(localStorage.data_history).filter(key => localStorage.data_history[key]);
         }

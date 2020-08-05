@@ -38,16 +38,17 @@
                         <p> Original : <% phrase %> </p>
                         <p> Traduction to leet : <% response_data %> </p>
                     </div>
-                    <h3> History </h3>
-                    <div class="stringToLeet_history">
-                        <div v-for="data in data_history">
-                            <div class="stringToLeet_history_data_wrapper">
-                                <% data.original %> - <% data.translation %>
-                            </div>
-                        </div>
-                    </div>
+{#                    Todo -> Remettre quand le css sera mieux#}
+{#                    <h3> History </h3>#}
+{#                    <div class="stringToLeet_history">#}
+{#                        <div v-for="data in data_history">#}
+{#                            <div class="stringToLeet_history_data_wrapper">#}
+{#                                <div class="column"> <% data.original %> </div>#}
+{#                                <div class="column"> <% data.translation %> </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
                 </div>
-                {# Todo -> Eventuellement rajouter un historique des resultats sous forme de tableau -> Induit d'avoir une BDD et garder en mémoire #}
             </div>
         </div>
     </div>
