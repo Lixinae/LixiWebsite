@@ -15,7 +15,13 @@ Site personnel réalisé avec:
 ## Installation
 * Cloner le projet
 * Installer python 3 avec pip
-* Optionnel (fortement conseillé) : Créer un environnement virtuel
+* Optionnel (fortement conseillé) : Créer un environnement virtuel :
+  * La creation se fait avec la commande "python -m venv venv"
+  * Il faut ensuite l'activer avec :
+    * Pour linux : source venv/scripts/activate
+    * Sous windows :
+       * Avec bash : source venv/Scripts/Activate
+       * Avec Command prompt : venv\Scripts\activate
 * Aller dans le dossier du projet et faire "pip install -r requirements.txt"
 
 ## Execution
