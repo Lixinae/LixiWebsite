@@ -25,5 +25,8 @@ Site personnel réalisé avec:
 * Aller dans le dossier du projet et faire "pip install -r requirements.txt"
 
 ## Execution
+#### Sans Docker
 * Executer le fichier "VahenWeb.py"
 * Par defaut le projet est sur le port 80, donc pour voir le site il faut aller à l'adresse 127.0.0.1:80, ou alors localhost:80, le (le :80 est optionnel)
+#### Avec Docker
+* Todo -> Add this part
