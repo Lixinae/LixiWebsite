@@ -68,7 +68,7 @@ def string_to_leet(input_str: str) -> str:
     return process_input(input_str.lower(), dic)
 
 
-def strip_accents(text):
+def strip_accents(text: str) -> str:
     """
     Strip accents from input String.
 
