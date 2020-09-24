@@ -1,6 +1,8 @@
 import unittest
 
+from application import create_app
 from application.apps.stringToLeet.stringToLeet_source import *
+from application.configuration import TestingConfig
 
 
 class TestStringToLeetSource(unittest.TestCase):
@@ -30,13 +32,29 @@ class TestStringToLeetSource(unittest.TestCase):
 
 class TestStringToLeetAPI(unittest.TestCase):
     def test_get_data(self):
-        pass
+        test_app = create_app(TestingConfig).test_client()
+        response = test_app.get("/apps/string_to_leet/")
+        self.assertEqual(200, response.status_code)
 
     def test_post_data_ok(self):
-        pass
+        test_app = create_app(TestingConfig).test_client()
+        response = test_app.post("/apps/string_to_leet/", json={
+            'phrase': 'hello'
+        })
+        self.assertEqual(200, response.status_code)
+        self.assertEqual(dict, type(response.json))
 
     def test_post_data_wrong(self):
-        pass
+        test_app = create_app(TestingConfig).test_client()
+        response = test_app.post("/apps/string_to_leet/", json={
+            'attr': 'value', 'other': 'data'
+        })
+        self.assertEqual(400, response.status_code)
+
+    def test_post_data_no_data(self):
+        test_app = create_app(TestingConfig).test_client()
+        response = test_app.post("/apps/string_to_leet/")
+        self.assertEqual(400, response.status_code)
 
 
 if __name__ == '__main__':

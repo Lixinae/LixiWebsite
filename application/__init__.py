@@ -5,7 +5,7 @@ from flask import Flask
 # from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from flask_assets import Environment
-from application.configuration import DevelopmentConfig, ProductionConfig
+from application.configuration import DevelopmentConfig, ProductionConfig, TestingConfig
 from application.assets import create_static_bundles_assets
 
 # db = SQLAlchemy()
@@ -106,8 +106,10 @@ def create_app(config_class=DevelopmentConfig):
     add_functions_to_jinja2(app)
     assets_from_env = Environment(app)
     create_static_bundles_assets(assets_from_env)
-    setup_logging()
-    app.logger.debug("Init of app finished")
+    # Need to disable the logs while unit testing, we don't want to be spammed from the files
+    if not config_class == TestingConfig:
+        setup_logging()
+        app.logger.debug("Init of app finished")
     if config_class == DevelopmentConfig:
         set_all_logger_to_level(logging.DEBUG)
     return app
