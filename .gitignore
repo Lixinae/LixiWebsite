@@ -131,3 +131,6 @@ dmypy.json
 # IDE files
 .idea/*
 /frontend/build/
+
+# Generated files
+/application/static/generated/
