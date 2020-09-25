@@ -5,7 +5,7 @@ from application.apps.stringToLeet.stringToLeet_source import *
 from application.configuration import TestingConfig
 
 
-class TestStringToLeetSource(unittest.TestCase):
+class TestStringToLeetUnitTest(unittest.TestCase):
     def test_dictionnary_setup(self):
         dic = setup_leet_dictionary()
         self.assertEqual(type(dic), dict)
@@ -55,7 +55,3 @@ class TestStringToLeetAPI(unittest.TestCase):
         test_app = create_app(TestingConfig).test_client()
         response = test_app.post("/apps/string_to_leet/")
         self.assertEqual(400, response.status_code)
-
-
-if __name__ == '__main__':
-    unittest.main()
