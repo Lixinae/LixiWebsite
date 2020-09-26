@@ -31,6 +31,7 @@ class TestStringToLeetUnitTest(unittest.TestCase):
 
 
 class TestStringToLeetAPI(unittest.TestCase):
+    def test_get_data(self):
         test_app = create_app(TestingConfig).test_client()
         response = test_app.get("/apps/string_to_leet/")
         self.assertEqual(200, response.status_code)
