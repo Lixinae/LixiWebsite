@@ -1,0 +1,51 @@
+<!-- Permet d'hériter de base.html -->
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <title> Anagramos </title>
+
+    <div class="container">
+        <div class="body-wrapper">
+            <div class="pendu">
+                <h1 class="center-text"> Pendu </h1>
+                <div class="app-description">
+                    <p> Jeux du pendu </p>
+                </div>
+                <div id="pendu_post_form_wrapper">
+                    <form method="POST"
+                          action="{{ url_for("pendu_bp.pendu_page") }}"
+                          @submit.prevent="postData"
+                          id="pendu_post_form">
+                        <div class="form-group">
+                            <label for="word-box">Letter</label>
+                            <input type="text"
+                                   name="letter"
+                                   v-model="letter"
+                                   class="form-input"
+                                   id="word-box"
+                                   pattern="(?i)^(?:(?![×Þß÷þø])[-'0-9a-zÀ-ÿ])+$"
+                                   placeholder="Enter letter"
+                                   required>
+                        </div>
+                        <button type="submit" class="btn btn-default submit-button">Submit</button>
+                    </form>
+{#                    Todo -> Faire l'affichage des lettres connu et indiqué le nombre de pv restant #}
+{#                    <button @click="show_results = !show_results" :aria-expanded="show_results ? 'true' : 'false'">Display results</button>#}
+{#                    <div class="-results" v-if="show_results">#}
+{#                        <p v-if="request_done"> Anagrames of "<% word %>" in "<% language_select %>" </p>#}
+{#                        <p v-else>No data to display, submit data to the server first </p>#}
+{#                        <ul>#}
+{#                            <li v-for="result in response_data">#}
+{#                                <% result %>#}
+{#                            </li>#}
+{#                        </ul>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% assets "anagramos_js" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+{% endblock %}
