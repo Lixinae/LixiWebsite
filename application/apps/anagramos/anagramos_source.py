@@ -8,7 +8,7 @@ def compare_letter_count(origin: str, compared_to: str) -> bool:
     :param compared_to: Second word
     :return: True if origin and compared_to have the same length and the same amount of each letters
     """
-    if type(origin) != str:
+    if type(origin) != str or type(compared_to) != str:
         return False
     origin = origin.lower().replace(" ", "")
     compared_to = compared_to.lower().replace(" ", "")

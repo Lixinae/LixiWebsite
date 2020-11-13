@@ -1,7 +1,7 @@
 import unittest
 
 from application import create_app, TestingConfig
-from application.apps.anagramos.anagramos_source import find_anagrammes
+from application.apps.anagramos.anagramos_source import find_anagrammes, compare_letter_count
 
 
 class TestAnagramosUnitTest(unittest.TestCase):
@@ -33,14 +33,25 @@ class TestAnagramosUnitTest(unittest.TestCase):
         self.assertEqual(list, type(anagrams))
         self.assertEqual(0, len(anagrams))
 
-    def test_compare_letter_count_ok(self):
-        pass
+    def test_compare_letter_count_ok_same_word(self):
+        word_1 = "hello"
+        word_2 = "hello"
+        self.assertEqual(True, compare_letter_count(word_1, word_2))
+
+    def test_compare_letter_count_ok_different_case(self):
+        word_1 = "hello"
+        word_2 = "HeLlO"
+        self.assertEqual(True, compare_letter_count(word_1, word_2))
 
     def test_compare_letter_count_different_size(self):
-        pass
+        word_1 = "Paddle"
+        word_2 = "Kid Paddle"
+        self.assertEqual(False, compare_letter_count(word_1, word_2))
 
     def test_compare_letter_count_wrong_type(self):
-        pass
+        word_1 = 10
+        word_2 = False
+        self.assertEqual(False, compare_letter_count(word_1, word_2))
 
 
 class TestAnagramosAPI(unittest.TestCase):
