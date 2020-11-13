@@ -1,22 +1,17 @@
 import logging
 
 from flask import Flask
-# from flask_migrate import Migrate
-# from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from flask_assets import Environment
 from application.configuration import DevelopmentConfig, ProductionConfig, TestingConfig
 from application.assets import create_static_bundles_assets
-
-# db = SQLAlchemy()
-# migrate = Migrate()
 from application.logger import setup_logging
+from flask_sqlalchemy import SQLAlchemy
 # Ajout du mimetype pour corriger erreur windows
 import mimetypes
 
 mimetypes.add_type('text/javascript', '.js')
 bootstrap = Bootstrap()
-frontend_folder = "frontend"
 
 
 # Enregistrement des blueprint
@@ -87,8 +82,12 @@ def set_all_logger_to_level(logging_level):
     logger_anagramos.setLevel(logging_level)
 
 
+db = SQLAlchemy()
+
+
 # Creation de l'app
 def create_app(config_class=DevelopmentConfig):
+    global db
     """
     Creation de l'application
     :param config_class: Classe de configuration -> Default is DevelopmentConfig
@@ -99,8 +98,16 @@ def create_app(config_class=DevelopmentConfig):
                 static_folder='static',
                 template_folder='templates')
     app.config.from_object(config_class)
-    # db.init_app(app)
-    # migrate.init_app(app, db)
+    db.init_app(app)
+
+    app.app_context().push()  # this does the bindind
+
+    # We need those import for the metadata for the database
+    # Todo -> Here add import for each model for the database
+    import database_folder.models.app_model
+    import database_folder.models.project_model
+    db.create_all()
+
     bootstrap.init_app(app)
     blueprint_registrations(app)
     add_functions_to_jinja2(app)
@@ -113,6 +120,3 @@ def create_app(config_class=DevelopmentConfig):
     if config_class == DevelopmentConfig:
         set_all_logger_to_level(logging.DEBUG)
     return app
-
-# Ce from est ici pour éviter les inclusion circulaire
-# from application import models
