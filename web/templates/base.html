@@ -1,6 +1,6 @@
-{% extends 'bootstrap/base.html' %}
+{#{% extends 'bootstrap/base.html' %}#}
 
-{% block html_attribs %} lang="en" {% endblock %}
+{#{% block html_attribs %} lang="en" {% endblock %}#}
 {% block head %}
     {% block favicon %}
         <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon/favicon.ico') }}">
@@ -32,7 +32,7 @@
     {% endblock %}
 
     {% block content %}
-        {{ super() }}
+{#        {{ super() }}#}
         <div class="body-content">
             {% block app_content %}{% endblock %}
         </div>

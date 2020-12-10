@@ -1,21 +1,6 @@
 import os
 from typing import Set
 
-from flask import current_app
-
-
-def compare_letter_count(origin: str, compared_to: str) -> bool:
-    """
-    Compares word_1 and word_2, returns True if they are anagrames
-    :param origin: First word
-    :param compared_to: Second word
-    :return: True if origin and compared_to have the same length and the same amount of each letters
-    """
-    origin = origin.lower().replace(" ", "")
-    compared_to = compared_to.lower().replace(" ", "")
-    if len(origin) != len(compared_to):
-        return False
-    return all([origin.count(letter) == compared_to.count(letter) for letter in origin])
 
 
 def get_words_from_file(fname: str, charset="utf-8") -> Set[str]:
@@ -25,6 +10,7 @@ def get_words_from_file(fname: str, charset="utf-8") -> Set[str]:
     :param fname: File to parse
     :return: A set of words from the parsed file
     """
+    from flask import current_app
     with current_app.open_resource(fname) as word_file:
         data = word_file.read().decode(charset)
         words = set(data.split())

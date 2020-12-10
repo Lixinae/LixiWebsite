@@ -10,13 +10,13 @@
                 {% for app in app_list %}
                     <div class="card-wrapper">
                         <div class="card">
-                            <img class="card-img-top" src="{{ app.miniature }}" alt="Application :{{ app.name }} miniature">
+                            <img class="card-img-top" src="{{ url_for('static', filename=app.miniature_path) }}" alt="Application :{{ app.name }} miniature">
                             <div class="card-body">
                                 <h5 class="card-title">{{ app.name }}</h5>
                                 <p class="card-text">{{ app.quick_description }}</p>
                             </div>
                             <div class="card-body-link">
-                                <a href="{{ app.url }}" class="card-link">Détails</a>
+                                <a href="{{ url_for(app.url) }}" class="card-link">Détails</a>
                             </div>
                         </div>
                     </div>
