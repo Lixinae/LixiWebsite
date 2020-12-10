@@ -1,6 +1,11 @@
 import os
+import pathlib
 
+# All base path to avoid copy past
 basedir = os.path.abspath(os.path.dirname(__file__))
+root_dir = pathlib.Path(__file__).parent.parent
+web_static_dir = os.path.join(pathlib.Path(__file__).parent.parent, "web/static")
+web_templates_dir = os.path.join(pathlib.Path(__file__).parent.parent, "web/templates")
 
 
 class Configuration(object):
@@ -32,7 +37,7 @@ class DevelopmentConfig(Configuration):
 class TestingConfig(Configuration):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'test.db')
-    #SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'test.db')
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'test.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ENGINE_OPTIONS = {'convert_unicode': True,
                                  'connect_args': {'check_same_thread': False}}

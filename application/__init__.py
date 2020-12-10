@@ -3,7 +3,7 @@ import logging
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_assets import Environment
-from application.configuration import DevelopmentConfig, ProductionConfig, TestingConfig
+from application.configuration import DevelopmentConfig, ProductionConfig, TestingConfig, web_templates_dir, web_static_dir
 from application.assets import create_static_bundles_assets
 from application.logger import setup_logging
 from flask_sqlalchemy import SQLAlchemy
@@ -95,8 +95,8 @@ def create_app(config_class=DevelopmentConfig):
     """
     # Doit être global pour permettre d'avoir accès au logger dans l'application
     app = Flask(__name__,
-                static_folder='static',
-                template_folder='templates')
+                static_folder=web_static_dir + '/general',
+                template_folder=web_templates_dir + '/')
     app.config.from_object(config_class)
     db.init_app(app)
 
