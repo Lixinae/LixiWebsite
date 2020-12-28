@@ -20,6 +20,7 @@ RUN venv/bin/pip install gunicorn
 
 # Copy des dossiers de l'applications
 COPY application application
+COPY web web
 
 # Copy des scripts de migration de DB
 # COPY migrations migrations
@@ -34,7 +35,7 @@ RUN chmod +x boot.sh
 ENV FLASK_APP VahenWeb.py
 
 RUN chown -R VahenWebsite:VahenWebsite ./
-#USER Vahen
+USER VahenWebsite
 
 # Ouverture du port 80
 EXPOSE 80
