@@ -1,9 +1,9 @@
 import concurrent.futures
 
 from flask import render_template, make_response, request, jsonify
-
-from application.apps.stringToLeet import string_to_leet_api, stringToLeet_source
 from flask_restx import Resource
+
+from application.apps.string_to_leet import string_to_leet_api, string_to_leet_source
 
 
 ############################################
@@ -13,7 +13,7 @@ from flask_restx import Resource
 @string_to_leet_api.route('/')
 class StringToLeetPage(Resource):
     def get(self):
-        return make_response(render_template('stringToLeet.html', title="string_to_leet"), 200)
+        return make_response(render_template('string_to_leet.html', title="string_to_leet"), 200)
 
     def post(self):
         post_data = request.get_json()
@@ -26,9 +26,9 @@ class StringToLeetPage(Resource):
             return self.error_template("No word in input")
         # Todo -> Later replace with celery task
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            future = executor.submit(stringToLeet_source.string_to_leet, phrase)
+            future = executor.submit(string_to_leet_source.string_to_leet, phrase)
             phrase_translated = future.result()
             return jsonify({"results": phrase_translated})
 
     def error_template(self, error_message: str):
-        return make_response(render_template('stringToLeet.html', title="string_to_leet", error=error_message), 400)
+        return make_response(render_template('string_to_leet.html', title="string_to_leet", error=error_message), 400)
