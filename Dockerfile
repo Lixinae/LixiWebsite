@@ -35,7 +35,7 @@ RUN chmod +x boot.sh
 ENV FLASK_APP VahenWeb.py
 
 RUN chown -R VahenWebsite:VahenWebsite ./
-USER VahenWebsite
+#USER VahenWebsite
 
 # Ouverture du port 80
 EXPOSE 80
