@@ -11,10 +11,10 @@ def projects() -> List[Dict]:
     projects_m = [
         {
             'name': "Vahen website",
-            'outils': "Python 3,Flask, Docker, HTML5, CSS3, JQuery, Bootstrap4, Jinja2",
-            'quick_description': "Site personnel fait en Python 3 / Flask",
+            'outils': "Python 3, Flask, VueJs, HTML5, CSS3, JQuery, Bootstrap4, Jinja2, Docker",
+            'quick_description': "Site personnel réalisé avec Python 3 / Flask / VueJs",
             'miniature': url_for('static', filename='img/miniature/site_perso_miniature.png'),
-            'url': url_for('portfolio_bp.portfolio_site_perso'),
+            'url': url_for('portfolio_bp.portfolio_vahen_website'),
             'type': "Personnel"
         },
         {
@@ -114,7 +114,7 @@ def project_short() -> List[Dict]:
     #         'outils': "Python 3,Flask, Docker, HTML5, CSS3, Bootstrap4, Jinja2",
     #         'quick_description': "Mon site personnel fait en Python 3 / Flask",
     #         'miniature': url_for('static', filename='img/miniature/sitePerso_miniature.png'),
-    #         'url': url_for('portfolio_bp.portfolio_site_perso')
+    #         'url': url_for('portfolio_bp.portfolio_vahen_website')
     #     },
     #     {
     #         'name': "Webcrawler",
