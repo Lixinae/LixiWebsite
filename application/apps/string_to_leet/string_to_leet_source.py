@@ -86,19 +86,3 @@ def strip_accents(text: str) -> str:
     text = text.encode('ascii', 'ignore')
     text = text.decode("utf-8")
     return str(text)
-
-# if __name__ == '__main__':
-#     allPhrasesSaid = []
-#     dico = setup_leet_dictionary()
-#     while True:
-#         inputString = input("Enter a phrase to translate to leet\n")
-#         outPutString = process_input(inputString, dico)
-#         allPhrasesSaid.append(outPutString)
-#         print(outPutString)
-#         if inputString == "exit":
-#             print("Leaving program")
-#             break
-#
-#     print("Here is everything said since the launch")
-#     for p in allPhrasesSaid:
-#         print(p)

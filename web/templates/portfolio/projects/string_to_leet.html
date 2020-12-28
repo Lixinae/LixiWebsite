@@ -7,15 +7,14 @@
     <div class="container">
         <div class="body-wrapper">
             {% with project_name="String to Leet" ,
-                app_page=url_for('string_to_leet_bp.string_to_leet') %}
+                    app_page=url_for('string_to_leet_bp.string_to_leet_page') %}
                 {% include "project_header.html" %}
             {% endwith %}
 
             <h3 class="center-text"> Description </h3>
             <div class="portfolio-project-description">
                 <p> Traducteur de texte vers du leet speak. </p>
-                <p> Etant donné qu'il y a plusieurs manière d'écrie une lette en leet, le texte de sortie
-                    sera toujours différent à chaque essaie. </p>
+                <p> Etant donné qu'il y a plusieurs manière d'écrie une lette en leet, le texte de sortie sera toujours différent à chaque essaie. </p>
             </div>
 
 

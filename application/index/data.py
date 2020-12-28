@@ -14,7 +14,7 @@ def skills() -> List[Dict]:
         {
             'name': "Flask",
             'img_url': url_for('static', filename='img/skills/flask.png'),
-            'img_alt': "Python 3 icon",
+            'img_alt': "Flask icon",
         },
         {
             'name': "Docker",
@@ -22,10 +22,15 @@ def skills() -> List[Dict]:
             'img_alt': "Docker icon",
         },
         {
-            'name': "C++",
-            'img_url': url_for('static', filename='img/skills/cpp.png'),
-            'img_alt': "C++ icon",
+            'name': "VueJs",
+            'img_url': url_for('static', filename='img/skills/vuejs.png'),
+            'img_alt': "VueJs icon",
         },
+        # {
+        #     'name': "C++",
+        #     'img_url': url_for('static', filename='img/skills/cpp.png'),
+        #     'img_alt': "C++ icon",
+        # },
         {
             'name': "Java",
             'img_url': url_for('static', filename='img/skills/java_2.png'),

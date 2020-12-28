@@ -1,7 +1,7 @@
 import unittest
 
 from application import create_app
-from application.apps.stringToLeet.stringToLeet_source import *
+from application.apps.string_to_leet.string_to_leet_source import *
 from application.configuration import TestingConfig
 
 
@@ -32,26 +32,26 @@ class TestStringToLeetUnitTest(unittest.TestCase):
 
 class TestStringToLeetAPI(unittest.TestCase):
     def test_get_data(self):
-        test_app = create_app(TestingConfig).test_client()
-        response = test_app.get("/apps/string_to_leet/")
+        response = self.test_app.get("/apps/string_to_leet/")
         self.assertEqual(200, response.status_code)
 
     def test_post_data_ok(self):
-        test_app = create_app(TestingConfig).test_client()
-        response = test_app.post("/apps/string_to_leet/", json={
+        response = self.test_app.post("/apps/string_to_leet/", json={
             'phrase': 'hello'
         })
         self.assertEqual(200, response.status_code)
         self.assertEqual(dict, type(response.json))
 
     def test_post_data_wrong(self):
-        test_app = create_app(TestingConfig).test_client()
-        response = test_app.post("/apps/string_to_leet/", json={
-            'attr': 'value', 'other': 'data'
+        response = self.test_app.post("/apps/string_to_leet/", json={
+            'attr': 'value',
+            'other': 'data'
         })
         self.assertEqual(400, response.status_code)
 
     def test_post_data_no_data(self):
-        test_app = create_app(TestingConfig).test_client()
-        response = test_app.post("/apps/string_to_leet/")
+        response = self.test_app.post("/apps/string_to_leet/")
         self.assertEqual(400, response.status_code)
+
+    def setUp(self):
+        self.test_app = create_app(TestingConfig).test_client()

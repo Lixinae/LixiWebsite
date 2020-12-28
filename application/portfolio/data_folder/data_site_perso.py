@@ -20,6 +20,11 @@ def skills_front() -> List[Dict]:
             'img_alt': "CSS3 icon",
         },
         {
+            'name': "VueJs",
+            'img_url': url_for('static', filename='img/skills/vuejs.png'),
+            'img_alt': "VueJs icon",
+        },
+        {
             'name': "JQuery",
             'img_url': url_for('static', filename='img/skills/jquery.png'),
             'img_alt': "JQuery icon",

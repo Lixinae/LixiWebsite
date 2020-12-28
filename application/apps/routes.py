@@ -1,7 +1,7 @@
 from flask import render_template, make_response
 
 from application.apps import apps_bp
-from database_folder.models.app_model import App
+from application.database.models.app_model import App
 
 
 ############################################

@@ -41,7 +41,7 @@ def blueprint_registrations(current_app):
     from application.apps import apps_bp
     from application.apps.webcrawler import webcrawler_bp
     from application.apps.anagramos import anagramos_bp
-    from application.apps.stringToLeet import string_to_leet_bp
+    from application.apps.string_to_leet import string_to_leet_bp
     current_app.register_blueprint(apps_bp)
     current_app.register_blueprint(webcrawler_bp)
     current_app.register_blueprint(anagramos_bp)
@@ -75,7 +75,7 @@ def set_all_logger_to_level(logging_level):
     """
     # Todo -> Ajouter les nouveaux loggers ici pour le mode debug
     from application.apps.webcrawler import logger as logger_webcrawler
-    from application.apps.stringToLeet import logger as logger_string_to_leet
+    from application.apps.string_to_leet import logger as logger_string_to_leet
     from application.apps.anagramos import logger as logger_anagramos
     logger_webcrawler.setLevel(logging_level)
     logger_string_to_leet.setLevel(logging_level)
@@ -104,8 +104,8 @@ def create_app(config_class=DevelopmentConfig):
 
     # We need those import for the metadata for the database
     # Todo -> Here add import for each model for the database
-    import database_folder.models.app_model
-    import database_folder.models.project_model
+    import application.database.models.app_model
+    import application.database.models.project_model
     db.create_all()
 
     bootstrap.init_app(app)
