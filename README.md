@@ -5,12 +5,13 @@ Site personnel réalisé avec:
   * Flask
   * Docker
 * Front-end
+  * Vue.js
   * HTML5
   * CSS3
   * Bootstrap 4
   * Jinja 2
   * Jquery
-  * Vue.js (En cours d'implementation)
+
 
 ## Installation
 * Cloner le projet
