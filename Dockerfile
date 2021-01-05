@@ -35,6 +35,9 @@ RUN chmod +x boot.sh
 ENV FLASK_APP VahenWeb.py
 
 RUN chown -R VahenWebsite:VahenWebsite ./
+# Attention au changement de USER -> par default c'est celui qui lance le conteneur
+# Si on change le user il faut élevé les droits ( Ou mettre un reverse proxy, avec nginx ou un truc docker )
+# Un user sans accès root ne peut pas bind sur un port < 1024
 #USER VahenWebsite
 
 # Ouverture du port 80
