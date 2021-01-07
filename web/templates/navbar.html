@@ -27,7 +27,7 @@
                     </a>
                     <div class="dropdown-content">
                         {% for apps in apps_list() %}
-                            <a href={{ apps.url }}>{{ apps.name }}</a>
+                            <a href={{ url_for(apps.url) }}>{{ apps.name }}</a>
                         {% endfor %}
                     </div>
                 </li>
