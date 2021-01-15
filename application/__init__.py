@@ -3,6 +3,8 @@ import logging
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_assets import Environment
+from flask_statistics import Statistics
+
 from application.configuration import DevelopmentConfig, ProductionConfig, TestingConfig, web_templates_dir, web_static_dir
 from application.assets import create_static_bundles_assets
 from application.logger import setup_logging
@@ -88,6 +90,7 @@ db = SQLAlchemy()
 # Creation de l'app
 def create_app(config_class=DevelopmentConfig):
     global db
+    global statistics
     """
     Creation de l'application
     :param config_class: Classe de configuration -> Default is DevelopmentConfig
@@ -98,24 +101,36 @@ def create_app(config_class=DevelopmentConfig):
                 static_folder=web_static_dir + '/general',
                 template_folder=web_templates_dir + '/')
     app.config.from_object(config_class)
+    setup_logging(config_class)
+    app.logger.debug("Logging set up finished ")
     db.init_app(app)
 
     app.app_context().push()  # this does the bindind
 
     # We need those import for the metadata for the database
     # Todo -> Here add import for each model for the database
-    import application.database.models.app_model
-    import application.database.models.project_model
+    import application.apps.app_model
+    import application.portfolio.project_model
     db.create_all()
+    app.logger.debug("Database init finished")
 
     bootstrap.init_app(app)
+    app.logger.debug("Bootstrap init finished")
+
     blueprint_registrations(app)
+    app.logger.debug("Blueprint_registrations finished")
+
     add_functions_to_jinja2(app)
+    app.logger.debug("add_functions_to_jinja2 finished")
+
     assets_from_env = Environment(app)
     create_static_bundles_assets(assets_from_env)
-    # Need to disable the logs while unit testing, we don't want to be spammed from the files
+    app.logger.debug("create_static_bundles_assets finished")
+
     if not config_class == TestingConfig:
-        setup_logging()
+        # Do not load the stats if we are in unit test mod
+        from application.statistics.Request import Request
+        statistics = Statistics(app, db, Request)
         app.logger.debug("Init of app finished")
     if config_class == DevelopmentConfig:
         set_all_logger_to_level(logging.DEBUG)

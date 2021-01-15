@@ -9,7 +9,7 @@ from application import db
 #     'miniature': url_for('static', filename='img/miniature/webcrawler_miniature.png'),
 #     'url': url_for('webcrawler_bp.webcrawler_page')
 # },
-class App(db.Model):
+class Apps(db.Model):
     __tablename__ = "Apps"
     id = Column(Integer, primary_key=True, index=True, unique=True, autoincrement=True)
     name = Column(String(64), index=True, unique=True)

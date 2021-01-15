@@ -1,12 +1,14 @@
 import logging
 import logging.config
 import os
-
 import yaml
 from pathlib import Path
+from application import TestingConfig
 
 
-def setup_logging():
+def setup_logging(config_class):
+    if config_class == TestingConfig:
+        return
     dir_path = os.path.dirname(os.path.realpath(__file__))
     dir_parent_path = Path(dir_path).parent
     path = os.path.join(dir_parent_path, "loggingConfig.yaml")
