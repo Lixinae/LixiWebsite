@@ -1,3 +1,4 @@
+import sys
 import unittest
 
 from application.apps.anagramos.anagramos_tests import TestAnagramosAPI
@@ -18,4 +19,7 @@ if __name__ == '__main__':
     suite = create_suite_api()
 
     runner = unittest.TextTestRunner()
-    runner.run(suite)
+    result = runner.run(suite)
+    if not result.wasSuccessful():
+        sys.exit(1)
+
