@@ -60,7 +60,7 @@ class TestAnagramosAPI(unittest.TestCase):
         self.assertEqual(200, response.status_code)
 
     def test_post_data_ok(self):
-        response = self.test_app.post("/apps/anagramos/", json={
+        response = self.test_app.post("/apps/anagramos/api/askForAnagrams", json={
             "word": "étoile",
             "language_select": "French"
         })
@@ -68,13 +68,13 @@ class TestAnagramosAPI(unittest.TestCase):
         self.assertEqual(dict, type(response.json))
 
     def test_post_data_wrong(self):
-        response = self.test_app.post("/apps/anagramos/", json={
+        response = self.test_app.post("/apps/anagramos/api/askForAnagrams", json={
             'attr': 'value', 'other': 'data'
         })
         self.assertEqual(400, response.status_code)
 
     def test_post_data_no_data(self):
-        response = self.test_app.post("/apps/anagramos/")
+        response = self.test_app.post("/apps/anagramos/api/askForAnagrams")
         self.assertEqual(400, response.status_code)
 
     def setUp(self):

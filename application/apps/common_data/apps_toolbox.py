@@ -1,6 +1,6 @@
 import os
 from typing import Set
-
+from application.configuration import web_static_dir
 
 
 def get_words_from_file(fname: str, charset="utf-8") -> Set[str]:
@@ -19,7 +19,7 @@ def get_words_from_file(fname: str, charset="utf-8") -> Set[str]:
 
 def get_english_words() -> Set[str]:
     # Folder where the list of words are stored
-    folder = "static/words_lists"
+    folder = web_static_dir + "/general/words_lists"
     fname = os.path.join(folder, "english_words.txt")
     """
     Renvoie la liste des mots anglais
@@ -31,7 +31,7 @@ def get_english_words() -> Set[str]:
 
 def get_french_words() -> Set[str]:
     # Folder where the list of words are stored
-    folder = "static/words_lists"
+    folder = web_static_dir + "/general/words_lists"
     # fname = os.path.join(APP_STATIC, folder, "french_words.txt")
     fname = os.path.join(folder, "french_words.txt")
     """

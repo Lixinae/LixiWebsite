@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 // N'utiliser qu'une seul vue par fichier, éviter les Vue multiple
 const vueAnagramos = new Vue({
     el: '#anagramos_post_form_wrapper',

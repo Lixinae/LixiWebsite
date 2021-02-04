@@ -12,6 +12,6 @@ anagramos_bp = Blueprint('anagramos_bp', __name__,
                          template_folder=web_templates_dir + apps_folder + '/anagramos',
                          url_prefix="/apps/anagramos")
 
-anagramos_api = Api(anagramos_bp, version="1.0", title="Anagramos API", description="The API for the anagramos app", )
+anagramos_api = Api(anagramos_bp, version="1.0", title="Anagramos API", description="The API for the anagramos app",  prefix="/api")
 
 from application.apps.anagramos import routes

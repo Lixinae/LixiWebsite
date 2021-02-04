@@ -36,21 +36,21 @@ class TestStringToLeetAPI(unittest.TestCase):
         self.assertEqual(200, response.status_code)
 
     def test_post_data_ok(self):
-        response = self.test_app.post("/apps/string_to_leet/", json={
+        response = self.test_app.post("/apps/string_to_leet/api/translateToLeet", json={
             'phrase': 'hello'
         })
         self.assertEqual(200, response.status_code)
         self.assertEqual(dict, type(response.json))
 
     def test_post_data_wrong(self):
-        response = self.test_app.post("/apps/string_to_leet/", json={
+        response = self.test_app.post("/apps/string_to_leet/api/translateToLeet", json={
             'attr': 'value',
             'other': 'data'
         })
         self.assertEqual(400, response.status_code)
 
     def test_post_data_no_data(self):
-        response = self.test_app.post("/apps/string_to_leet/")
+        response = self.test_app.post("/apps/string_to_leet/api/translateToLeet")
         self.assertEqual(400, response.status_code)
 
     def setUp(self):

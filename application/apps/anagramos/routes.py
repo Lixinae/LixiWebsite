@@ -1,19 +1,28 @@
 from flask import render_template, make_response, request, jsonify
 
-from application.apps.anagramos import anagramos_source, anagramos_api
+from application.apps.anagramos import anagramos_source, anagramos_api, anagramos_bp
 from application.apps.common_data import apps_toolbox
 from flask_restx import Resource
 import concurrent.futures
 
 
 ############################################
-#                Anagramos                 #
+#             Anagramos Route              #
 ############################################
 
-@anagramos_api.route('/')
-class AnagramosPage(Resource):
+@anagramos_bp.route('/')
+def anagramos_page():
+    return make_response(render_template('anagramos_app.html', title="Anagramos"), 200)
+
+
+############################################
+#              Anagramos API               #
+############################################
+
+@anagramos_api.route('/askForAnagrams')
+class AnagramosApi(Resource):
     def get(self):
-        return make_response(render_template('anagramos.html', title="Anagramos"), 200)
+        pass
 
     def post(self):
         """
@@ -33,7 +42,7 @@ class AnagramosPage(Resource):
         elif lang == "English":
             words = apps_toolbox.get_english_words()
         if not words:
-            return make_response(render_template('anagramos.html', title="Anagramos", error="No language selected"), 400)
+            return self.error_template("No language selected")
         # Todo -> Later replace with celery task
         with concurrent.futures.ThreadPoolExecutor() as executor:
             future = executor.submit(anagramos_source.find_anagrammes, word, words)
@@ -46,4 +55,4 @@ class AnagramosPage(Resource):
         return jsonify({"results": []})
 
     def error_template(self, error_message: str):
-        return make_response(render_template('anagramos.html', title="Anagramos", error=error_message), 400)
+        return make_response(render_template('anagramos_app.html', title="Anagramos", error=error_message), 400)

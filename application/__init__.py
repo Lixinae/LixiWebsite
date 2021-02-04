@@ -44,10 +44,12 @@ def blueprint_registrations(current_app):
     from application.apps.webcrawler import webcrawler_bp
     from application.apps.anagramos import anagramos_bp
     from application.apps.string_to_leet import string_to_leet_bp
+    from application.apps.pendu import pendu_bp
     current_app.register_blueprint(apps_bp)
     current_app.register_blueprint(webcrawler_bp)
     current_app.register_blueprint(anagramos_bp)
     current_app.register_blueprint(string_to_leet_bp)
+    current_app.register_blueprint(pendu_bp)
 
     # Laboratoire
     from application.laboratoire import laboratoire_bp

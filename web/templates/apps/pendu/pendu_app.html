@@ -14,7 +14,7 @@
                 </div>
                 <div id="pendu_post_form_wrapper">
                     <form method="POST"
-                          action="{{ url_for("pendu_bp.pendu_page") }}"
+                          action="{{ url_for("pendu_bp.pendu_api") }}"
                           @submit.prevent="postData"
                           id="pendu_post_form">
                         <div class="form-group">
@@ -44,8 +44,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    {% assets "anagramos_js" %}
+{#    </div>#}
+    {% assets "pendu_js" %}
         <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
 {% endblock %}
