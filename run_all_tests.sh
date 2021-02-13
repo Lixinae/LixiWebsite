@@ -16,7 +16,7 @@ echo ------------------------------------------------------------------
 echo Running API Tests
 python -m run_all_api_tests
 RESULT=$?
-[ $RESULT -ne 0 ] && exit 1
+[ $RESULT -ne 0 ] && exit 1 # On verifie que le programme s'est bien déroulé, si non on sort du script pour signaler une erreur
 
 echo API Tests Finished
 echo ------------------------------------------------------------------
