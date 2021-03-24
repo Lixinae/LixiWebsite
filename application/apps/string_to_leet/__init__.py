@@ -14,6 +14,10 @@ string_to_leet_bp = Blueprint('string_to_leet_bp', __name__,
                               template_folder=string_to_leet_template_folder,
                               url_prefix="/apps/string_to_leet")
 
-string_to_leet_api = Api(string_to_leet_bp, version="1.0", title="String to Leet API", description="The API for the String to leet app", prefix="/api")
+string_to_leet_api = Api(string_to_leet_bp,
+                         version="1.0",
+                         title="String to Leet API",
+                         description="The API for the String to leet app",
+                         prefix="/api")
 
 from application.apps.string_to_leet import routes

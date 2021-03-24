@@ -10,6 +10,10 @@ webcrawler_bp = Blueprint('webcrawler_bp', __name__,
                           template_folder=web_templates_dir + apps_folder + '/webcrawler',
                           url_prefix="/apps/webcrawler")
 
-webcrawler_api = Api(webcrawler_bp, version="1.0", title="Webcrawler API", description="The API for the webcrawler app", )
+webcrawler_api = Api(webcrawler_bp,
+                     version="1.0",
+                     title="Webcrawler API",
+                     description="The API for the webcrawler app",
+                     prefix="/api")
 
 from application.apps.webcrawler import routes
