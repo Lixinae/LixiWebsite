@@ -16,16 +16,16 @@ def passions() -> List[Dict]:
             'miniature': url_for('static', filename='img/miniature/tdc_miniature.png'),
             'url': url_for('passions_bp.passions_travail_du_cuir')
         },
-        {
-            'name': "Jeux de rôle",
-            'miniature': url_for('static', filename='img/miniature/jdr_miniature_250_250.png'),
-            'url': url_for('passions_bp.passions_jeux_de_role')
-        },
-        {
-            'name': "Jeux de societe",
-            'miniature': url_for('static', filename='img/miniature/jeux_societe_miniature.png'),
-            'url': url_for('passions_bp.passions_jeux_de_societe')
-        }
+        # {
+        #     'name': "Jeux de rôle",
+        #     'miniature': url_for('static', filename='img/miniature/jdr_miniature_250_250.png'),
+        #     'url': url_for('passions_bp.passions_jeux_de_role')
+        # },
+        # {
+        #     'name': "Jeux de societe",
+        #     'miniature': url_for('static', filename='img/miniature/jeux_societe_miniature.png'),
+        #     'url': url_for('passions_bp.passions_jeux_de_societe')
+        # }
     ]
     return passion_list
 
