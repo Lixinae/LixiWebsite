@@ -3,6 +3,7 @@ $("#webcrawler_post_form").submit(function (event) {
     let post_url = $(this).attr("action"); //get form action url
     let form_data = $(this).serialize(); //Encode form elements for submission
     let webcrawler_results = $(".webcrawler-results");
+    // Todo -> Passer à du VueJs sur la page
     $.post(post_url, form_data)
         .done(function (response) {
             webcrawler_results.toggleClass("hidden");

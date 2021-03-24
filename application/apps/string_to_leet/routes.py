@@ -22,14 +22,12 @@ def string_to_leet_page():
 @string_to_leet_api.route('/translateToLeet')
 class StringToLeetApi(Resource):
     def get(self):
-        pass
-    def post(self):
-        post_data = request.get_json()
-        if post_data is None:
+        data = request.args.to_dict()
+        if data is None:
             return self.error_template("No data received")
-        if 'phrase' not in post_data:
+        if 'phrase' not in data:
             return self.error_template("Json is incorrect")
-        phrase = post_data['phrase']
+        phrase = data['phrase']
         if not phrase:
             return self.error_template("No word in input")
         # Todo -> Later replace with celery task
@@ -38,5 +36,9 @@ class StringToLeetApi(Resource):
             phrase_translated = future.result()
             return jsonify({"results": phrase_translated})
 
+    def post(self):
+        pass
+
     def error_template(self, error_message: str):
-        return make_response(render_template('string_to_leet_app.html', title="string_to_leet", error=error_message), 400)
+        return make_response(render_template('string_to_leet_app.html', title="string_to_leet", error=error_message),
+                             400)

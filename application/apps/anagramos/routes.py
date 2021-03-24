@@ -22,20 +22,17 @@ def anagramos_page():
 @anagramos_api.route('/askForAnagrams')
 class AnagramosApi(Resource):
     def get(self):
-        pass
-
-    def post(self):
         """
         Dans la requete "POST" on récupère les champs du formulaire
         Champs : 'word', 'language_select'
         """
-        post_data = request.get_json()
-        if post_data is None:
+        get_data = request.args.to_dict()
+        if get_data is None:
             return self.error_template("No data received")
-        if "word" not in post_data or "language_select" not in post_data:
+        if "word" not in get_data or "language_select" not in get_data:
             return self.error_template("Json is incorrect")
-        word = post_data["word"]
-        lang = post_data["language_select"]
+        word = get_data["word"]
+        lang = get_data["language_select"]
         words = []
         if lang == "French":
             words = apps_toolbox.get_french_words()
@@ -53,6 +50,9 @@ class AnagramosApi(Resource):
         if output_word_list:
             return jsonify({"results": output_word_list})
         return jsonify({"results": []})
+
+    def post(self):
+        pass
 
     def error_template(self, error_message: str):
         return make_response(render_template('anagramos_app.html', title="Anagramos", error=error_message), 400)

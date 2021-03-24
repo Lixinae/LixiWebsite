@@ -10,7 +10,7 @@
                     <p> Il ne prend pas compte la casse.</p>
                 </div>
                 <div id="anagramos_post_form_wrapper">
-                    <form method="POST"
+                    <form method="GET"
                           action="{{ url_for("anagramos_bp.anagramos_api") }}"
                           @submit.prevent="postData"
                           id="anagramos_post_form">

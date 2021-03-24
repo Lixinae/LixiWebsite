@@ -13,8 +13,8 @@
                     <p> Jeux du pendu </p>
                 </div>
                 <div id="pendu_post_form_wrapper">
-                    <form method="POST"
-                          action="{{ url_for("pendu_bp.pendu_api") }}"
+                    <form method="GET"
+                          action="{{ url_for("pendu_bp.pendu_api_send_letter") }}"
                           @submit.prevent="postData"
                           id="pendu_post_form">
                         <div class="form-group">

@@ -11,11 +11,12 @@
                 <h1 class="center-text">String To 1337</h1>
                 <div class="app-description">
                     <p>Traducteur de texte vers du leet speak.</p>
-                    <p>Etant donné qu'il y a plusieurs manières d'écrire une lettre en leet, le texte de sortie sera toujours différent à
+                    <p>Etant donné qu'il y a plusieurs manières d'écrire une lettre en leet, le texte de sortie sera
+                        toujours différent à
                         chaque essai.</p>
                 </div>
                 <div id="string_to_leet_post_form_wrapper">
-                    <form method="POST"
+                    <form method="GET"
                           action="{{ url_for("string_to_leet_bp.string_to_leet_api") }}"
                           @submit.prevent="postData"
                           id="string_to_leet_post_form">
