@@ -1,0 +1,7 @@
+- repo: local
+    - id: unittest
+      name: unittest
+      entry: ../../run_all_tests.sh
+      language: script
+      pass_filenames: false
+      stages: [ commit ]
