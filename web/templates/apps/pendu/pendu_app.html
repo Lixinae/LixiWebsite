@@ -13,8 +13,8 @@
                     <p> Jeux du pendu </p>
                 </div>
                 <div id="pendu_post_form_wrapper">
-                    <form method="POST"
-                          action="{{ url_for("pendu_bp.pendu_page") }}"
+                    <form method="GET"
+                          action="{{ url_for("pendu_bp.pendu_api_send_letter") }}"
                           @submit.prevent="postData"
                           id="pendu_post_form">
                         <div class="form-group">
@@ -36,16 +36,15 @@
 {#                        <p v-if="request_done"> Anagrames of "<% word %>" in "<% language_select %>" </p>#}
 {#                        <p v-else>No data to display, submit data to the server first </p>#}
 {#                        <ul>#}
-{#                            <li v-for="result in response_data">#}
-{#                                <% result %>#}
-{#                            </li>#}
-{#                        </ul>#}
-                    </div>
+                    {#                            <li v-for="result in response_data">#}
+                    {#                                <% result %>#}
+                    {#                            </li>#}
+                    {#                        </ul>#}
                 </div>
             </div>
         </div>
     </div>
-    {% assets "anagramos_js" %}
-        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-    {% endassets %}
+    {#    </div>#}
+    <script type="text/javascript"
+            src="{{ url_for('static',filename="apps/pendu/scripts/pendu.js") }}"></script>
 {% endblock %}

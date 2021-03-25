@@ -1,9 +1,6 @@
-{#{% extends 'bootstrap/base.html' %}#}
-
-{#{% block html_attribs %} lang="en" {% endblock %}#}
 {% block head %}
     {% block favicon %}
-        <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='general/img/favicon/favicon.ico') }}">
     {% endblock %}
 
     {% block scripts %}
@@ -22,17 +19,12 @@
     {% endblock %}
 {% endblock %}
 
-{% block title %}
-    Vahen
-{% endblock %}
-
 {% block body %}
     {% block navbar %}
         {% include "navbar.html" %}
     {% endblock %}
 
     {% block content %}
-{#        {{ super() }}#}
         <div class="body-content">
             {% block app_content %}{% endblock %}
         </div>

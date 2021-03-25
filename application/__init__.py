@@ -44,10 +44,12 @@ def blueprint_registrations(current_app):
     from application.apps.webcrawler import webcrawler_bp
     from application.apps.anagramos import anagramos_bp
     from application.apps.string_to_leet import string_to_leet_bp
+    from application.apps.pendu import pendu_bp
     current_app.register_blueprint(apps_bp)
     current_app.register_blueprint(webcrawler_bp)
     current_app.register_blueprint(anagramos_bp)
     current_app.register_blueprint(string_to_leet_bp)
+    current_app.register_blueprint(pendu_bp)
 
     # Laboratoire
     from application.laboratoire import laboratoire_bp
@@ -98,7 +100,7 @@ def create_app(config_class=DevelopmentConfig):
     """
     # Doit être global pour permettre d'avoir accès au logger dans l'application
     app = Flask(__name__,
-                static_folder=web_static_dir + '/general',
+                static_folder=web_static_dir + '/',
                 template_folder=web_templates_dir + '/')
     app.config.from_object(config_class)
     setup_logging(config_class)

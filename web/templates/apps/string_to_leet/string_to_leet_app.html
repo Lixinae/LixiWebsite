@@ -11,12 +11,13 @@
                 <h1 class="center-text">String To 1337</h1>
                 <div class="app-description">
                     <p>Traducteur de texte vers du leet speak.</p>
-                    <p>Etant donné qu'il y a plusieurs manières d'écrire une lettre en leet, le texte de sortie sera toujours différent à
+                    <p>Etant donné qu'il y a plusieurs manières d'écrire une lettre en leet, le texte de sortie sera
+                        toujours différent à
                         chaque essai.</p>
                 </div>
                 <div id="string_to_leet_post_form_wrapper">
-                    <form method="POST"
-                          action="{{ url_for("string_to_leet_bp.string_to_leet_page") }}"
+                    <form method="GET"
+                          action="{{ url_for("string_to_leet_bp.string_to_leet_api") }}"
                           @submit.prevent="postData"
                           id="string_to_leet_post_form">
                         <div class="form-group">
@@ -31,28 +32,29 @@
                         </div>
                         <button type="submit" class="btn btn-default submit-button">Translate</button>
                     </form>
-                    <button @click="show_results = !show_results" :aria-expanded="show_results ? 'true' : 'false'">Display results</button>
+                    <button @click="show_results = !show_results" :aria-expanded="show_results ? 'true' : 'false'">
+                        Display results
+                    </button>
                     <div class="stringToLeet-results" v-if="show_results">
                         <p v-if="request_done"> Translation of "<% phrase %>" in leet </p>
                         <p v-else>No data to display, submit data to the server first </p>
                         <p> Original : <% phrase %> </p>
                         <p> Traduction to leet : <% response_data %> </p>
                     </div>
-{#                    Todo -> Remettre quand le css sera mieux#}
-{#                    <h3> History </h3>#}
-{#                    <div class="stringToLeet_history">#}
-{#                        <div v-for="data in data_history">#}
-{#                            <div class="stringToLeet_history_data_wrapper">#}
-{#                                <div class="column"> <% data.original %> </div>#}
-{#                                <div class="column"> <% data.translation %> </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
+                    {#                    Todo -> Remettre quand le css sera mieux#}
+                    {#                    <h3> History </h3>#}
+                    {#                    <div class="stringToLeet_history">#}
+                    {#                        <div v-for="data in data_history">#}
+                    {#                            <div class="stringToLeet_history_data_wrapper">#}
+                    {#                                <div class="column"> <% data.original %> </div>#}
+                    {#                                <div class="column"> <% data.translation %> </div>#}
+                    {#                            </div>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
                 </div>
             </div>
         </div>
     </div>
-    {% assets "string_to_leet_js" %}
-        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-    {% endassets %}
+    <script type="text/javascript"
+            src="{{ url_for('static',filename="apps/string_to_leet/scripts/string_to_leet.js") }}"></script>
 {% endblock %}

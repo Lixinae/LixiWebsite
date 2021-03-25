@@ -13,7 +13,7 @@ const vueAnagramos = new Vue({
             console.log({word: this.word, language_select: this.language_select});
             let post_url = $("#anagramos_post_form").attr("action"); //get form action url
             let self = this; // Permet d'utiliser le this de la Vue
-            axios.post(post_url, {word: this.word, language_select: this.language_select})
+            axios.get(post_url, {word: this.word, language_select: this.language_select})
                 .then(function (response) {
                     // Attention au this ici -> Le this ici est celui de Axios et pas de l'objet Vue
                     self.response_data = response.data.results;

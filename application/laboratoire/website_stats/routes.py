@@ -10,5 +10,5 @@ from application.laboratoire.data import laboratoire_list
 ############################################
 
 @website_stats_bp.route('/')
-def apps():
+def website_stats():
     return make_response(render_template('website_stats.html', title="Website_stats"), 200)

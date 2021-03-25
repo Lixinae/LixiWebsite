@@ -11,9 +11,13 @@ const vueStringToLeet = new Vue({
     methods: {
         postData: function () {
             console.log({phrase: this.phrase});
-            let post_url = $("#string_to_leet_post_form").attr("action"); //get form action url
+            let url = $("#string_to_leet_post_form").attr("action"); //get form action url
             let self = this; // Permet d'utiliser le this de la Vue
-            axios.post(post_url, {phrase: this.phrase})
+            axios.get(url, {
+                params: {
+                    phrase: this.phrase
+                }
+            })
                 .then(function (response) {
                     // Attention au this ici -> Le this ici est celui de Axios et pas de l'objet Vue
                     self.response_data = response.data.results;

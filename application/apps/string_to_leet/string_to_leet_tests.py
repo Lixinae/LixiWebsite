@@ -31,27 +31,29 @@ class TestStringToLeetUnitTest(unittest.TestCase):
 
 
 class TestStringToLeetAPI(unittest.TestCase):
-    def test_get_data(self):
-        response = self.test_app.get("/apps/string_to_leet/")
+    def test_get_page(self):
+        response = self.test_app.get(self.base_route)
         self.assertEqual(200, response.status_code)
 
-    def test_post_data_ok(self):
-        response = self.test_app.post("/apps/string_to_leet/", json={
+    def test_get_data_ok(self):
+        response = self.test_app.get(self.api_route + "translateToLeet", query_string={
             'phrase': 'hello'
         })
         self.assertEqual(200, response.status_code)
         self.assertEqual(dict, type(response.json))
 
-    def test_post_data_wrong(self):
-        response = self.test_app.post("/apps/string_to_leet/", json={
+    def test_get_data_wrong(self):
+        response = self.test_app.get(self.api_route + "translateToLeet", query_string={
             'attr': 'value',
             'other': 'data'
         })
         self.assertEqual(400, response.status_code)
 
-    def test_post_data_no_data(self):
-        response = self.test_app.post("/apps/string_to_leet/")
+    def test_get_data_no_data(self):
+        response = self.test_app.get(self.api_route + "translateToLeet")
         self.assertEqual(400, response.status_code)
 
     def setUp(self):
         self.test_app = create_app(TestingConfig).test_client()
+        self.base_route = "/apps/string_to_leet/"
+        self.api_route = self.base_route + "api/"

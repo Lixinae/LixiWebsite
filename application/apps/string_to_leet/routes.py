@@ -3,25 +3,31 @@ import concurrent.futures
 from flask import render_template, make_response, request, jsonify
 from flask_restx import Resource
 
-from application.apps.string_to_leet import string_to_leet_api, string_to_leet_source
+from application.apps.string_to_leet import string_to_leet_api, string_to_leet_source, string_to_leet_bp
 
 
 ############################################
-#             String to leet               #
+#             Anagramos Route              #
 ############################################
 
-@string_to_leet_api.route('/')
-class StringToLeetPage(Resource):
+@string_to_leet_bp.route('/')
+def string_to_leet_page():
+    return make_response(render_template('string_to_leet_app.html', title="string_to_leet"), 200)
+
+
+############################################
+#            String to leet API            #
+############################################
+
+@string_to_leet_api.route('/translateToLeet')
+class StringToLeetApi(Resource):
     def get(self):
-        return make_response(render_template('string_to_leet.html', title="string_to_leet"), 200)
-
-    def post(self):
-        post_data = request.get_json()
-        if post_data is None:
+        data = request.args.to_dict()
+        if data is None:
             return self.error_template("No data received")
-        if 'phrase' not in post_data:
+        if 'phrase' not in data:
             return self.error_template("Json is incorrect")
-        phrase = post_data['phrase']
+        phrase = data['phrase']
         if not phrase:
             return self.error_template("No word in input")
         # Todo -> Later replace with celery task
@@ -30,5 +36,9 @@ class StringToLeetPage(Resource):
             phrase_translated = future.result()
             return jsonify({"results": phrase_translated})
 
+    def post(self):
+        pass
+
     def error_template(self, error_message: str):
-        return make_response(render_template('string_to_leet.html', title="string_to_leet", error=error_message), 400)
+        return make_response(render_template('string_to_leet_app.html', title="string_to_leet", error=error_message),
+                             400)

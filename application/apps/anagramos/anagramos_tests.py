@@ -56,11 +56,11 @@ class TestAnagramosUnitTest(unittest.TestCase):
 
 class TestAnagramosAPI(unittest.TestCase):
     def test_get_data(self):
-        response = self.test_app.get("/apps/anagramos/")
+        response = self.test_app.get(self.base_route)
         self.assertEqual(200, response.status_code)
 
     def test_post_data_ok(self):
-        response = self.test_app.post("/apps/anagramos/", json={
+        response = self.test_app.get(self.api_route + "askForAnagrams", query_string={
             "word": "étoile",
             "language_select": "French"
         })
@@ -68,14 +68,16 @@ class TestAnagramosAPI(unittest.TestCase):
         self.assertEqual(dict, type(response.json))
 
     def test_post_data_wrong(self):
-        response = self.test_app.post("/apps/anagramos/", json={
+        response = self.test_app.get(self.api_route + "askForAnagrams", query_string={
             'attr': 'value', 'other': 'data'
         })
         self.assertEqual(400, response.status_code)
 
     def test_post_data_no_data(self):
-        response = self.test_app.post("/apps/anagramos/")
+        response = self.test_app.get(self.api_route + "askForAnagrams")
         self.assertEqual(400, response.status_code)
 
     def setUp(self):
         self.test_app = create_app(TestingConfig).test_client()
+        self.base_route = "/apps/anagramos/"
+        self.api_route = self.base_route + "api/"

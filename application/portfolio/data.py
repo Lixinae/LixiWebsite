@@ -13,7 +13,7 @@ def projects() -> List[Dict]:
             'name': "Vahen website",
             'outils': "Python 3, Flask, VueJs, HTML5, CSS3, JQuery, Bootstrap4, Jinja2, Docker",
             'quick_description': "Site personnel réalisé avec Python 3 / Flask / VueJs",
-            'miniature': url_for('static', filename='img/miniature/site_perso_miniature.png'),
+            'miniature': url_for('static', filename='general/img/miniature/site_perso_miniature.png'),
             'url': url_for('portfolio_bp.portfolio_vahen_website'),
             'type': "Personnel"
         },
@@ -21,7 +21,7 @@ def projects() -> List[Dict]:
             'name': "Webcrawler",
             'outils': "Python 3, Beautiful Soup 4",
             'quick_description': "Un webcrawler simple",
-            'miniature': url_for('static', filename='img/miniature/webcrawler_miniature.png'),
+            'miniature': url_for('static', filename='general/img/miniature/webcrawler_miniature.png'),
             'url': url_for('portfolio_bp.portfolio_webcrawler'),
             'type': "Personnel"
         },
@@ -29,7 +29,7 @@ def projects() -> List[Dict]:
             'name': "Pacman3D",
             'outils': "C++11, OpenGL3+",
             'quick_description': "Un pacman en 3D",
-            'miniature': url_for('static', filename='img/miniature/pacman_miniature.png'),
+            'miniature': url_for('static', filename='general/img/miniature/pacman_miniature.png'),
             'url': url_for('portfolio_bp.portfolio_pacman3d'),
             'type': "Universitaire"
         },
@@ -45,7 +45,7 @@ def projects() -> List[Dict]:
             'name': "Plateforme Game",
             'outils': "Unity 3D, C#",
             'quick_description': "",
-            'miniature': url_for('static', filename='img/miniature/plateforme_game_miniature.png'),
+            'miniature': url_for('static', filename='general/img/miniature/plateforme_game_miniature.png'),
             'url': url_for('portfolio_bp.portfolio_plateforme_game'),
             'type': "Personnel"
         },
@@ -53,7 +53,7 @@ def projects() -> List[Dict]:
             'name': "Raytracer",
             'outils': "C++11, SDL2, CMake",
             'quick_description': "Un raytracer réalisé from scratch",
-            'miniature': url_for('static', filename='img/miniature/raytracer_miniature.png'),
+            'miniature': url_for('static', filename='general/img/miniature/raytracer_miniature.png'),
             'url': url_for('portfolio_bp.portfolio_raytracer'),
             'type': "Universitaire"
         },
@@ -68,7 +68,7 @@ def projects() -> List[Dict]:
             'name': "Anagramos",
             'outils': "Python 3, HTML5, CSS3, JQuery",
             'quick_description': "Permet de trouver tous les anagrames d'un mot dans la langue donné",
-            'miniature': url_for('static', filename='img/miniature/anagramos_miniature.png'),
+            'miniature': url_for('static', filename='general/img/miniature/anagramos_miniature.png'),
             'url': url_for('portfolio_bp.portfolio_anagramos'),
             'type': "Personnel"
         },
@@ -76,7 +76,7 @@ def projects() -> List[Dict]:
             'name': "String to leet",
             'outils': "Python 3, HTML5, CSS3, JQuery",
             'quick_description': "Permet de traduire une chaine de caractère en langage leet",
-            'miniature': url_for('static', filename='img/miniature/string_to_leet_miniature.png'),
+            'miniature': url_for('static', filename='general/img/miniature/string_to_leet_miniature.png'),
             'url': url_for('portfolio_bp.portfolio_string_to_leet'),
             'type': "Personnel"
         },
@@ -84,7 +84,7 @@ def projects() -> List[Dict]:
             'name': "2048",
             'outils': "Java 8, Swing",
             'quick_description': "Un 2048 réalisé en Java 8 avec spring",
-            'miniature': url_for('static', filename='img/miniature/2048_miniature.png'),
+            'miniature': url_for('static', filename='general/img/miniature/2048_miniature.png'),
             'url': url_for('portfolio_bp.portfolio_2048'),
             'type': "Universitaire"
         },

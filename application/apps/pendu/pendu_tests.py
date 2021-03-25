@@ -17,8 +17,7 @@ class TestPenduUnitTest(unittest.TestCase):
 
 class TestPenduAPI(unittest.TestCase):
     def test_get_data(self):
-        test_app = create_app(TestingConfig).test_client()
-        response = test_app.get("/apps/pendu/")
+        response = self.test_app.get("/apps/pendu/")
         self.assertEqual(200, response.status_code)
 
     def test_post_data_ok(self):
@@ -29,3 +28,6 @@ class TestPenduAPI(unittest.TestCase):
 
     def test_post_data_no_data(self):
         pass
+
+    def setUp(self):
+        self.test_app = create_app(TestingConfig).test_client()

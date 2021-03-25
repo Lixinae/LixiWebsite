@@ -11,9 +11,9 @@ const vuePendu = new Vue({
     },
     methods: {
         postData: function () {
-            let post_url = $(this.el).attr("action"); //get form action url
+            let url = $(this.el).attr("action"); //get form action url
             let self = this; // Permet d'utiliser le this de la Vue
-            axios.post(post_url, {letter: this.letter})
+            axios.get(url, {letter: this.letter})
                 .then(function (response) {
                     // Attention au this ici -> Le this ici est celui de Axios et pas de l'objet Vue
                     self.response_numb_attempts_left = response.data.numb_attempts_left;
