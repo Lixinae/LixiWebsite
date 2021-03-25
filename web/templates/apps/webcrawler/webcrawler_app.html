@@ -75,7 +75,6 @@
             </div>
         </div>
     </div>
-    {% assets "webcrawler_js" %}
-        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-    {% endassets %}
+    <script type="text/javascript"
+            src="{{ url_for('static',filename="apps/webcrawler/scripts/webcrawler.js") }}"></script>
 {% endblock %}

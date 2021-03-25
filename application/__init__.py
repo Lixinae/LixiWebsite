@@ -100,7 +100,7 @@ def create_app(config_class=DevelopmentConfig):
     """
     # Doit être global pour permettre d'avoir accès au logger dans l'application
     app = Flask(__name__,
-                static_folder=web_static_dir + '/general',
+                static_folder=web_static_dir + '/',
                 template_folder=web_templates_dir + '/')
     app.config.from_object(config_class)
     setup_logging(config_class)

@@ -2,23 +2,8 @@ from flask_assets import Bundle
 
 
 def create_static_js_bundles(assets):
-    libs_js_folder = "scripts/libs/"
+    libs_js_folder = "general/scripts/libs/"
     bundles = {
-        'webcrawler_js': Bundle(
-            'webcrawler_bp/scripts/webcrawler.js',
-            output='generated/webcrawler.js',
-            filters='jsmin'),
-
-        'anagramos_js': Bundle(
-            'anagramos_bp/scripts/anagramos.js',
-            output='generated/anagramos.js',
-            filters='jsmin'),
-
-        'string_to_leet_js': Bundle(
-            'string_to_leet_bp/scripts/string_to_leet.js',
-            output='generated/string_to_leet.js',
-            filters='jsmin'),
-
         'libs_js': Bundle(
             libs_js_folder + 'jquery-3.4.1.min.js',
             libs_js_folder + 'bootstrap_4_1_0.js',
@@ -32,8 +17,8 @@ def create_static_js_bundles(assets):
 def create_static_css_bundles(assets):
     bundles = {
         'home_css': Bundle(
-            'css/libs/bootstrap_4.0.0_min.css',
-            'css/style.scss',
+            'general/css/libs/bootstrap_4.0.0_min.css',
+            'general/css/style.scss',
             output='generated/home.css',
             filters='pyscss'),
     }

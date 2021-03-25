@@ -52,7 +52,6 @@
             </div>
         </div>
     </div>
-    {% assets "anagramos_js" %}
-        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-    {% endassets %}
+    <script type="text/javascript"
+            src="{{ url_for('static',filename="apps/anagramos/scripts/anagramos.js") }}"></script>
 {% endblock %}

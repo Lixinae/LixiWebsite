@@ -8,12 +8,12 @@ def passions() -> List[Dict]:
     passion_list = [
         {
             'name': "GN",
-            'miniature': url_for('static', filename='img/miniature/gn_miniature.png'),
+            'miniature': url_for('static', filename='general/img/miniature/gn_miniature.png'),
             'url': url_for('passions_bp.passions_gn')
         },
         {
             'name': "Travail du cuir",
-            'miniature': url_for('static', filename='img/miniature/tdc_miniature.png'),
+            'miniature': url_for('static', filename='general/img/miniature/tdc_miniature.png'),
             'url': url_for('passions_bp.passions_travail_du_cuir')
         },
         # {
@@ -34,12 +34,12 @@ def passions_short() -> List[Dict]:
     passion_list = [
         {
             'name': "GN",
-            'miniature': url_for('static', filename='img/miniature/gn_miniature.png'),
+            'miniature': url_for('static', filename='general/img/miniature/gn_miniature.png'),
             'url': url_for('passions_bp.passions_gn')
         },
         {
             'name': "Travail du cuir",
-            'miniature': url_for('static', filename='img/miniature/tdc_miniature.png'),
+            'miniature': url_for('static', filename='general/img/miniature/tdc_miniature.png'),
             'url': url_for('passions_bp.passions_travail_du_cuir')
         },
     ]
