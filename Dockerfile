@@ -4,9 +4,16 @@ RUN adduser -D VahenWebsite
 
 WORKDIR /home/VahenWebsite
 
+ARG RAPID_API_ARG
+
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV RAPID_API ${RAPID_API_ARG}
+
+RUN touch .env
+RUN echo "RAPID_API="${RAPID_API}
+RUN echo "RAPID_API="${RAPID_API} > .env
 
 # Copy le fichier dans le file system de l'image
 COPY requirements.txt requirements.txt
