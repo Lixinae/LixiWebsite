@@ -3,7 +3,7 @@ import os
 
 import requests
 from application.configuration import web_dynamic_dir
-
+from decouple import config
 
 def fetch_data_from_instagram_api():
     insta_uid = "37207057024"
@@ -12,7 +12,7 @@ def fetch_data_from_instagram_api():
     querystring = {"user_id": insta_uid, "batch_size": "20"}
 
     headers = {
-        'x-rapidapi-key': "2dcecc0291msh881b9c68ba412b4p1b00b7jsn1b24ab4f5cf8",
+        'x-rapidapi-key': config("RAPID_API"),
         'x-rapidapi-host': "instagram28.p.rapidapi.com"
     }
 
@@ -1492,3 +1492,4 @@ json_data = {
 # with open("test.jpg", 'wb') as file:
 #     file.write(response.content)
 build_data_from_response_to_add_to_db(response_data=json_data)
+print(config("RAPID_API"))
