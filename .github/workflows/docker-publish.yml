@@ -25,7 +25,7 @@ jobs:
     - name: Build and Publish Docker image to Dockerhub instead of GPR
       uses: saubermacherag/gpr-docker-publish@master
       with:
-        IMAGE_TAG: 'v0.1'
+        TAG: 'latest'
         DOCKERFILE_PATH: 'Dockerfile'
         BUILD_CONTEXT: './'
         DOCKERHUB_REPOSITORY: 'valasnaerth/vahen_website'
