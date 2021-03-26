@@ -10,16 +10,16 @@ jobs:
 
      #This Action Emits 2 Variables, IMAGE_SHA_NAME and IMAGE_URL 
      #which you can reference in subsequent steps
-    - name: Publish Docker Image to GPR
-      uses: machine-learning-apps/gpr-docker-publish@master
-      id: docker
-      with:
-        IMAGE_NAME: 'valasnaerth/vahen_website'
-        TAG: 'latest'
-        DOCKERFILE_PATH: 'argo/gpu.Dockerfile'
-        BUILD_CONTEXT: 'argo/'
-      env:
-        REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #- name: Publish Docker Image to GPR
+    #  uses: machine-learning-apps/gpr-docker-publish@master
+    #  id: docker
+    #  with:
+    #    IMAGE_NAME: 'valasnaerth/vahen_website'
+    #    TAG: 'latest'
+    #    DOCKERFILE_PATH: 'argo/gpu.Dockerfile'
+    #    BUILD_CONTEXT: 'argo/'
+    #  env:
+    #    REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     #To access another docker registry like dockerhub you'll have to add `DOCKERHUB_UERNAME` and `DOCKERHUB_PAT` in github secrets.
     - name: Build and Publish Docker image to Dockerhub instead of GPR
