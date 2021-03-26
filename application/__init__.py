@@ -5,7 +5,8 @@ from flask_bootstrap import Bootstrap
 from flask_assets import Environment
 from flask_statistics import Statistics
 
-from application.configuration import DevelopmentConfig, ProductionConfig, TestingConfig, web_templates_dir, web_static_dir
+from application.configuration import DevelopmentConfig, ProductionConfig, TestingConfig, web_templates_dir, \
+    web_static_dir
 from application.assets import create_static_bundles_assets
 from application.logger import setup_logging
 from flask_sqlalchemy import SQLAlchemy
@@ -37,7 +38,9 @@ def blueprint_registrations(current_app):
 
     # Passions
     from application.passions import passions_bp
+    from application.passions.travail_du_cuir_api import travail_du_cuir_bp
     current_app.register_blueprint(passions_bp)
+    current_app.register_blueprint(travail_du_cuir_bp)
 
     # Apps
     from application.apps import apps_bp
@@ -89,6 +92,13 @@ def set_all_logger_to_level(logging_level):
 db = SQLAlchemy()
 
 
+def import_db_models(current_db):
+    import application.apps.app_model
+    import application.portfolio.project_model
+    import application.passions.travail_du_cuir_api.travail_du_cuir_models
+    current_db.create_all()
+
+
 # Creation de l'app
 def create_app(config_class=DevelopmentConfig):
     global db
@@ -111,9 +121,8 @@ def create_app(config_class=DevelopmentConfig):
 
     # We need those import for the metadata for the database
     # Todo -> Here add import for each model for the database
-    import application.apps.app_model
-    import application.portfolio.project_model
-    db.create_all()
+    app.logger.debug("Database init started")
+    import_db_models(db)
     app.logger.debug("Database init finished")
 
     bootstrap.init_app(app)

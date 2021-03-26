@@ -18,11 +18,6 @@ def passions_gn():
     return make_response(render_template('./passions/gn.html', title="GN"), 200)
 
 
-@passions_bp.route('/TravailDuCuir')
-def passions_travail_du_cuir():
-    return make_response(render_template('./passions/travailDuCuir.html', title="Travail du cuir"), 200)
-
-
 @passions_bp.route('/JeuxDeSociete')
 def passions_jeux_de_societe():
     return make_response(render_template('./passions/jeuxDeSociete.html', title="Jeux de sociéte"), 200)
