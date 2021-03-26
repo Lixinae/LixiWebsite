@@ -125,15 +125,19 @@ def create_app(config_class=DevelopmentConfig):
     import_db_models(db)
     app.logger.debug("Database init finished")
 
+    app.logger.debug("Bootstrap init started")
     bootstrap.init_app(app)
     app.logger.debug("Bootstrap init finished")
 
+    app.logger.debug("Blueprint_registrations started")
     blueprint_registrations(app)
     app.logger.debug("Blueprint_registrations finished")
 
+    app.logger.debug("add_functions_to_jinja2 started")
     add_functions_to_jinja2(app)
     app.logger.debug("add_functions_to_jinja2 finished")
 
+    app.logger.debug("create_static_bundles_assets started")
     assets_from_env = Environment(app)
     create_static_bundles_assets(assets_from_env)
     app.logger.debug("create_static_bundles_assets finished")
