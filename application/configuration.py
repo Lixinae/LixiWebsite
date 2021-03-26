@@ -6,6 +6,7 @@ import pathlib
 basedir = os.path.abspath(os.path.dirname(__file__))
 root_dir = pathlib.Path(__file__).parent.parent
 web_static_dir = os.path.join(pathlib.Path(__file__).parent.parent, "web/static")
+web_dynamic_dir = os.path.join(pathlib.Path(__file__).parent.parent, "web/dynamic")
 web_templates_dir = os.path.join(pathlib.Path(__file__).parent.parent, "web/templates")
 
 

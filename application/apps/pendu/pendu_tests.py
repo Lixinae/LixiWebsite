@@ -17,8 +17,24 @@ class TestPenduUnitTest(unittest.TestCase):
 
 class TestPenduAPI(unittest.TestCase):
     def test_get_data(self):
-        response = self.test_app.get("/apps/pendu/")
+        response = self.test_app.get(self.base_route)
         self.assertEqual(200, response.status_code)
+
+    def test_parameters_get_page(self):
+        response = self.test_app.get(self.api_route + "parameters")
+        # Todo -> Check que le json renvoyé donne tous les paramètres
+        # self.assertEqual()
+        pass
+
+    def test_parameters_get(self):
+        response = self.test_app.get(self.api_route + "parameters",
+                                     query_string={
+                                         'param1': 'test1'
+                                     })
+        # Todo add parameters names to check
+        # self.assertTrue((lambda : ))
+        # self.assertEqual(response.json )
+        pass
 
     def test_post_data_ok(self):
         pass
@@ -31,3 +47,5 @@ class TestPenduAPI(unittest.TestCase):
 
     def setUp(self):
         self.test_app = create_app(TestingConfig).test_client()
+        self.base_route = "/apps/pendu/"
+        self.api_route = self.base_route + "api/"

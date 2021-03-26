@@ -12,6 +12,6 @@ pendu_bp = Blueprint('pendu_bp', __name__,
                      template_folder=web_templates_dir + apps_folder + '/pendu',
                      url_prefix="/apps/pendu")
 
-pendu_api = Api(pendu_bp, version="1.0", title="Pendu API", description="The API for the pendu app",prefix="/api" )
+pendu_api = Api(pendu_bp, version="1.0", title="Pendu API", description="The API for the pendu app", prefix="/api")
 
 from application.apps.pendu import routes

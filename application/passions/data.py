@@ -14,7 +14,7 @@ def passions() -> List[Dict]:
         {
             'name': "Travail du cuir",
             'miniature': url_for('static', filename='general/img/miniature/tdc_miniature.png'),
-            'url': url_for('passions_bp.passions_travail_du_cuir')
+            'url': url_for('travail_du_cuir_bp.travail_du_cuir_page')
         },
         # {
         #     'name': "Jeux de rôle",
@@ -31,17 +31,6 @@ def passions() -> List[Dict]:
 
 
 def passions_short() -> List[Dict]:
-    passion_list = [
-        {
-            'name': "GN",
-            'miniature': url_for('static', filename='general/img/miniature/gn_miniature.png'),
-            'url': url_for('passions_bp.passions_gn')
-        },
-        {
-            'name': "Travail du cuir",
-            'miniature': url_for('static', filename='general/img/miniature/tdc_miniature.png'),
-            'url': url_for('passions_bp.passions_travail_du_cuir')
-        },
-    ]
+    passion_list = passions()[:2]
 
     return passion_list
