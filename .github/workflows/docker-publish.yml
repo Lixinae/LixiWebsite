@@ -20,7 +20,10 @@ jobs:
     #    BUILD_CONTEXT: 'argo/'
     #  env:
     #    REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+    - name: Create env file
+      run: |
+        touch .env
+        echo "RAPID_API=${{ secrets.RAPID_API }}" >> .env
     #To access another docker registry like dockerhub you'll have to add `DOCKERHUB_UERNAME` and `DOCKERHUB_PAT` in github secrets.
     - name: Build and Publish Docker image to Dockerhub instead of GPR
       uses: saubermacherag/gpr-docker-publish@master
@@ -32,6 +35,7 @@ jobs:
         DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       env:
         REGISTRY_TOKEN: ${{ secrets.DOCKERHUB_TOK }}
+        RAPID_API: ${{ secrets.RAPID_API }}
 
     # This second step is illustrative and shows how to reference the 
     # output variables.  This is completely optional.
