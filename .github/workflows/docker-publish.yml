@@ -1,77 +1,44 @@
-name: Docker
-
-on:
-  push:
-    # Publish `master` as Docker `latest` image.
-    branches:
-      - master
-
-    # Publish `v1.2.3` tags as releases.
-    tags:
-      - v*
-
-  # Run tests for any PRs.
-  pull_request:
-
-env:
-  # TODO: Change variable to your image's name.
-  IMAGE_NAME: vahen_website
-  rapid_api_key: ${{ secrets.RAPID_API }}
-
+name: Publish Docker image to GitHub Package Registry
+on: push
 jobs:
-  # Run tests.
-  # See also https://docs.docker.com/docker-hub/builds/automated-testing/
-  test:
-    runs-on: ubuntu-latest
-
+  build:
+    runs-on: ubuntu-latest 
     steps:
-      - uses: actions/checkout@v2
 
-      - name: Run tests
-        run: |
-          if [ -f docker-compose.test.yml ]; then
-            docker-compose --file docker-compose.test.yml build
-            docker-compose --file docker-compose.test.yml run sut
-          else
-            docker build . --file Dockerfile
-          fi
+    - name: Copy Repo Files
+      uses: actions/checkout@master
 
-  # Push image to GitHub Packages.
-  # See also https://docs.docker.com/docker-hub/builds/
-  push:
-    # Ensure test job passes before pushing image.
-    needs: test
+     #This Action Emits 2 Variables, IMAGE_SHA_NAME and IMAGE_URL 
+     #which you can reference in subsequent steps
+    - name: Publish Docker Image to GPR
+      uses: machine-learning-apps/gpr-docker-publish@master
+      id: docker
+      with:
+        IMAGE_NAME: 'valasnaerth/vahen_website'
+        TAG: 'latest'
+        DOCKERFILE_PATH: 'argo/gpu.Dockerfile'
+        BUILD_CONTEXT: 'argo/'
+      env:
+        REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    #To access another docker registry like dockerhub you'll have to add `DOCKERHUB_UERNAME` and `DOCKERHUB_PAT` in github secrets.
+    - name: Build and Publish Docker image to Dockerhub instead of GPR
+      uses: saubermacherag/gpr-docker-publish@master
+      with:
+        IMAGE_TAG: 'v0.1'
+        DOCKERFILE_PATH: 'Dockerfile'
+        BUILD_CONTEXT: './'
+        DOCKERHUB_REPOSITORY: 'valasnaerth/vahen_website'
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      env:
+        REGISTRY_TOKEN: ${{ secrets.DOCKERHUB_PASS }}
 
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Build image
-        run: docker build . --file Dockerfile --tag $IMAGE_NAME
-
-      - name: Log into registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-
-      - name: Push image
-        run: |
-          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
-
-          # Change all uppercase to lowercase
-          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-
-          # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-
-          # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-
-          # Use Docker `latest` tag convention
-          [ "$VERSION" == "master" ] && VERSION=latest
-
-          echo IMAGE_ID=$IMAGE_ID
-          echo VERSION=$VERSION
-
-          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:$VERSION
+    # This second step is illustrative and shows how to reference the 
+    # output variables.  This is completely optional.
+    - name: Show outputs of pervious step
+      run: |
+        echo "The name:tag of the Docker Image is: $VAR1"
+        echo "The docker image is hosted at $VAR2"
+      env:
+        VAR1: ${{ steps.docker.outputs.IMAGE_SHA_NAME }}
+        VAR2: ${{ steps.docker.outputs.IMAGE_URL }}
