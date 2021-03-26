@@ -7,7 +7,7 @@ from application.apps.string_to_leet import string_to_leet_api, string_to_leet_s
 
 
 ############################################
-#             Anagramos Route              #
+#           String to leet Route           #
 ############################################
 
 @string_to_leet_bp.route('/')
@@ -39,6 +39,7 @@ class StringToLeetApi(Resource):
     def post(self):
         pass
 
-    def error_template(self, error_message: str):
+    @staticmethod
+    def error_template(error_message: str):
         return make_response(render_template('string_to_leet_app.html', title="string_to_leet", error=error_message),
                              400)
