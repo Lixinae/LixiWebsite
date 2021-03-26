@@ -77,7 +77,7 @@ Chart.defaults.global.defaultFontSize = 16;
 const options_pie_chart = {
     title: {
         display: true,
-        text: 'Languages utilisé sur mes repository github',
+        text: 'Nombre de repos par language',
         position: 'top',
     },
     responsive: true,
