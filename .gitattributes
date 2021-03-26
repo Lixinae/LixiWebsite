@@ -1,1 +1,4 @@
 web/static/general/css/libs/bootstrap_4.0.0_min.css linguist-vendored
+web/static/general/scripts/libs/bootstrap_4_1_0.js linguist-vendored
+web/static/general/scripts/libs/jquery-3.4.1.min.js linguist-vendored
+web/static/general/scripts/libs/popper_min_js_1_14_0.js linguist-vendored
