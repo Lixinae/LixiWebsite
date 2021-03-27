@@ -13,7 +13,7 @@ ENV RAPID_API ${RAPID_API_ARG}
 
 RUN touch .env
 RUN echo "RAPID_API="${RAPID_API} > .env
-COPY .env .env
+#COPY .env .env
 
 # Copy le fichier dans le file system de l'image
 COPY requirements.txt requirements.txt
