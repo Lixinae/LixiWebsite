@@ -4,5 +4,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+      image: valasnaerth/vahen_website
       args:
         - RAPID_API_ARG= "${RAPID_API}"
