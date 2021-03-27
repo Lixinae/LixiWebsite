@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  flask:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        - RAPID_API_ARG= "${RAPID_API}"
