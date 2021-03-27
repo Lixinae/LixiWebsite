@@ -3,6 +3,6 @@ services:
   sut:
     build:
       context: .
+      args:
+        - RAPID_API_ARG= "${RAPID_API}"
     command: ./run_all_tests.sh
-    args:
-      - RAPID_API_ARG= "${RAPID_API}"
