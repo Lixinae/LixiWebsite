@@ -1,48 +1,169 @@
-name: Publish Docker image to GitHub Package Registry
-on: push
+
+name: docker compose and push
+
+# FIXME: add yaml anchors when GitHub supports it, strange that they don't
+
+on:
+  push:
+    # publish image as master=dev or on new tag
+    # except on document and ci changes
+    branches:
+      - master
+    tags:
+      - '*'
+    paths-ignore:
+      - '**.md'
+      #- '.github/workflows/*yml'
+
+  # always run tests on merge
+  # except on document and ci changes
+  pull_request:
+    paths-ignore:
+      - '**.md'
+      # - '.github/workflows/*yml' # Todo -> Remettre une fois les tests fini
+
+  # schedule full rebuild and push on schedule, see todos
+  #schedule:
+  #  - cron:  '13 3 * * *'
+
+env:
+  # TODO: remember to update version on new tag
+  LATEST_TAG: latest
+  DOCKER_HUB_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+  DOCKER_HUB_PASS: ${{ secrets.DOCKERHUB_PASSWORD }}
+
 jobs:
-  build:
-    runs-on: ubuntu-latest 
+  #schedule-push:
+  #  runs-on: ubuntu-latest
+  #  if: github.event_name == 'schedule'
+  #  strategy:
+  #    matrix:
+        # FIXME: is it possible to automatic parse refs?
+        # TODO: remember to add new tags to schedule
+  #      ref:
+  #        - master
+  #        - 1.0.0
+  #  steps:
+  #    - uses: actions/checkout@v2
+  #      with:
+  #        ref: ${{ matrix.ref }}
+  #    - run: echo $DOCKER_HUB_PASS | docker login docker.io -u $DOCKER_HUB_USER --password-stdin
+  #    - run: |
+  #       export VERSION=${{ matrix.ref }}
+  #        [ "$VERSION" == "master" ] && export VERSION=dev
+
+  #        echo VERSION=$VERSION
+  #        docker-compose build
+  #        docker-compose push
+
+          # tag and push versions X.X and X and latest
+  #        if echo "$VERSION" | grep -qE '^\w+\.\w+\.\w+$' && [ "$LATEST_TAG" == "$VERSION" ]; then
+  #          for VERSION in $(echo $VERSION | cut -d. -f1,2) $(echo $VERSION | cut -d. -f1) latest; do
+  #            export VERSION
+  #            echo VERSION=$VERSION
+  #            docker-compose build
+  #            docker-compose push
+  #          done
+  #        fi
+
+  test:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'schedule'
     steps:
+      - uses: actions/checkout@v2
+      - run: |
+          docker-compose --file docker-compose-test.yml build
+          docker-compose --file docker-compose-test.yml run sut
 
-    - name: Copy Repo Files
-      uses: actions/checkout@master
+  push:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v2
+      # We need to create the env file so that docker compose can read from it
+      - name: Create env file
+        run: |
+            touch .env
+            echo "RAPID_API=${{ secrets.RAPID_API }}" > .env  
+      - run: echo $DOCKER_HUB_PASS | docker login docker.io -u $DOCKER_HUB_USER --password-stdin
+      - run: |
+          export VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && export VERSION=$VERSION
+          [ "$VERSION" == "master" ] && export VERSION=dev
+          export RAPID_API=${{ secrets.RAPID_API }}
+          echo VERSION=$VERSION
+          docker-compose build
+          docker-compose push
 
-     #This Action Emits 2 Variables, IMAGE_SHA_NAME and IMAGE_URL 
-     #which you can reference in subsequent steps
-    #- name: Publish Docker Image to GPR
-    #  uses: machine-learning-apps/gpr-docker-publish@master
-    #  id: docker
-    #  with:
-    #    IMAGE_NAME: 'valasnaerth/vahen_website'
-    #    TAG: 'latest'
-    #    DOCKERFILE_PATH: 'argo/gpu.Dockerfile'
-    #    BUILD_CONTEXT: 'argo/'
-    #  env:
-    #    REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Create env file
-      run: |
-        touch .env
-        echo "RAPID_API=${{ secrets.RAPID_API }}" >> .env
-    #To access another docker registry like dockerhub you'll have to add `DOCKERHUB_UERNAME` and `DOCKERHUB_PAT` in github secrets.
-    - name: Build and Publish Docker image to Dockerhub instead of GPR
-      uses: saubermacherag/gpr-docker-publish@master
-      with:
-        TAG: 'latest'
-        DOCKERFILE_PATH: 'Dockerfile'
-        BUILD_CONTEXT: './'
-        DOCKERHUB_REPOSITORY: 'valasnaerth/vahen_website'
-        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-      env:
-        REGISTRY_TOKEN: ${{ secrets.DOCKERHUB_TOK }}
-        RAPID_API: ${{ secrets.RAPID_API }}
+          # tag and push versions X.X and X and latest
+          if echo "$VERSION" | grep -qE '^\w+\.\w+\.\w+$' && [ "$LATEST_TAG" == "$VERSION" ]; then
+            for VERSION in $(echo $VERSION | cut -d. -f1,2) $(echo $VERSION | cut -d. -f1) latest; do
+              export VERSION
+              echo VERSION=$VERSION
+              docker-compose build
+              docker-compose push
+            done
+          fi
 
-    # This second step is illustrative and shows how to reference the 
-    # output variables.  This is completely optional.
-    - name: Show outputs of previous step
-      run: |
-        echo "The name:tag of the Docker Image is: $VAR1"
-        echo "The docker image is hosted at $VAR2"
-      env:
-        VAR1: ${{ steps.docker.outputs.IMAGE_SHA_NAME }}
-        VAR2: ${{ steps.docker.outputs.IMAGE_URL }}
+#name: ci
+
+#on:
+#  push:
+#    branches:
+#      - 'master'
+
+#jobs:
+#  docker:
+ #   runs-on: ubuntu-latest
+  #  steps:
+   #   -
+    #    name: Checkout
+     #   uses: actions/checkout@v2
+      #-
+       # name: Set up QEMU
+       # uses: docker/setup-qemu-action@v1
+      #-
+      #  name: Set up Docker Buildx
+      #  uses: docker/setup-buildx-action@v1
+      #-
+      #  name: Login to DockerHub
+      #  uses: docker/login-action@v1
+      #  with:
+      #    username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #    password: ${{ secrets.DOCKERHUB_TOKEN }}
+      #-
+      #  name: Build and push
+      #  uses: docker/build-push-action@v2
+      #  with:
+      #    context: .
+      #    push: true
+      #    tags: valasnaerth/vahen_website:latest
+      #    secrets: |
+      #      RAPID_API=${{ secrets.RAPID_API }}
+
+
+
+#name: Publish Docker image
+#on:
+#  release:
+#    types: [published]
+#jobs:
+#  push_to_registry:
+#    name: Push Docker image to Docker Hub
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Check out the repo
+#        uses: actions/checkout@v2
+#      - name: Create env file
+#        run: |
+#            touch .env
+#            echo "RAPID_API=${{ secrets.RAPID_API }}" > .env  
+#      - name: Push to Docker Hub
+#        uses: docker/build-push-action@v1
+#        with:
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+#          repository: valasnaerth/vahen_website
+#          tag_with_ref: true
+#         RAPID_API: ${{ secrets.RAPID_API }}
