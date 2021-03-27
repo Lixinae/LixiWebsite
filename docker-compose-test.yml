@@ -4,3 +4,5 @@ services:
     build:
       context: .
     command: ./run_all_tests.sh
+    args:
+      - RAPID_API_ARG= "${RAPID_API}"
