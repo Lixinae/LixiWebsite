@@ -9,7 +9,8 @@
     <div class="container">
         <div class="body-wrapper">
             {% with project_name="Anagramos",
-                    app_page=url_for('anagramos_bp.anagramos_page') %}
+                    app_page=url_for('anagramos_bp.anagramos_page'),
+                    project_link="https://github.com/Vahen/VahenWebsite/tree/master/application/apps/anagramos" %}
                 {% include "project_header.html" %}
             {% endwith %}
 

@@ -7,7 +7,8 @@
     <div class="container">
         <div class="body-wrapper">
             {% with project_name="Webcrawler",
-                    project_link="https://github.com/Vahen/WebCrawler" %}
+                    project_link="https://github.com/Vahen/VahenWebsite/tree/master/application/apps/webcrawler",
+                    app_page=url_for('webcrawler_bp.webcrawler_page') %}
                 {% include "project_header.html" %}
             {% endwith %}
 

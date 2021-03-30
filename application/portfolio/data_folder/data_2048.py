@@ -17,7 +17,7 @@ def skills_back() -> List[Dict]:
     skills = [
         {
             'name': "Java",
-            'img_url': url_for('static', filename='img/skills/java_2.png'),
+            'img_url': url_for('static', filename='general/img/skills/java_2.png'),
             'img_alt': "Java icon",
         },
     ]
@@ -28,7 +28,7 @@ def screenshots() -> List[Dict]:
     screenshots_list = [
         {
             'name': "2048",
-            'img_url': url_for('static', filename='img/projects/screenshots/2048/2048.png'),
+            'img_url': url_for('static', filename='general/img/projects/screenshots/2048/2048.png'),
             'img_alt': "2048 screenshot",
         },
     ]

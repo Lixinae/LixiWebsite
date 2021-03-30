@@ -3,14 +3,16 @@
     <div class="icone-github-wrapper center-text">
         {% if project_link %}
             <a href="{{ project_link }}" target="_blank">
-                <img src="{{ url_for('static',filename='img/icones/icone_github_dark.png') }}" class="icone-project-header"
+                <img src="{{ url_for('static',filename='general/img/icones/icone_github_dark.png') }}"
+                     class="icone-project-header"
                      alt="icone_github"/>
             </a>
             <p class="icone-project-header-text"> Github </p>
         {% endif %}
         {% if app_page %}
             <a href="{{ app_page }}" target="_blank">
-                <img src="{{ url_for('static',filename='img/icones/icone_roue_dentee_bleu.png') }}" class="icone-project-header"
+                <img src="{{ url_for('static',filename='general/img/icones/icone_roue_dentee_bleu.png') }}"
+                     class="icone-project-header"
                      alt="icone_roue_dentee_bleu"/>
             </a>
             <p class="icone-project-header-text"> Page de l'applicattion </p>
