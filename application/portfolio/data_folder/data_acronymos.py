@@ -11,18 +11,18 @@ def skills_front() -> List[Dict]:
     skills = [
         {
             'name': "HTML5",
-            'img_url': url_for('static', filename='img/skills/html5.png'),
+            'img_url': url_for('static', filename='general/img/skills/html5.png'),
             'img_alt': "HTML5 icon",
         },
         {
             'name': "CSS3",
-            'img_url': url_for('static', filename='img/skills/css3.png'),
+            'img_url': url_for('static', filename='general/img/skills/css3.png'),
             'img_alt': "CSS3 icon",
         },
         {
-            'name': "JQuery",
-            'img_url': url_for('static', filename='img/skills/jquery.png'),
-            'img_alt': "JQuery icon",
+            'name': "VueJs",
+            'img_url': url_for('static', filename='general/img/skills/vuejs.png'),
+            'img_alt': "VueJs icon",
         },
     ]
     return skills
@@ -32,7 +32,7 @@ def skills_back() -> List[Dict]:
     skills = [
         {
             'name': "Python",
-            'img_url': url_for('static', filename='img/skills/python.png'),
+            'img_url': url_for('static', filename='general/img/skills/python.png'),
             'img_alt': "Python 3 icon",
         },
     ]
