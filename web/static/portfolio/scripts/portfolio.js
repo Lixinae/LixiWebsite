@@ -19,12 +19,10 @@ const vuePortfolio = new Vue({
             let self = this
             axios.get(`https://api.github.com/users/Vahen/repos`)
                 .then(function (response) {
-                    console.log(response.data)
                     self.extract_and_display_data_pie_chart(response.data)
                 })
         },
         extract_and_display_data_pie_chart(github_repos_data) {
-
             let dict_language = {}
             github_repos_data.forEach(data => {
                 if (!(data.language in dict_language)) {
@@ -44,9 +42,6 @@ const vuePortfolio = new Vue({
             this.display_pie_chart(labels, count_language, colors);
         },
         display_pie_chart(labels, count_language, colors) {
-            console.log(labels)
-            console.log(count_language)
-            console.log(colors)
             const ctx = $('#github_language_chart_pie').get(0).getContext('2d');
             if (this.chart) {
                 this.chart.destroy()
