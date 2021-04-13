@@ -6,11 +6,11 @@ from flask import url_for
 # Permet de query la liste de tous les projets
 def passions() -> List[Dict]:
     passion_list = [
-        {
-            'name': "GN",
-            'miniature': url_for('static', filename='general/img/miniature/gn_miniature.png'),
-            'url': url_for('passions_bp.passions_gn')
-        },
+        # {
+        #     'name': "GN",
+        #     'miniature': url_for('static', filename='general/img/miniature/gn_miniature.png'),
+        #     'url': url_for('passions_bp.passions_gn')
+        # },
         {
             'name': "Travail du cuir",
             'miniature': url_for('static', filename='general/img/miniature/tdc_miniature.png'),
