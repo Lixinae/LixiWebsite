@@ -32,16 +32,16 @@
                     </div>
                 </li>
 
-                {#                <li class="dropdown menu-element nav-item">#}
-                {#                    <a href="{{ url_for('passions_bp.passions') }}" class="nav-link">Passions#}
-                {#                        <span class="caret mobile-hidden"></span>#}
-                {#                    </a>#}
-                {#                    <div class="dropdown-content">#}
-                {#                        {% for passions in passions_list() %}#}
-                {#                            <a href={{ passions.url }}>{{ passions.name }}</a>#}
-                {#                        {% endfor %}#}
-                {#                    </div>#}
-                {#                </li>#}
+                <li class="dropdown menu-element nav-item">
+                    <a href="{{ url_for('passions_bp.passions') }}" class="nav-link">Passions
+                        <span class="caret mobile-hidden"></span>
+                    </a>
+                    <div class="dropdown-content">
+                        {% for passions in passions_list() %}
+                            <a href={{ passions.url }}>{{ passions.name }}</a>
+                        {% endfor %}
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a href="{{ url_for('static',filename='general/pdf/CV_PicoChristopher.pdf') }}"
                        class="menu-element nav-link">CV</a>

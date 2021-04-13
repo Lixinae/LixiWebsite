@@ -3,6 +3,7 @@ import logging
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_assets import Environment
+from flask_jsglue import JSGlue
 from flask_statistics import Statistics
 
 from application.configuration import DevelopmentConfig, ProductionConfig, TestingConfig, web_templates_dir, \
@@ -141,6 +142,9 @@ def create_app(config_class=DevelopmentConfig):
     assets_from_env = Environment(app)
     create_static_bundles_assets(assets_from_env)
     app.logger.debug("create_static_bundles_assets finished")
+
+    jsglue = JSGlue()
+    jsglue.init_app(app)
 
     if not config_class == TestingConfig:
         # Do not load the stats if we are in unit test mod

@@ -7,13 +7,21 @@
         {% assets "libs_js" %}
             <script type="text/javascript" src="{{ ASSET_URL }}"></script>
         {% endassets %}
+        {{ JSGlue.include() }}
+        {# Todo -> Passer aux version "min" pour vue et vuetify quand mis en prod #}
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
         <script type="text/javascript" src="https://unpkg.com/vuex"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     {% endblock %}
 
     {% block styles %}
         {% assets "home_css" %}
+            <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+            <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+            <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+            <meta name="viewport"
+                  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
             <link rel="stylesheet" href="{{ ASSET_URL }}"/>
         {% endassets %}
     {% endblock %}
