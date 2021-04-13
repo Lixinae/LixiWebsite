@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <title> Travail du cuir </title>
+
+    <div class="container">
+        <div class="body-wrapper">
+
+            <h1 class="center-text"> Travail du cuir </h1>
+            {#            Todo -> Ajouter description #}
+            <h2 class="center-text"> Les motifs </h2>
+
+            {#   Todo -> Ici rajouter la vue et les éléments vuetify #}
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script type="text/javascript"
+            src="{{ url_for('travail_du_cuir_bp.static',filename="scripts/travail_du_cuir.js") }}"></script>
+{% endblock %}

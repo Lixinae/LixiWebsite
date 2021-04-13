@@ -10,79 +10,29 @@
             <h1 class="center-text"> Travail du cuir </h1>
             {#            Todo -> Ajouter description #}
             <h2 class="center-text"> Mes réalisations </h2>
-            <div id="instafeed">
-                {#                <VueSlickCarousel :arrows="true" :dots="true">#}
-                {#                    <div v-for="(feed, index) in instafeed">#}
-                {#                        <img :src="feed.media_url" alt/>#}
-                {#                    </div>#}
-                {#                </VueSlickCarousel>#}
+            <div id="tdc_app">
+                <div class="cards-wrapper">
+                    <div v-for="galery,index in images_galeries">
+                        <div class="card-wrapper">
+                            <div class="card">
+                                <img class="card-img-top"
+                                     :src="galery.items[0].src"
+                                     alt="galery.name miniature">
+                                <div class="card-body">
+                                    <h5 class="card-title"> <%galery.name%> </h5>
+                                    {#                            <p class="card-text"> A simple text </p>#}
+                                </div>
+                                <div class="card-body-link">
+                                    <a :href="galery.sub_galery_url"
+                                       class="card-link"> Galerie </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
-            {#            <div class="cards-gallery-wrapper">#}
-            {##}
-            {#                <div class="card-gallery-wrapper">#}
-            {#                    <div class="card-gallery">#}
-            {#                        <img class="card-gallery-img-top" src="{{ url_for('static',filename='img/tdc/D20_cuir.png') }}"#}
-            {#                             alt="Hearthstone miniature">#}
-            {#                            <div class="card-gallery-body hidden">#}
-            {#                                <h5 class="card-gallery-title">D20 cuir</h5>#}
-            {#                            </div>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {##}
-            {#                <div class="card-gallery-wrapper">#}
-            {#                    <div class="card-gallery">#}
-            {#                        <img class="card-gallery-img-top" src="{{ url_for('static',filename='img/tdc/hache_cuir_granule.png') }}"#}
-            {#                             alt="Hache cuir granule miniature">#}
-            {#                    </div>#}
-            {#                </div>#}
-            {##}
-            {#                <div class="card-gallery-wrapper">#}
-            {#                    <div class="card-gallery">#}
-            {#                        <img class="card-gallery-img-top" src="{{ url_for('static',filename='img/tdc/livre_cuir.png') }}"#}
-            {#                             alt="Hache cuir granule miniature">#}
-            {#                    </div>#}
-            {#                </div>#}
-            {##}
-            {#                <div class="card-gallery-wrapper">#}
-            {#                    <div class="card-gallery">#}
-            {#                        <img class="card-gallery-img-top" src="{{ url_for('static',filename='img/tdc/rune_naine_cuir.png') }}"#}
-            {#                             alt="Hache cuir granule miniature">#}
-            {#                    </div>#}
-            {#                </div>#}
-            {##}
-            {#                <div class="card-gallery-wrapper">#}
-            {#                    <div class="card-gallery">#}
-            {#                        <img class="card-gallery-img-top" src="{{ url_for('static',filename='img/tdc/serpent_cuir.png') }}"#}
-            {#                             alt="Hache cuir granule miniature">#}
-            {#                    </div>#}
-            {#                </div>#}
-            {##}
-            {#                <div class="card-gallery-wrapper">#}
-            {#                    <div class="card-gallery">#}
-            {#                        <img class="card-gallery-img-top" src="{{ url_for('static',filename='img/tdc/serpent_teinture_cuir.png') }}"#}
-            {#                             alt="Serpent teinture cuir  granule miniature">#}
-            {#                    </div>#}
-            {#                </div>#}
-            {##}
-            {#                <div class="card-gallery-wrapper">#}
-            {#                    <div class="card-gallery">#}
-            {#                        <img class="card-gallery-img-top" src="{{ url_for('static',filename='img/tdc/spider_cuir.png') }}"#}
-            {#                             alt="Spider cuir miniature">#}
-            {#                    </div>#}
-            {#                </div>#}
-            {##}
-            {#                <div class="card-gallery-wrapper">#}
-            {#                    <div class="card-gallery">#}
-            {#                        <img class="card-gallery-img-top" src="{{ url_for('static',filename='img/tdc/triple_motif_cuir.png') }}"#}
-            {#                             alt="Triple motif cuir granule miniature">#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            </div>#}
         </div>
     </div>
-    <script type="text/javascript" src="https://unpkg.com/vue-slick-carousel"></script>
     <script type="text/javascript"
-            src="{{ url_for('static',filename="passions/travail_du_cuir/scripts/travail_du_cuir.js") }}"></script>
+            src="{{ url_for('travail_du_cuir_bp.static',filename="scripts/travail_du_cuir.js") }}"></script>
 {% endblock %}
