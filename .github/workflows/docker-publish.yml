@@ -33,38 +33,7 @@ env:
   DOCKER_HUB_PASS: ${{ secrets.DOCKERHUB_PASSWORD }}
 
 jobs:
-  #schedule-push:
-  #  runs-on: ubuntu-latest
-  #  if: github.event_name == 'schedule'
-  #  strategy:
-  #    matrix:
-        # FIXME: is it possible to automatic parse refs?
-        # TODO: remember to add new tags to schedule
-  #      ref:
-  #        - master
-  #        - 1.0.0
-  #  steps:
-  #    - uses: actions/checkout@v2
-  #      with:
-  #        ref: ${{ matrix.ref }}
-  #    - run: echo $DOCKER_HUB_PASS | docker login docker.io -u $DOCKER_HUB_USER --password-stdin
-  #    - run: |
-  #       export VERSION=${{ matrix.ref }}
-  #        [ "$VERSION" == "master" ] && export VERSION=dev
 
-  #        echo VERSION=$VERSION
-  #        docker-compose build
-  #        docker-compose push
-
-          # tag and push versions X.X and X and latest
-  #        if echo "$VERSION" | grep -qE '^\w+\.\w+\.\w+$' && [ "$LATEST_TAG" == "$VERSION" ]; then
-  #          for VERSION in $(echo $VERSION | cut -d. -f1,2) $(echo $VERSION | cut -d. -f1) latest; do
-  #            export VERSION
-  #            echo VERSION=$VERSION
-  #            docker-compose build
-  #            docker-compose push
-  #          done
-  #        fi
 
   test:
     runs-on: ubuntu-latest
@@ -105,65 +74,3 @@ jobs:
               docker-compose push
             done
           fi
-
-#name: ci
-
-#on:
-#  push:
-#    branches:
-#      - 'master'
-
-#jobs:
-#  docker:
- #   runs-on: ubuntu-latest
-  #  steps:
-   #   -
-    #    name: Checkout
-     #   uses: actions/checkout@v2
-      #-
-       # name: Set up QEMU
-       # uses: docker/setup-qemu-action@v1
-      #-
-      #  name: Set up Docker Buildx
-      #  uses: docker/setup-buildx-action@v1
-      #-
-      #  name: Login to DockerHub
-      #  uses: docker/login-action@v1
-      #  with:
-      #    username: ${{ secrets.DOCKERHUB_USERNAME }}
-      #    password: ${{ secrets.DOCKERHUB_TOKEN }}
-      #-
-      #  name: Build and push
-      #  uses: docker/build-push-action@v2
-      #  with:
-      #    context: .
-      #    push: true
-      #    tags: valasnaerth/vahen_website:latest
-      #    secrets: |
-      #      RAPID_API=${{ secrets.RAPID_API }}
-
-
-
-#name: Publish Docker image
-#on:
-#  release:
-#    types: [published]
-#jobs:
-#  push_to_registry:
-#    name: Push Docker image to Docker Hub
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Check out the repo
-#        uses: actions/checkout@v2
-#      - name: Create env file
-#        run: |
-#            touch .env
-#            echo "RAPID_API=${{ secrets.RAPID_API }}" > .env  
-#      - name: Push to Docker Hub
-#        uses: docker/build-push-action@v1
-#        with:
-#          username: ${{ secrets.DOCKERHUB_USERNAME }}
-#          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-#          repository: valasnaerth/vahen_website
-#          tag_with_ref: true
-#         RAPID_API: ${{ secrets.RAPID_API }}
