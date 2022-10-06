@@ -1,4 +1,4 @@
-# VahenWebsite
+# LixiWebsite
 Site personnel réalisé avec:
 * Back-end
   * Python 3
